@@ -3,7 +3,6 @@ package org.eddy.util;
 import org.eddy.entity.JsoupParam;
 import org.eddy.exception.JsoupException;
 import org.eddy.lambda.ValueConvert;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.util.List;
