@@ -9,11 +9,11 @@ import java.io.IOException;
 /**
  * Created by eddy on 16/12/5.
  */
-public class DtdPathREsolver implements EntityResolver {
+public class ConfigrationDtdPathREsolver implements EntityResolver {
     @Override
     public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
         if (systemId != null) {
-            return new InputSource(Thread.currentThread().getContextClassLoader().getResourceAsStream("rule/parseRule.dtd"));
+            return new InputSource(Thread.currentThread().getContextClassLoader().getResourceAsStream("urlConfigration.dtd"));
         }
         return null;
     }

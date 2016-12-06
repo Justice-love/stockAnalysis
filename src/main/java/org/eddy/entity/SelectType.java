@@ -26,7 +26,7 @@ public enum SelectType {
         throw new IllegalAccessError("not implement");
     }
 
-    public Element findElement(Element element) {
+    protected Element findElement(Element element) {
         assert element != null;
 
         Elements children = element.children();
