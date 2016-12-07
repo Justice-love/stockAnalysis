@@ -72,7 +72,7 @@ public class XmlContext {
                 if (Url.RULE_TAG_NAME.equals(nodeList.item(i).getNodeName()) && Node.ELEMENT_NODE == node.getNodeType()) {
                     Element element = (Element) node;
                     new Url.UrlRule();
-                    urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("id")).orElse(null)), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));
+                    urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("selectType")).orElse("id")), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));
                 }
             }
             url.setUrlRuleList(urlRules);
