@@ -14,6 +14,7 @@ public class Url {
 
     //REQUIRED
     private String url;
+    private Test test;
     private List<UrlRule> urlRuleList;
 
     //IMPLIED
@@ -48,6 +49,14 @@ public class Url {
 
     public void setPathVariableClass(String pathVariableClass) {
         this.pathVariableClass = pathVariableClass;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
     }
 
     public static class UrlRule {
@@ -86,6 +95,45 @@ public class Url {
 
         public void setProperty(String property) {
             this.property = property;
+        }
+    }
+
+    public static class Test{
+        private SelectType selectType;
+        private String value;
+        private String validate;
+
+        public Test(SelectType selectType, String value, String validate) {
+            this.selectType = selectType;
+            this.value = value;
+            this.validate = validate;
+        }
+
+        public Test() {
+        }
+
+        public SelectType getSelectType() {
+            return selectType;
+        }
+
+        public void setSelectType(SelectType selectType) {
+            this.selectType = selectType;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String getValidate() {
+            return validate;
+        }
+
+        public void setValidate(String validate) {
+            this.validate = validate;
         }
     }
 }

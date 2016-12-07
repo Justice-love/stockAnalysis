@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE url SYSTEM "../url.dtd">
 
-<url url="">
-    <urlRule selectType="css" value="price" property="price"/>
+<url url="http://finance.sina.com.cn/realstock/company/sh601988/nc.shtml">
+    <test selectType="id"  value="closed" validate="已退市">
+        <urlRule selectType="id" value="stockName" property="name"/>
+        <urlRule selectType="id" value="price" property="price"/>
+        <urlRule selectType="id" value="changeP" property="up"/>
+        <urlRule selectType="id" value="change" property="upPrice"/>
+        <urlRule selectType="mix" value="#MRFlow|table|tbody|tr(1)|td(0)" property="buy"/>
+        <urlRule selectType="mix" value="#MRFlow|table|tbody|tr(1)|td(1)" property="sale"/>
+    </test>
 </url>

@@ -65,11 +65,14 @@ public class XmlContext {
             Url url = new Url(root.getAttribute("url"));
             url.setPathVariableClass(Optional.of(root.getAttribute("pathVariableClass")).orElse(null));
 
-            NodeList nodeList = root.getChildNodes();
+            Element test = (Element) root.getElementsByTagName("test").item(0);
+            url.setTest(new Url.Test(SelectType.valueOf(Optional.of(test.getAttribute("selectType")).orElse("id")), Optional.of(test.getAttribute("value")).orElse(null), Optional.of(test.getAttribute("validate")).orElse(null)));
+
+            NodeList ruleList = root.getElementsByTagName(Url.RULE_TAG_NAME);
             List<Url.UrlRule> urlRules = new ArrayList<>(10);
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
-                if (Url.RULE_TAG_NAME.equals(nodeList.item(i).getNodeName()) && Node.ELEMENT_NODE == node.getNodeType()) {
+            for (int i = 0; i < ruleList.getLength(); i++) {
+                Node node = ruleList.item(i);
+                if (Node.ELEMENT_NODE == node.getNodeType()) {
                     Element element = (Element) node;
                     new Url.UrlRule();
                     urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("selectType")).orElse("id")), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));

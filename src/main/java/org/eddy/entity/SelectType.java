@@ -13,7 +13,15 @@ public enum SelectType {
             Element idElement = element.getElementById(expression);
             return  findElement(idElement);
         }
-    }, css {
+    },
+    css {
+        @Override
+        public Element findElement(Element element, String expression) {
+            Elements cssElements = element.getElementsByClass(expression);
+            return findElement(cssElements.get(0));
+        }
+    },
+    mix {
         @Override
         public Element findElement(Element element, String expression) {
             Elements cssElements = element.getElementsByClass(expression);

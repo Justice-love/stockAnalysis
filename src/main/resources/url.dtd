@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-        <!ELEMENT url (urlRule+)>
+        <!ELEMENT url (test+)>
         <!ATTLIST url
                 url CDATA #REQUIRED
                 pathVariableClass CDATA #IMPLIED
                 >
+        <!ELEMENT test (urlRule+)>
+        <!ATTLIST test
+            selectType CDATA #REQUIRED
+            value CDATA #REQUIRED
+            validate CDATA #REQUIRED
+        >
 
         <!ELEMENT urlRule EMPTY>
         <!ATTLIST urlRule
