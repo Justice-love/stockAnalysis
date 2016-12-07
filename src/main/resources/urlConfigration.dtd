@@ -4,3 +4,28 @@
 <!ELEMENT urlConfig (url+)>
 
 <!ELEMENT url EMPTY>
+
+        <!--<!ATTLIST rule-->
+                <!--name CDATA #REQUIRED-->
+                <!--class CDATA #REQUIRED-->
+                <!--begin CDATA #IMPLIED-->
+                <!--space CDATA #IMPLIED-->
+                <!--size CDATA #IMPLIED-->
+                <!--extends CDATA #IMPLIED>-->
+
+
+        <!--<!ELEMENT virtual (dataNode)>-->
+        <!--<!ATTLIST virtual-->
+                <!--prefix CDATA #REQUIRED-->
+                <!--index CDATA #IMPLIED-->
+                <!--begin CDATA #IMPLIED-->
+                <!--end CDATA #IMPLIED>-->
+
+
+        <!--<!ELEMENT dataNode EMPTY>-->
+        <!--<!ATTLIST dataNode-->
+                <!--namePrefix CDATA #IMPLIED-->
+                <!--interval CDATA #IMPLIED-->
+                <!--shortName CDATA #IMPLIED-->
+                <!--fullName CDATA #IMPLIED-->
+                <!--database CDATA #IMPLIED>-->
