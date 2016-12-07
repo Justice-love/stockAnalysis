@@ -2,9 +2,5 @@
 <!DOCTYPE url SYSTEM "../url.dtd">
 
 <url url="">
-    <urlRule>
-        <type></type>
-        <value></value>
-        <property></property>
-    </urlRule>
+    <urlRule selectType="css" value="price" property="price"/>
 </url>

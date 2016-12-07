@@ -45,7 +45,7 @@ public class XmlContext {
         List<String> paths = new ArrayList<String>();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (Url.URL_TAG_NAME.equals(node.getNodeName()) && node.getClass().isAssignableFrom(Element.class)) {
+            if (Url.URL_TAG_NAME.equals(node.getNodeName()) && Node.ELEMENT_NODE == node.getNodeType()) {
                 Element element = (Element) node;
                 paths.add(element.getAttribute("path"));
             }
@@ -69,7 +69,7 @@ public class XmlContext {
             List<Url.UrlRule> urlRules = new ArrayList<>(10);
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
-                if (Url.RULE_TAG_NAME.equals(nodeList.item(i).getNodeName()) && node.getClass().isAssignableFrom(Element.class)) {
+                if (Url.RULE_TAG_NAME.equals(nodeList.item(i).getNodeName()) && Node.ELEMENT_NODE == node.getNodeType()) {
                     Element element = (Element) node;
                     new Url.UrlRule();
                     urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("id")).orElse(null)), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));

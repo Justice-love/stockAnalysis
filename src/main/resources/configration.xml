@@ -2,5 +2,5 @@
 <!DOCTYPE urlConfig SYSTEM "urlConfigration.dtd">
 
 <urlConfig>
-    <url path=""/>
+    <url path="urls/first.xml"/>
 </urlConfig>
