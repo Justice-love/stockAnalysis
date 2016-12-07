@@ -7,13 +7,13 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 /**
- * Created by eddy on 16/12/5.
+ * Created by eddy on 2016/12/7.
  */
-public class ConfigrationDtdPathREsolver implements EntityResolver {
+public class UrlDtdPathResolver implements EntityResolver {
     @Override
     public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
         if (systemId != null) {
-            return new InputSource(Thread.currentThread().getContextClassLoader().getResourceAsStream("urlConfigration.dtd"));
+            return new InputSource(Thread.currentThread().getContextClassLoader().getResourceAsStream("url.dtd"));
         }
         return null;
     }

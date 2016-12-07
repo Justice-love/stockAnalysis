@@ -1,5 +1,6 @@
 package org.eddy.xml;
 
+import org.eddy.entity.SelectType;
 import org.eddy.exception.JsoupException;
 import org.eddy.xml.entity.Url;
 import org.w3c.dom.Document;
@@ -12,7 +13,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by eddy on 16/12/5.
@@ -23,7 +27,7 @@ public class XmlContext {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-            builder.setEntityResolver(new ConfigrationDtdPathREsolver());
+            builder.setEntityResolver(new ConfigrationDtdPathResolver());
             Document document = builder.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath));
             Element root = document.getDocumentElement();
             return findUrls(root);
@@ -36,15 +40,47 @@ public class XmlContext {
         }
     }
 
-    private List<Url> findUrls(Element root) {
+    private List<Url> findUrls(Element root){
         NodeList nodeList = root.getChildNodes();
+        List<String> paths = new ArrayList<String>();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (Url.TAG_NAME.equals(node.getNodeName())) {
+            if (Url.URL_TAG_NAME.equals(node.getNodeName()) && node.getClass().isAssignableFrom(Element.class)) {
+                Element element = (Element) node;
+                paths.add(element.getAttribute("path"));
             }
         }
-        return null;
+        return paths.stream().map(s -> parseUrl(s)).collect(Collectors.toList());
     }
 
+    private Url parseUrl(String path){
+        try {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
+            builder.setEntityResolver(new UrlDtdPathResolver());
+            Document document = builder.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream(path));
+
+            Element root = document.getDocumentElement();
+
+            Url url = new Url(root.getAttribute("url"));
+            url.setPathVariableClass(Optional.of(root.getAttribute("pathVariableClass")).orElse(null));
+
+            NodeList nodeList = root.getChildNodes();
+            List<Url.UrlRule> urlRules = new ArrayList<>(10);
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (Url.RULE_TAG_NAME.equals(nodeList.item(i).getNodeName()) && node.getClass().isAssignableFrom(Element.class)) {
+                    Element element = (Element) node;
+                    new Url.UrlRule();
+                    urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("id")).orElse(null)), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));
+                }
+            }
+            url.setUrlRuleList(urlRules);
+
+            return url;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
 
 }

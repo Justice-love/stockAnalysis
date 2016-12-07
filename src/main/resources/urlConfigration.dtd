@@ -5,6 +5,10 @@
 
 <!ELEMENT url EMPTY>
 
+<!ATTLIST url
+path CDATA #REQUIRED>
+
+
         <!--<!ATTLIST rule-->
                 <!--name CDATA #REQUIRED-->
                 <!--class CDATA #REQUIRED-->
