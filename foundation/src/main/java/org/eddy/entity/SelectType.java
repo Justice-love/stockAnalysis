@@ -5,6 +5,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 /**
  * Created by eddy on 2016/12/4.
@@ -25,13 +26,20 @@ public enum SelectType {
         }
     },
     mix {
+        Pattern onePattern = Pattern.compile("(\\w+)");
+        Pattern mutiPattern = Pattern.compile("(\\w+)\\((\\d+)\\)");
         @Override
         public Element findElement(Element element, String expression) {
             String[] expressions = expression.split("|");
-            Arrays.stream(expressions).forEach(s -> {
-                if (isElementTag(s)) {
+            for (String s : expressions) {
+                if (isElementTag(s) && onePattern.matcher(s).find()) {
+                    element = element.select(onePattern.matcher(s).group(1)).first();
+                } else if (isElementTag(s) && mutiPattern.matcher(s).find()) {
+                    element = element.select(mutiPattern.matcher(s).group(1)).get(Integer.parseInt(mutiPattern.matcher(s).group(2)));
+                } else {
+                    element = element.select(s).first();
                 }
-            });
+            }
             return null;
         }
 

@@ -54,12 +54,13 @@ public class JsoupTest {
     @Test
     public void test6() {
         String test1 = "asdfasdf";
-        String test2 = "asdfasdf(0)";
-//        Pattern pattern = Pattern.compile("\\w+[(\\s+)]?");
-        Pattern pattern = Pattern.compile("(\\w+)([\\(\\d\\)]?)");
+        String test2 = "asdfasdf(10)";
+//        Pattern pattern = Pattern.compile("(\\w+)");
+        Pattern pattern = Pattern.compile("(\\w+)\\((\\d+)\\)");
         Matcher matcher = pattern.matcher(test2);
         if (matcher.find()){
-            System.out.println(matcher.group(1) + "  " + matcher.group(2));
+            System.out.println(matcher.group(1));
+            System.out.println(matcher.group(2));
         }
         System.out.println(matcher.groupCount());
         System.out.println(matcher.group());
