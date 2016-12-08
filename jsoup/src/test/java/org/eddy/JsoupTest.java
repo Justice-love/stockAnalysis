@@ -53,16 +53,24 @@ public class JsoupTest {
 
     @Test
     public void test6() {
-        String test1 = "asdfasdf";
+        String test1 = "table";
         String test2 = "asdfasdf(10)";
-//        Pattern pattern = Pattern.compile("(\\w+)");
-        Pattern pattern = Pattern.compile("(\\w+)\\((\\d+)\\)");
-        Matcher matcher = pattern.matcher(test2);
-        if (matcher.find()){
-            System.out.println(matcher.group(1));
-            System.out.println(matcher.group(2));
+        Pattern pattern = Pattern.compile("(\\w+)$");
+//        Pattern pattern = Pattern.compile("(\\w+)\\((\\d+)\\)");
+        Matcher matcher = pattern.matcher(test1);
+        Matcher matcher2 = pattern.matcher(test2);
+        if (matcher2.find()){
+            System.out.println(matcher2.group(1));
+//            System.out.println(matcher.group(2));
         }
-        System.out.println(matcher.groupCount());
-        System.out.println(matcher.group());
+        System.out.println(matcher2.groupCount());
+        System.out.println(matcher2.group());
+    }
+
+    @Test
+    public void test7() throws IOException {
+        Document doc = Jsoup.connect("http://d.10jqka.com.cn/v2/realhead/hs_000750/last").get();
+        Element element = doc.getElementById("hexm_curPrice");
+        System.out.println(element.text());
     }
 }

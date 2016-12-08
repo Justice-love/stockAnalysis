@@ -2,7 +2,7 @@ package org.eddy.xml;
 
 import org.eddy.entity.SelectType;
 import org.eddy.exception.JsoupException;
-import org.eddy.xml.entity.Url;
+import org.eddy.entity.Url;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -66,7 +66,7 @@ public class XmlContext {
             url.setPathVariableClass(Optional.of(root.getAttribute("pathVariableClass")).orElse(null));
 
             Element test = (Element) root.getElementsByTagName("test").item(0);
-            url.setTest(new Url.Test(SelectType.valueOf(Optional.of(test.getAttribute("selectType")).orElse("id")), Optional.of(test.getAttribute("value")).orElse(null), Optional.of(test.getAttribute("validate")).orElse(null)));
+            url.setTest(new Url.Test(SelectType.valueOf(Optional.of(test.getAttribute("selectType")).orElse("id")), Optional.of(test.getAttribute("expression")).orElse(null), Optional.of(test.getAttribute("validate")).orElse(null)));
 
             NodeList ruleList = root.getElementsByTagName(Url.RULE_TAG_NAME);
             List<Url.UrlRule> urlRules = new ArrayList<>(10);
@@ -75,7 +75,7 @@ public class XmlContext {
                 if (Node.ELEMENT_NODE == node.getNodeType()) {
                     Element element = (Element) node;
                     new Url.UrlRule();
-                    urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("selectType")).orElse("id")), Optional.of(element.getAttribute("value")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));
+                    urlRules.add(new Url.UrlRule(SelectType.valueOf(Optional.of(element.getAttribute("selectType")).orElse("id")), Optional.of(element.getAttribute("expression")).orElse(null), Optional.of(element.getAttribute("property")).orElse(null)));
                 }
             }
             url.setUrlRuleList(urlRules);

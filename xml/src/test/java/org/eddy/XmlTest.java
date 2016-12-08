@@ -1,12 +1,15 @@
 package org.eddy;
 
+import org.eddy.entity.Stock;
 import org.eddy.exception.JsoupException;
+import org.eddy.parse.ParseJob;
 import org.eddy.xml.XmlContext;
-import org.eddy.xml.entity.Url;
+import org.eddy.entity.Url;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by eddy on 2016/12/6.
@@ -18,5 +21,16 @@ public class XmlTest {
         XmlContext context = new XmlContext();
         List<Url> urlList = context.loadXml("configration.xml");
         Assert.assertEquals(1, urlList.size());
+        ParseJob parseJob = new ParseJob();
+        List<Stock> stockList = urlList.stream().map(s -> {
+            try {
+                Stock stock =  parseJob.crawlPage(s);
+                return stock;
+            } catch (JsoupException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }).collect(Collectors.toList());
+        Assert.assertEquals(1, stockList.size());
     }
 }

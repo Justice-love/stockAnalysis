@@ -1,6 +1,8 @@
-package org.eddy.xml.entity;
+package org.eddy.entity;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.SelectType;
+import org.jsoup.nodes.Element;
 
 import java.util.List;
 
@@ -61,12 +63,12 @@ public class Url {
 
     public static class UrlRule {
         private SelectType selectType;
-        private String value;
+        private String expression;
         private String property;
 
-        public UrlRule(SelectType selectType, String value, String property) {
+        public UrlRule(SelectType selectType, String expression, String property) {
             this.selectType = selectType;
-            this.value = value;
+            this.expression = expression;
             this.property = property;
         }
 
@@ -81,12 +83,12 @@ public class Url {
             this.selectType = selectType;
         }
 
-        public String getValue() {
-            return value;
+        public String getExpression() {
+            return expression;
         }
 
-        public void setValue(String value) {
-            this.value = value;
+        public void setExpression(String expression) {
+            this.expression = expression;
         }
 
         public String getProperty() {
@@ -112,7 +114,7 @@ public class Url {
         public Test() {
         }
 
-        public SelectType getSelectType() {
+        private SelectType getSelectType() {
             return selectType;
         }
 
@@ -120,7 +122,7 @@ public class Url {
             this.selectType = selectType;
         }
 
-        public String getValue() {
+        private String getValue() {
             return value;
         }
 
@@ -128,12 +130,17 @@ public class Url {
             this.value = value;
         }
 
-        public String getValidate() {
+        private String getValidate() {
             return validate;
         }
 
         public void setValidate(String validate) {
             this.validate = validate;
+        }
+
+        public boolean test(Element element) {
+            Element end = this.getSelectType().findElement(element, this.getValue());
+            return end != null && StringUtils.equals(this.getValidate(), end.text());
         }
     }
 }
