@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by admin on 2016/12/4.
@@ -49,7 +51,17 @@ public class JsoupTest {
         Assert.assertEquals(1, elements.size());
     }
 
+    @Test
     public void test6() {
-
+        String test1 = "asdfasdf";
+        String test2 = "asdfasdf(0)";
+//        Pattern pattern = Pattern.compile("\\w+[(\\s+)]?");
+        Pattern pattern = Pattern.compile("(\\w+)([\\(\\d\\)]?)");
+        Matcher matcher = pattern.matcher(test2);
+        if (matcher.find()){
+            System.out.println(matcher.group(1) + "  " + matcher.group(2));
+        }
+        System.out.println(matcher.groupCount());
+        System.out.println(matcher.group());
     }
 }
