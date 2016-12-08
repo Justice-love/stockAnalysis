@@ -11,6 +11,7 @@
 
     <groupId>org.eddy</groupId>
     <artifactId>xml</artifactId>
+    <name>stockAnalysis.xml</name>
 
     <properties>
         <java.version>1.8</java.version>

@@ -11,6 +11,7 @@
 
     <groupId>org.eddy</groupId>
     <artifactId>foundation</artifactId>
+    <name>stockAnalysis.foundation</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -26,6 +27,10 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 </project>

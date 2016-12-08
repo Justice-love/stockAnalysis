@@ -11,6 +11,7 @@
 
     <groupId>org.eddy</groupId>
     <artifactId>jsoup</artifactId>
+    <name>stockAnalysis.jsoup</name>
 
     <properties>
         <java.version>1.8</java.version>
