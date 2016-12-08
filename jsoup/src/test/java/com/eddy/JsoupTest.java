@@ -39,6 +39,6 @@ public class JsoupTest {
     @Test
     public void test4() {
         String s = "a";
-        assert null == s;
+        assert null != s;
     }
 }
