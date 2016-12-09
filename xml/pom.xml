@@ -22,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>org.eddy</groupId>
-            <artifactId>jsoup</artifactId>
+            <artifactId>crawler</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

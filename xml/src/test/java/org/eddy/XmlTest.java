@@ -1,10 +1,10 @@
 package org.eddy;
 
 import org.eddy.entity.Stock;
+import org.eddy.entity.Url;
 import org.eddy.exception.JsoupException;
 import org.eddy.parse.ParseJob;
 import org.eddy.xml.XmlContext;
-import org.eddy.entity.Url;
 import org.junit.Assert;
 import org.junit.Test;
 
