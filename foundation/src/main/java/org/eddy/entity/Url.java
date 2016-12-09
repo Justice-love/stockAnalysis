@@ -148,8 +148,8 @@ public class Url {
         }
 
         public boolean test(Element element) {
-            Element end = this.getSelectType().findElement(element, this.getValue());
-            return end != null && StringUtils.equals(this.getValidate(), end.text());
+            String end = this.getSelectType().findElement(element, this.getValue());
+            return end != null && StringUtils.equals(this.getValidate(), end);
         }
     }
 }

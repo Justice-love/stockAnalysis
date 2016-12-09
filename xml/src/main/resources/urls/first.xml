@@ -2,12 +2,12 @@
 <!DOCTYPE url SYSTEM "../url.dtd">
 
 <url url="http://finance.sina.com.cn/realstock/company/sh601988/nc.shtml" ajaxUrl="http://hq.sinajs.cn/list=sh601988">
-    <test selectType="mix"  expression="#hqDetails|table|tbody|tr|th(1)" validate="成交量：">
-        <urlRule selectType="id" expression="stockName" property="name"/>
-        <urlRule selectType="id" expression="price" property="price"/>
-        <urlRule selectType="id" expression="changeP" property="up"/>
-        <urlRule selectType="id" expression="change" property="upPrice"/>
-        <urlRule selectType="mix" expression="#MRFlow|table|tbody|tr(1)|td(0)" property="buy"/>
-        <urlRule selectType="mix" expression="#MRFlow|table|tbody|tr(1)|td(1)" property="sale"/>
+    <test selectType="mix"  expression="#hqDetails|table|tbody|tr|th(1)" validate="成交量：" >
+        <urlRule selectType="id" expression="stockName" property="name" />
+        <urlRule selectType="id" expression="price" property="price" />
+        <urlRule selectType="id" expression="changeP" property="up" />
+        <urlRule selectType="id" expression="change" property="upPrice" />
+        <urlRule selectType="mix" expression="#MRFlow|table|tbody|tr(1)|td(0)" property="buy" />
+        <urlRule selectType="mix" expression="#MRFlow|table|tbody|tr(1)|td(1)" property="sale" />
     </test>
 </url>

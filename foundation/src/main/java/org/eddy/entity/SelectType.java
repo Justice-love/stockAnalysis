@@ -12,25 +12,28 @@ import java.util.regex.Pattern;
  * Created by eddy on 2016/12/4.
  */
 public enum SelectType {
-    id {
+    id("jsoup") {
         @Override
-        public Element findElement(Element element, String expression) {
+        public String findElement(Object content, String expression) {
+            Element element = (Element) content;
             Element idElement = element.getElementById(expression);
             return  findElement(idElement);
         }
     },
-    css {
+    css("jsoup") {
         @Override
-        public Element findElement(Element element, String expression) {
+        public String findElement(Object content, String expression) {
+            Element element = (Element) content;
             Elements cssElements = element.getElementsByClass(expression);
             return findElement(cssElements.get(0));
         }
     },
-    mix {
+    mix("jsoup") {
         Pattern onePattern = Pattern.compile("(\\w+)$");
         Pattern mutiPattern = Pattern.compile("(\\w+)\\((\\d+)\\)");
         @Override
-        public Element findElement(Element element, String expression) {
+        public String findElement(Object content, String expression) {
+            Element element = (Element) content;
             String[] expressions = expression.split("\\|");
             for (String s : expressions) {
                 if (isElementTag(s) && onePattern.matcher(s).matches()) {
@@ -45,7 +48,7 @@ public enum SelectType {
                     element = element.select(s).first();
                 }
             }
-            return element;
+            return element.text();
         }
 
         private boolean isElementTag(String s) {
@@ -54,16 +57,28 @@ public enum SelectType {
     }
     ;
 
-    public Element findElement(Element element, String expression) {
+    public static String JSOUP_TYPE = "jsoup";
+    public static String HTTPCLIENT_TYPE = "httpClient";
+
+    public String findElement(Object content, String expression) {
         throw new IllegalAccessError("not implement");
     }
 
-    protected Element findElement(Element element) {
+    protected String findElement(Element element) {
         assert element != null;
 
         Elements children = element.children();
-        if (children.size() < 1) return element;
+        if (children.size() < 1) return element.text();
         else return findElement(children.get(0));
     }
 
+    public String getType() {
+        return this.type;
+    }
+
+    private String type;
+
+    private SelectType(String type) {
+        this.type = type;
+    }
 }
