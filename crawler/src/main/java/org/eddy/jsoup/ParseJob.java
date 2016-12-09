@@ -1,4 +1,4 @@
-package org.eddy.parse;
+package org.eddy.jsoup;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.Stock;
@@ -15,9 +15,6 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
 
