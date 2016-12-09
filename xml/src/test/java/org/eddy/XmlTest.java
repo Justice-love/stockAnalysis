@@ -3,7 +3,7 @@ package org.eddy;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
 import org.eddy.exception.JsoupException;
-import org.eddy.jsoup.ParseJob;
+import org.eddy.jsoup.JsoupParseJob;
 import org.eddy.xml.XmlContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class XmlTest {
         XmlContext context = new XmlContext();
         List<Url> urlList = context.loadXml("configration.xml");
         Assert.assertEquals(1, urlList.size());
-        ParseJob parseJob = new ParseJob();
+        ParseJob parseJob = new JsoupParseJob();
         List<Stock> stockList = urlList.stream().map(s -> {
             try {
                 Stock stock =  parseJob.crawlPage(s);

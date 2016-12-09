@@ -1,6 +1,7 @@
 package org.eddy.jsoup;
 
 import org.apache.commons.lang3.StringUtils;
+import org.eddy.ParseJob;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
 import org.eddy.entity.provider.StringTypeProvider;
@@ -21,8 +22,9 @@ import java.util.List;
 /**
  * Created by eddy on 2016/12/8.
  */
-public class ParseJob {
+public class JsoupParseJob implements ParseJob{
 
+    @Override
     public Stock crawlPage(Url url) throws JsoupException{
         try {
             assert url != null;
