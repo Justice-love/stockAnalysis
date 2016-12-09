@@ -21,12 +21,21 @@ public class Url {
 
     //IMPLIED
     private String pathVariableClass;
+    private String ajaxUrl;
 
     public Url(String url) {
         this.url = url;
     }
 
     public Url() {
+    }
+
+    public String getAjaxUrl() {
+        return ajaxUrl;
+    }
+
+    public void setAjaxUrl(String ajaxUrl) {
+        this.ajaxUrl = ajaxUrl;
     }
 
     public String getUrl() {

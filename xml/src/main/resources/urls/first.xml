@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE url SYSTEM "../url.dtd">
 
-<url url="http://finance.sina.com.cn/realstock/company/sh601988/nc.shtml">
+<url url="http://finance.sina.com.cn/realstock/company/sh601988/nc.shtml" ajaxUrl="http://hq.sinajs.cn/list=sh601988">
     <test selectType="mix"  expression="#hqDetails|table|tbody|tr|th(1)" validate="成交量：">
         <urlRule selectType="id" expression="stockName" property="name"/>
         <urlRule selectType="id" expression="price" property="price"/>

@@ -64,6 +64,7 @@ public class XmlContext {
 
             Url url = new Url(root.getAttribute("url"));
             url.setPathVariableClass(Optional.of(root.getAttribute("pathVariableClass")).orElse(null));
+            url.setAjaxUrl(Optional.of(root.getAttribute("ajaxUrl")).orElse(null));
 
             Element test = (Element) root.getElementsByTagName("test").item(0);
             url.setTest(new Url.Test(SelectType.valueOf(Optional.of(test.getAttribute("selectType")).orElse("id")), Optional.of(test.getAttribute("expression")).orElse(null), Optional.of(test.getAttribute("validate")).orElse(null)));

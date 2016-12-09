@@ -3,6 +3,7 @@
         <!ELEMENT url (test+)>
         <!ATTLIST url
                 url CDATA #REQUIRED
+                ajaxUrl CDATA #IMPLIED
                 pathVariableClass CDATA #IMPLIED
                 >
         <!ELEMENT test (urlRule+)>
