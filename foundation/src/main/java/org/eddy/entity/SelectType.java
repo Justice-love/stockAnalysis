@@ -7,7 +7,9 @@ import org.jsoup.select.Elements;
 
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
+import java.math.RoundingMode;
 import java.net.Socket;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -61,7 +63,7 @@ public enum SelectType {
         }
     },
     regx("httpClient") {
-        Pattern pattern = Pattern.compile("\\w*\\s+\\w+=\".+\";");
+        Pattern pattern = Pattern.compile("\\w*\\s+\\w+=\".+\";[\\n]?");
         @Override
         public String findElement(Object content, String expression) {
             Matcher matcher = pattern.matcher(content.toString());
@@ -86,12 +88,15 @@ public enum SelectType {
             try {
                 String first = BeansUtil.readPropertie(stock, expressions[0]);
                 String second = BeansUtil.readPropertie(stock, expressions[2]);
-                String computer =  BeansUtil.readPropertie(stock, expressions[1]);
+                String computer =  expressions[1];
                 switch (computer) {
                     case "+":
                         return Double.toString(Double.parseDouble(first) + Double.parseDouble(second));
                     case "-":
-                        return Double.toString(Double.parseDouble(first) - Double.parseDouble(second));
+                        double result = Double.parseDouble(first) - Double.parseDouble(second);
+                        DecimalFormat df = new DecimalFormat("0.00");
+                        df.setRoundingMode(RoundingMode.HALF_UP);
+                        return df.format(result);
                     case "*":
                         return Double.toString(Double.parseDouble(first) * Double.parseDouble(second));
                     case "/":

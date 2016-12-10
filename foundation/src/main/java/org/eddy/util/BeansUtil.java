@@ -36,6 +36,6 @@ public class BeansUtil {
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         PropertyDescriptor propertyDescriptor = findPropertyDescriptor(obj.getClass(), key);
         Object value = propertyDescriptor.getReadMethod().invoke(obj);
-        return obj.toString();
+        return value.toString();
     }
 }

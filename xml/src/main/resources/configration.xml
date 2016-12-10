@@ -3,4 +3,5 @@
 
 <urlConfig>
     <url path="urls/first.xml"/>
+    <url path="urls/second.xml"/>
 </urlConfig>

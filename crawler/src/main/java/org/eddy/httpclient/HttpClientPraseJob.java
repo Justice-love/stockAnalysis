@@ -41,11 +41,21 @@ public class HttpClientPraseJob extends ParseJob {
             HttpEntity httpEntity = httpResponse.getEntity();
             temp = EntityUtils.toString(httpEntity);
 
-            Stock result = new Stock();
             String content = temp;
+            if (!url.getTest().test(content, url)) {
+                return null;
+            }
+            Stock result = new Stock();
+
             List<Url.UrlRule> ruleList =  url.getUrlRuleList();
             ruleList.stream().filter(r -> SelectType.HTTPCLIENT_TYPE.equals(r.getSelectType().getType())).forEach(r -> {
-                String text = r.getSelectType().findElement(content, r.getExpression());
+                String text = StringUtils.EMPTY;
+                SelectType selectType = r.getSelectType();
+                if (selectType == SelectType.computer) {
+                    text = selectType.findElement(result, r.getExpression());
+                } else {
+                    text = selectType.findElement(content, r.getExpression());
+                }
                 try {
                     writePropertie(result, r.getProperty(), text);
                 } catch (Exception e) {

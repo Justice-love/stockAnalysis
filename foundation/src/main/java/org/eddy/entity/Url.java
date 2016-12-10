@@ -149,9 +149,16 @@ public class Url {
             this.validate = validate;
         }
 
-        public boolean test(Element element) {
-            String end = this.getSelectType().findElement(element, this.getValue());
-            return end != null && StringUtils.equals(this.getValidate(), end);
+        public boolean test(Object content, Url url) {
+            if (StringUtils.equals(Url.JSOUP_TYPE, url.getType())) {
+                Element element = (Element) content;
+                String end = this.getSelectType().findElement(element, this.getValue());
+                return end != null && StringUtils.equals(this.getValidate(), end);
+            } else if (StringUtils.equals(Url.HTTPCLIENT_TYPE, url.getType())) {
+                return Boolean.parseBoolean(this.getSelectType().findElement(content, null));
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
 package org.eddy;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
 import org.eddy.exception.JsoupException;
+import org.eddy.httpclient.HttpClientPraseJob;
 import org.eddy.jsoup.JsoupParseJob;
 import org.eddy.xml.XmlContext;
 import org.junit.Assert;
@@ -20,17 +22,23 @@ public class XmlTest {
     public void test() throws JsoupException {
         XmlContext context = new XmlContext();
         List<Url> urlList = context.loadXml("configration.xml");
-        Assert.assertEquals(1, urlList.size());
-        ParseJob parseJob = new JsoupParseJob();
+        Assert.assertEquals(2, urlList.size());
+        ParseJob jsoup = new JsoupParseJob();
+        ParseJob http = new HttpClientPraseJob();
         List<Stock> stockList = urlList.stream().map(s -> {
             try {
-                Stock stock =  parseJob.crawlPage(s);
+                Stock stock =  null;
+                if (StringUtils.equals(Url.HTTPCLIENT_TYPE, s.getType())) {
+                    stock = http.crawlPage(s);
+                } else if (StringUtils.equals(Url.JSOUP_TYPE, s.getType())) {
+                    stock = jsoup.crawlPage(s);
+                }
                 return stock;
             } catch (JsoupException e) {
                 e.printStackTrace();
                 return null;
             }
         }).collect(Collectors.toList());
-        Assert.assertEquals(1, stockList.size());
+        Assert.assertEquals(2, stockList.size());
     }
 }

@@ -21,7 +21,7 @@ public class JsoupParseJob extends ParseJob{
         try {
             assert url != null;
             Document document = Jsoup.connect(url.getUrl()).get();
-            if (!url.getTest().test(document)) {
+            if (!url.getTest().test(document, url)) {
                 return null;
             }
             Stock result = new Stock();
