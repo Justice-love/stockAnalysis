@@ -14,9 +14,7 @@ import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
 import org.eddy.exception.JsoupException;
 
-import java.beans.IntrospectionException;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -38,7 +36,7 @@ public class HttpClientPraseJob extends ParseJob {
     public Stock crawlPage(Url url) throws JsoupException {
         String temp = StringUtils.EMPTY;
         try(CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pools).build()) {
-            HttpGet httpGet = new HttpGet(url.getAjaxUrl());
+            HttpGet httpGet = new HttpGet(url.getUrl());
             CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             temp = EntityUtils.toString(httpEntity);

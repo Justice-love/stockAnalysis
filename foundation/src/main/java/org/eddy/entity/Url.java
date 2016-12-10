@@ -13,15 +13,17 @@ public class Url {
 
     public static final String URL_TAG_NAME = "url";
     public static final String RULE_TAG_NAME = "urlRule";
+    public static final String JSOUP_TYPE = "jsoup";
+    public static final String HTTPCLIENT_TYPE = "httpClient";
 
     //REQUIRED
     private String url;
     private Test test;
     private List<UrlRule> urlRuleList;
+    private String type;
 
     //IMPLIED
     private String pathVariableClass;
-    private String ajaxUrl;
 
     public Url(String url) {
         this.url = url;
@@ -30,12 +32,12 @@ public class Url {
     public Url() {
     }
 
-    public String getAjaxUrl() {
-        return ajaxUrl;
+    public String getType() {
+        return type;
     }
 
-    public void setAjaxUrl(String ajaxUrl) {
-        this.ajaxUrl = ajaxUrl;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUrl() {

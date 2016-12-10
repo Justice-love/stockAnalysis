@@ -1,10 +1,15 @@
 package org.eddy.entity;
 
 import org.apache.commons.lang3.StringUtils;
+import org.eddy.util.BeansUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.Arrays;
+import java.beans.IntrospectionException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.Socket;
+import java.text.NumberFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,6 +58,52 @@ public enum SelectType {
 
         private boolean isElementTag(String s) {
             return !(StringUtils.startsWith(s, ".") || StringUtils.startsWith(s, "#"));
+        }
+    },
+    regx("httpClient") {
+        Pattern pattern = Pattern.compile("\\w*\\s+\\w+=\".+\";");
+        @Override
+        public String findElement(Object content, String expression) {
+            Matcher matcher = pattern.matcher(content.toString());
+            return Boolean.toString(matcher.matches());
+        }
+    },
+    index("httpClient") {
+        @Override
+        public String findElement(Object content, String expression) {
+            String value = content.toString();
+            String temp = value.substring(value.indexOf("\"") + 1);
+            value = temp.substring(0, temp.indexOf("\""));
+            String[] values = value.split(",");
+            return values[Integer.valueOf(expression)];
+        }
+    },
+    computer("httpClient") {
+        @Override
+        public String findElement(Object content, String expression) {
+            Stock stock = (Stock) content;
+            String[] expressions = expression.split("\\s");
+            try {
+                String first = BeansUtil.readPropertie(stock, expressions[0]);
+                String second = BeansUtil.readPropertie(stock, expressions[2]);
+                String computer =  BeansUtil.readPropertie(stock, expressions[1]);
+                switch (computer) {
+                    case "+":
+                        return Double.toString(Double.parseDouble(first) + Double.parseDouble(second));
+                    case "-":
+                        return Double.toString(Double.parseDouble(first) - Double.parseDouble(second));
+                    case "*":
+                        return Double.toString(Double.parseDouble(first) * Double.parseDouble(second));
+                    case "/":
+                        NumberFormat fmt = NumberFormat.getPercentInstance();
+                        fmt.setMaximumFractionDigits(2);
+                        return fmt.format(Double.parseDouble(first) / Double.parseDouble(second));
+                    default:
+                        return "";
+                }
+            } catch (Exception e) {
+               throw new RuntimeException(e);
+            }
         }
     }
     ;

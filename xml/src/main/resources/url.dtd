@@ -3,13 +3,13 @@
         <!ELEMENT url (test+)>
         <!ATTLIST url
                 url CDATA #REQUIRED
-                ajaxUrl CDATA #IMPLIED
+                type (jsoup|httpClient) #IMPLIED
                 pathVariableClass CDATA #IMPLIED
                 >
         <!ELEMENT test (urlRule+)>
         <!ATTLIST test
             selectType CDATA #REQUIRED
-            expression CDATA #REQUIRED
+            expression CDATA #IMPLIED
             validate CDATA #REQUIRED
         >
 

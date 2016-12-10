@@ -17,6 +17,10 @@ public class Stock {
 
     private String sale;
 
+    private String todayBegin;
+
+    private String yesterdayEnd;
+
     public Stock() {
     }
 
@@ -66,5 +70,21 @@ public class Stock {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTodayBegin() {
+        return todayBegin;
+    }
+
+    public void setTodayBegin(String todayBegin) {
+        this.todayBegin = todayBegin;
+    }
+
+    public String getYesterdayEnd() {
+        return yesterdayEnd;
+    }
+
+    public void setYesterdayEnd(String yesterdayEnd) {
+        this.yesterdayEnd = yesterdayEnd;
     }
 }

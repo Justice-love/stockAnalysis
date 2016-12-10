@@ -10,6 +10,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 
 /**
  * Created by eddy on 2016/12/9.
@@ -26,5 +27,12 @@ public class HttpClientTest {
         CloseableHttpResponse response = httpClient.execute(httpGet);
         HttpEntity entity = response.getEntity();
         System.out.println(EntityUtils.toString(entity));
+    }
+
+    @Test
+    public void test2() {
+        NumberFormat fmt = NumberFormat.getPercentInstance();
+        fmt.setMaximumFractionDigits(2);
+        System.out.println(fmt.format(0.0009));
     }
 }

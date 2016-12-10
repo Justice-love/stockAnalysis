@@ -14,5 +14,4 @@ public class StringTypeProvider implements TypeProvider<String>{
     public String convert(String value) {
         return Optional.of(value).orElse(StringUtils.EMPTY);
     }
-
 }

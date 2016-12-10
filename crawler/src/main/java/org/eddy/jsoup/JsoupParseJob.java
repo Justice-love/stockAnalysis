@@ -1,24 +1,14 @@
 package org.eddy.jsoup;
 
-import org.apache.commons.lang3.StringUtils;
 import org.eddy.ParseJob;
 import org.eddy.entity.SelectType;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
-import org.eddy.entity.provider.StringTypeProvider;
-import org.eddy.entity.provider.define.TypeProvider;
 import org.eddy.exception.JsoupException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.List;
 
 /**

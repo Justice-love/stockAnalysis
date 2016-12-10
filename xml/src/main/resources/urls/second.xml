@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE url SYSTEM "../url.dtd">
+
+<url url="http://hq.sinajs.cn/list=sh601988" type="httpClient">
+    <test selectType="regx" validate="true" >
+        <urlRule selectType="index" expression="0" property="name" />
+        <urlRule selectType="index" expression="3" property="price" />
+        <urlRule selectType="index" expression="1" property="todayBegin" />
+        <urlRule selectType="index" expression="2" property="yesterdayEnd" />
+        <urlRule selectType="computer" expression="price - yesterdayEnd" property="upPrice" />
+        <urlRule selectType="computer" expression="upPrice / yesterdayEnd" property="up" />
+    </test>
+</url>
