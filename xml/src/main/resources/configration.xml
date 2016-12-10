@@ -2,6 +2,6 @@
 <!DOCTYPE urlConfig SYSTEM "urlConfigration.dtd">
 
 <urlConfig>
-    <url path="urls/first.xml"/>
+    <!--<url path="urls/first.xml"/>-->
     <url path="urls/second.xml"/>
 </urlConfig>

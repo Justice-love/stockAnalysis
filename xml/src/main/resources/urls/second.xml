@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE url SYSTEM "../url.dtd">
 
-<url url="http://hq.sinajs.cn/list=sh601988" type="httpClient">
+        <!--http://hq.sinajs.cn/list=sh601988-->
+<url url="http://hq.sinajs.cn/list=%s" type="httpClient" class="org.eddy.xml.org.eddy.extend.SinaUrlExtendProvider">
     <test selectType="regx" validate="true" >
         <urlRule selectType="index" expression="0" property="name" />
         <urlRule selectType="index" expression="3" property="price" />
         <urlRule selectType="index" expression="1" property="todayBegin" />
         <urlRule selectType="index" expression="2" property="yesterdayEnd" />
+        <urlRule selectType="index" expression="2" property="yesterdayEnd" />
+        <urlRule selectType="index" expression="30" property="date" />
+        <urlRule selectType="index" expression="31" property="time" />
         <urlRule selectType="computer" expression="price - yesterdayEnd" property="upPrice" />
         <urlRule selectType="computer" expression="upPrice / yesterdayEnd" property="up" />
     </test>

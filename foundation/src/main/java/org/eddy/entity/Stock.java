@@ -21,6 +21,14 @@ public class Stock {
 
     private String yesterdayEnd;
 
+    private String date;
+
+    private String  time;
+
+    private String code;
+
+    private String errorContent;
+
     public Stock() {
     }
 
@@ -86,5 +94,37 @@ public class Stock {
 
     public void setYesterdayEnd(String yesterdayEnd) {
         this.yesterdayEnd = yesterdayEnd;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getErrorContent() {
+        return errorContent;
+    }
+
+    public void setErrorContent(String errorContent) {
+        this.errorContent = errorContent;
     }
 }

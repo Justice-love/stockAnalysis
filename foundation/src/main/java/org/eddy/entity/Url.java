@@ -25,6 +25,16 @@ public class Url {
     //IMPLIED
     private String pathVariableClass;
 
+    //funciton
+    public Url copy(String u) {
+        Url url = new Url();
+        url.setType(this.getType());
+        url.setTest(this.getTest());
+        url.setUrl(u);
+        url.setUrlRuleList(this.getUrlRuleList());
+        return url;
+    }
+
     public Url(String url) {
         this.url = url;
     }

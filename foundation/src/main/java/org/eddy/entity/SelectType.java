@@ -5,13 +5,9 @@ import org.eddy.util.BeansUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.beans.IntrospectionException;
-import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
-import java.net.Socket;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,7 +63,7 @@ public enum SelectType {
         @Override
         public String findElement(Object content, String expression) {
             Matcher matcher = pattern.matcher(content.toString());
-            return Boolean.toString(matcher.matches());
+            return Boolean.toString(matcher.matches() && !content.toString().contains("FAILED") && content.toString().split(",").length >= 32 );
         }
     },
     index("httpClient") {

@@ -4,7 +4,7 @@
         <!ATTLIST url
                 url CDATA #REQUIRED
                 type (jsoup|httpClient) #IMPLIED
-                pathVariableClass CDATA #IMPLIED
+                class CDATA #IMPLIED
                 >
         <!ELEMENT test (urlRule+)>
         <!ATTLIST test

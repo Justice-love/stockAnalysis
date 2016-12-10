@@ -35,17 +35,20 @@ public class HttpClientPraseJob extends ParseJob {
     @Override
     public Stock crawlPage(Url url) throws JsoupException {
         String temp = StringUtils.EMPTY;
-        try(CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pools).build()) {
+        CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pools).build();
+        try {
             HttpGet httpGet = new HttpGet(url.getUrl());
             CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             temp = EntityUtils.toString(httpEntity);
 
             String content = temp;
-            if (!url.getTest().test(content, url)) {
-                return null;
-            }
             Stock result = new Stock();
+            result.setCode(url.getUrl().split("=")[1]);
+            if (!url.getTest().test(content, url)) {
+                result.setErrorContent(getContentWhenError(content));
+                return result;
+            }
 
             List<Url.UrlRule> ruleList =  url.getUrlRuleList();
             ruleList.stream().filter(r -> SelectType.HTTPCLIENT_TYPE.equals(r.getSelectType().getType())).forEach(r -> {
@@ -62,12 +65,17 @@ public class HttpClientPraseJob extends ParseJob {
                     throw new RuntimeException(e);
                 }
             });
-
+            httpResponse.close();
             return result;
         } catch (IOException e) {
             throw new JsoupException(e);
         } catch (Exception e) {
             throw new JsoupException(e);
         }
+    }
+
+    private String getContentWhenError(String value) {
+        String temp = value.substring(value.indexOf("\"") + 1);
+        return temp.substring(0, temp.indexOf("\""));
     }
 }

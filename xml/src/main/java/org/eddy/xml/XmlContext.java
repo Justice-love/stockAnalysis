@@ -1,8 +1,10 @@
 package org.eddy.xml;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.SelectType;
 import org.eddy.exception.JsoupException;
 import org.eddy.entity.Url;
+import org.eddy.xml.org.eddy.extend.define.UrlExtendProvider;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,7 +33,11 @@ public class XmlContext {
             builder.setEntityResolver(new ConfigrationDtdPathResolver());
             Document document = builder.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath));
             Element root = document.getDocumentElement();
-            return findUrls(root);
+            return findUrls(root).stream().map(u -> {
+                return excuteExtend(u);
+            }).flatMap(urls -> {
+                return urls.stream();
+            }).collect(Collectors.toList());
         } catch (ParserConfigurationException e) {
             throw new JsoupException(e.getMessage(), e);
         }  catch (SAXException e) {
@@ -63,7 +70,7 @@ public class XmlContext {
             Element root = document.getDocumentElement();
 
             Url url = new Url(root.getAttribute("url"));
-            url.setPathVariableClass(Optional.of(root.getAttribute("pathVariableClass")).orElse(null));
+            url.setPathVariableClass(Optional.of(root.getAttribute("class")).orElse(null));
             url.setType(Optional.of(root.getAttribute("type")).orElse(Url.HTTPCLIENT_TYPE));
 
             Element test = (Element) root.getElementsByTagName("test").item(0);
@@ -84,6 +91,23 @@ public class XmlContext {
             return url;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    public List<Url> excuteExtend(Url ori) {
+        if (StringUtils.isBlank(ori.getPathVariableClass())) {
+            return Arrays.asList(ori);
+        }
+        try {
+            Class glass = Class.forName(ori.getPathVariableClass());
+            if (UrlExtendProvider.class.isAssignableFrom(glass)) {
+                UrlExtendProvider urlExtendProvider = (UrlExtendProvider) glass.newInstance();
+                return urlExtendProvider.extend(ori);
+            } else {
+                return Arrays.asList(ori);
+            }
+        } catch (Exception e) {
+            return Arrays.asList(ori);
         }
     }
 
