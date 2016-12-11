@@ -25,7 +25,7 @@ public class Stock {
 
     private String  time;
 
-    private String code;
+    private String stockCode;
 
     private String errorContent;
 
@@ -96,14 +96,6 @@ public class Stock {
         this.yesterdayEnd = yesterdayEnd;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getDate() {
         return date;
     }
@@ -126,5 +118,13 @@ public class Stock {
 
     public void setErrorContent(String errorContent) {
         this.errorContent = errorContent;
+    }
+
+    public String getStockCode() {
+        return stockCode;
+    }
+
+    public void setStockCode(String stockCode) {
+        this.stockCode = stockCode;
     }
 }

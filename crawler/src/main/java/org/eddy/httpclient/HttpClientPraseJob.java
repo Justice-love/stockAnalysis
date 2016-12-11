@@ -44,7 +44,7 @@ public class HttpClientPraseJob extends ParseJob {
 
             String content = temp;
             Stock result = new Stock();
-            result.setCode(url.getUrl().split("=")[1]);
+            result.setStockCode(url.getUrl().split("=")[1]);
             if (!url.getTest().test(content, url)) {
                 result.setErrorContent(getContentWhenError(content));
                 return result;
