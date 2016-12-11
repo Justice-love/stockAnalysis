@@ -20,8 +20,7 @@ public class XmlTest {
 
     @Test
     public void test() throws JsoupException {
-        XmlContext context = new XmlContext();
-        List<Url> urlList = context.loadXml("configration.xml");
+        List<Url> urlList = XmlContext.getContext().getUrls();
 //        Assert.assertEquals(2, urlList.size());
         ParseJob jsoup = new JsoupParseJob();
         ParseJob http = new HttpClientPraseJob();

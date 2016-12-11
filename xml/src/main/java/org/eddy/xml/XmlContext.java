@@ -26,6 +26,26 @@ import java.util.stream.Collectors;
  */
 public class XmlContext {
 
+    private List<Url> urls;
+
+    private static XmlContext context = new XmlContext("configration.xml");
+
+    private XmlContext(String filePath){
+        try {
+            this.urls = loadXml(filePath);
+        } catch (JsoupException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static XmlContext getContext() {
+        return context;
+    }
+
+    public List<Url> getUrls() {
+        return this.urls;
+    }
+
     public List<Url> loadXml(String filePath) throws JsoupException {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

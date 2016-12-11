@@ -13,4 +13,6 @@ import java.util.List;
 public interface ErrorStockMapper {
 
     int insert(@Param("list") List<Stock> stocks);
+
+    List<Stock> selectByCode(String stockCode);
 }

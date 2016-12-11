@@ -10,4 +10,6 @@ import java.util.List;
 public interface StockService {
 
     void loadStockPerMin(List<Stock> list);
+
+    boolean isNeedLoad(Stock stock);
 }

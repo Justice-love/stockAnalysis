@@ -16,5 +16,10 @@
             #{item.stockCode}, #{item.errorContent}
         </foreach>
     </insert>
+    <select id="selectByCode" resultMap="errorStock" parameterType="string">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE stock_code = #{stockCode}
+    </select>
+
 
 </mapper>

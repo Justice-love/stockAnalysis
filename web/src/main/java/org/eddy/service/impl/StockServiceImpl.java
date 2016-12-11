@@ -33,4 +33,15 @@ public class StockServiceImpl implements StockService {
         //插入错误数据
         Optional.of(Lists.partition(result.get(true), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
     }
+
+    @Override
+    public boolean isNeedLoad(Stock stock) {
+        if (null == stock) return false;
+        if (stock.isHasError()) {
+            //数据为空则需要加载该条数据
+            return errorStockMapper.selectByCode(stock.getStockCode()).isEmpty();
+        } else {
+            return stockMapper.selectSotckByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime()).isEmpty();
+        }
+    }
 }
