@@ -39,6 +39,6 @@ public class XmlTest {
                 return null;
             }
         }).collect(Collectors.toList());
-        Assert.assertEquals(2, stockList.size());
+        Assert.assertEquals(4000, stockList.size());
     }
 }
