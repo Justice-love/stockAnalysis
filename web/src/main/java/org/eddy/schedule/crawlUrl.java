@@ -1,4 +1,4 @@
-package org.eddy.job;
+package org.eddy.schedule;
 
 import org.eddy.manager.CrawlStockManager;
 import org.jsoup.nodes.Element;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Configurable
-//@EnableScheduling
+@EnableScheduling
 public class crawlUrl {
 
     @Autowired
