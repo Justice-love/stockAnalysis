@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Configurable
-@EnableScheduling
+//@EnableScheduling
 public class crawlUrl {
 
     @Autowired

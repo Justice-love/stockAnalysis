@@ -29,9 +29,9 @@ public class StockServiceImpl implements StockService {
     public void loadStockPerMin(List<Stock> list) {
         Map<Boolean, List<Stock>> result = Optional.of(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
         //正常数据插入
-        Optional.of(Lists.partition(result.get(false), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
+        Optional.of(Lists.partition(Optional.of(result.get(Stock.NO_ERROR)).orElse(Arrays.asList()), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
         //插入错误数据
-        Optional.of(Lists.partition(result.get(true), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
+        Optional.of(Lists.partition(Optional.of(result.get(Stock.HAS_ERROR)).orElse(Arrays.asList()), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
     }
 
     @Override

@@ -5,6 +5,10 @@ package org.eddy.entity;
  */
 public class Stock {
 
+    public static final Boolean HAS_ERROR = true;
+
+    public static final Boolean NO_ERROR = false;
+
     private int id;
 
     private String name;

@@ -8,9 +8,7 @@ import org.eddy.exception.JsoupException;
 import org.eddy.httpclient.HttpClientPraseJob;
 import org.eddy.jsoup.JsoupParseJob;
 import org.eddy.service.CrawlerService;
-import org.eddy.service.StockService;
 import org.eddy.xml.XmlContext;
-import org.junit.Assert;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
