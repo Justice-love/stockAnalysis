@@ -19,7 +19,7 @@ public class crawlUrl {
     @Autowired
     private CrawlStockManager crawlStockManager;
 
-    @Scheduled(fixedRate = 1_000,initialDelay = 3_000)
+    @Scheduled(fixedRate = 60_000,initialDelay = 3_000)
     public void crawlAllUrl() {
         try {
             crawlStockManager.crawlStock();
