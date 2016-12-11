@@ -65,6 +65,10 @@
             <artifactId>guava</artifactId>
         </dependency>
         <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.eddy</groupId>
             <artifactId>xml</artifactId>
             <version>1.0-SNAPSHOT</version>

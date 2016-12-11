@@ -21,10 +21,11 @@ public class JsoupParseJob extends ParseJob{
         try {
             assert url != null;
             Document document = Jsoup.connect(url.getUrl()).get();
-            if (!url.getTest().test(document, url)) {
-                return null;
-            }
             Stock result = new Stock();
+            if (!url.getTest().test(document, url)) {
+                result.setHasError(true);
+                return result;
+            }
 
             List<Url.UrlRule> ruleList =  url.getUrlRuleList();
             ruleList.stream().filter(r -> SelectType.JSOUP_TYPE.equals(r.getSelectType().getType())).forEach(r -> {

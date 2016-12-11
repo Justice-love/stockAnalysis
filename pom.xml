@@ -67,6 +67,13 @@
                 <artifactId>guava</artifactId>
                 <version>20.0</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.2</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

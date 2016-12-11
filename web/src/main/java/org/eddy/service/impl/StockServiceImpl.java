@@ -1,0 +1,36 @@
+package org.eddy.service.impl;
+
+import com.google.common.collect.Lists;
+import org.eddy.dao.mapper.stock.ErrorStockMapper;
+import org.eddy.dao.mapper.stock.StockMapper;
+import org.eddy.entity.Stock;
+import org.eddy.service.StockService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * Created by eddy on 2016/12/11.
+ */
+@Service
+public class StockServiceImpl implements StockService {
+
+    @Autowired
+    private StockMapper stockMapper;
+
+    @Autowired
+    private ErrorStockMapper errorStockMapper;
+
+    @Override
+    @Transactional("transaction")
+    public void loadStockPerMin(List<Stock> list) {
+        Map<Boolean, List<Stock>> result = Optional.of(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
+        //正常数据插入
+        Optional.of(Lists.partition(result.get(false), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
+        //插入错误数据
+        Optional.of(Lists.partition(result.get(true), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
+    }
+}

@@ -31,6 +31,8 @@ public class Stock {
 
     private String errorContent;
 
+    private boolean hasError;
+
     public Stock() {
     }
 
@@ -136,5 +138,13 @@ public class Stock {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isHasError() {
+        return hasError;
+    }
+
+    public void setHasError(boolean hasError) {
+        this.hasError = hasError;
     }
 }
