@@ -2,6 +2,7 @@ package org.eddy.mybatis;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eddy.ApplicationStart;
+import org.eddy.dao.mapper.stock.ErrorStockMapper;
 import org.eddy.dao.mapper.stock.StockMapper;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
@@ -29,6 +30,9 @@ public class StockTest {
     @Autowired
     StockMapper stockMapper;
 
+    @Autowired
+    ErrorStockMapper errorStockMapper;
+
     @Test
     public void test() {
         Stock stock = new Stock();
@@ -38,5 +42,15 @@ public class StockTest {
         List<Stock> list = new ArrayList<>();
         list.add(stock);
         stockMapper.insert(list);
+    }
+
+    @Test
+    public void test2() {
+        Stock stock = new Stock();
+        stock.setStockCode("sh0001");
+        stock.setErrorContent("errorContent");
+        List<Stock> list = new ArrayList<>();
+        list.add(stock);
+        errorStockMapper.insert(list);
     }
 }

@@ -34,3 +34,10 @@ CHANGE COLUMN `upPrice` `up_price` VARCHAR(45) NULL DEFAULT '' COMMENT '涨幅�
 
 ALTER TABLE `stock`.`stock_source_data`
 CHANGE COLUMN `bye` `buy` VARCHAR(45) NULL DEFAULT NULL COMMENT '大户买入股票数' ;
+
+ALTER TABLE `stock`.`stock_source_error`
+CHANGE COLUMN `sotck_code` `stock_code` VARCHAR(45) NULL DEFAULT NULL COMMENT '股票代码' ;
+
+ALTER TABLE `stock`.`stock_source_error`
+CHANGE COLUMN `error_content` `error_content` VARCHAR(100) NULL DEFAULT NULL COMMENT '抓取内容' ;
+

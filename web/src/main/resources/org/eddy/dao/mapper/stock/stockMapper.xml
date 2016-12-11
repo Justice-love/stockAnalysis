@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.eddy.dao.mapper.stock.StockMapper" >
-    <resultMap id="user" type="org.eddy.entity.Stock">
+    <resultMap id="stock" type="org.eddy.entity.Stock">
         <result column="id" property="id" />
         <result column="name" property="name"/>
         <result column="price" property="price"/>
@@ -18,11 +18,18 @@
 
     <sql id="table">stock.stock_source_data</sql>
     <sql id="columns">name,stock_code,price,up,up_price,buy,sale,today_begin,yesterday_end,date,time</sql>
+    <sql id="allColumns">id,name,stock_code,price,up,up_price,buy,sale,today_begin,yesterday_end,date,time</sql>
     <insert id="insert" parameterType="list">
         INSERT INTO <include refid="table"/> ( <include refid="columns"/>) VALUES
         <foreach collection="list" open="(" close=")" separator=") , (" item="item">
             #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.buy}, #{item.sale}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time}
         </foreach>
     </insert>
+    <select id="selectSotckByNameDateAndTime" resultMap="stock" parameterType="map">
+        select <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE stockCode = #{stockCode}
+        and date = #{date}
+        and time = #{time}
+    </select>
 
 </mapper>
