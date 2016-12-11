@@ -1,3 +1,6 @@
+
+set global time_zone='+8:00'
+
 CREATE TABLE `stock`.`stock_source_data` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL DEFAULT '' COMMENT '股票名称',

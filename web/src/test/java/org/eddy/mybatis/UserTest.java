@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class UserTest {
     UserMapper userMapper;
 
     @Test
+    @Transactional
     public void test() {
         List<User> users = userMapper.selectById(1);
         Assert.assertEquals(1, users.size());
