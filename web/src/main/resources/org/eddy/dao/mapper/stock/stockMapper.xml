@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eddy.dao.mapper.stock.StockMapper" >
+    <resultMap id="user" type="org.eddy.entity.Stock">
+        <result column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+        <result column="up" property="up"/>
+        <result column="up_price" property="upPrice"/>
+        <result column="buy" property="buy"/>
+        <result column="sale" property="sale"/>
+        <result column="today_begin" property="todayBegin"/>
+        <result column="yesterday_end" property="yesterdayEnd"/>
+        <result column="time" property="time"/>
+        <result column="date" property="date"/>
+        <result column="stock_code" property="stockCode"/>
+    </resultMap>
+
+    <sql id="table">stock.stock_source_data</sql>
+    <sql id="columns">name,stock_code,price,up,up_price,buy,sale,today_begin,yesterday_end,date,time</sql>
+    <insert id="insert" parameterType="list">
+        INSERT INTO <include refid="table"/> ( <include refid="columns"/>) VALUES
+        <foreach collection="list" open="(" close=")" separator=") , (" item="item">
+            #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.buy}, #{item.sale}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time}
+        </foreach>
+    </insert>
+
+</mapper>

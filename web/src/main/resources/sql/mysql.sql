@@ -28,3 +28,9 @@ ALTER TABLE `stock`.`stock_source_data`
 CHANGE COLUMN `code` `stock_code` VARCHAR(45) NOT NULL COMMENT '股票代码' ;
 
 CREATE INDEX `idx_stock_code_date_time`  ON `stock`.`stock_source_data` (stock_code, date, time)
+
+ALTER TABLE `stock`.`stock_source_data`
+CHANGE COLUMN `upPrice` `up_price` VARCHAR(45) NULL DEFAULT '' COMMENT '涨幅金额' ;
+
+ALTER TABLE `stock`.`stock_source_data`
+CHANGE COLUMN `bye` `buy` VARCHAR(45) NULL DEFAULT NULL COMMENT '大户买入股票数' ;

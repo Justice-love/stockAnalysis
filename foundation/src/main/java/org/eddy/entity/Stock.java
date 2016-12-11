@@ -5,6 +5,8 @@ package org.eddy.entity;
  */
 public class Stock {
 
+    private int id;
+
     private String name;
 
     private String price;
@@ -126,5 +128,13 @@ public class Stock {
 
     public void setStockCode(String stockCode) {
         this.stockCode = stockCode;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

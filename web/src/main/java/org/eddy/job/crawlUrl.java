@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Configurable
-@EnableScheduling
+//@EnableScheduling
 public class crawlUrl {
 
     @Scheduled(fixedRate = 1_000,initialDelay = 3_000)
