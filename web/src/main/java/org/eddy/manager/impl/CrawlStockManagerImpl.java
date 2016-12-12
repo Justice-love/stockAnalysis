@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  * Created by eddy on 2016/12/11.
  */
 @Service
-@Profile("pro")
 public class CrawlStockManagerImpl implements CrawlStockManager {
 
     @Autowired
