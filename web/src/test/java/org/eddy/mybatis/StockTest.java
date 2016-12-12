@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {ApplicationStart.class})
-@ActiveProfiles(value="dev,pro")
+@ActiveProfiles(value="dev")
 public class StockTest {
 
     @Autowired
@@ -34,6 +35,7 @@ public class StockTest {
     ErrorStockMapper errorStockMapper;
 
     @Test
+    @Transactional
     public void test() {
         Stock stock = new Stock();
         stock.setStockCode("sh0001");
@@ -45,6 +47,7 @@ public class StockTest {
     }
 
     @Test
+    @Transactional
     public void test2() {
         Stock stock = new Stock();
         stock.setStockCode("sh0001");
@@ -55,6 +58,7 @@ public class StockTest {
     }
 
     @Test
+    @Transactional
     public void test3() {
         errorStockMapper.selectByCode("sh600002");
     }
