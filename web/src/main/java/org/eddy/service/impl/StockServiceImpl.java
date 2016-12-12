@@ -50,7 +50,6 @@ public class StockServiceImpl implements StockService {
     @Transactional
     public List<Stock> computerDailyStocks() {
         List<String> dates = stockMapper.groupByDate();
-        String maxDate = stockMapper.selectMaxDate();
         return dates.stream().flatMap(s -> {
             List<Stock> ori = stockMapper.selectLastStockOneDay(s);
             List<Stock> statistic = stockMapper.selectStatisticStock(s);
