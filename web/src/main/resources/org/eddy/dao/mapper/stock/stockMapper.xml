@@ -31,12 +31,12 @@
     </resultMap>
 
     <sql id="table">stock.stock_source_data</sql>
-    <sql id="columns">name,stock_code,price,up,up_price,buy,sale,today_begin,yesterday_end,date,time,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
-    <sql id="allColumns">id,name,stock_code,price,up,up_price,buy,sale,today_begin,yesterday_end,date,time,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
+    <sql id="columns">name,stock_code,price,up,up_price,today_begin,yesterday_end,date,time,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
+    <sql id="allColumns">id,name,stock_code,price,up,up_price,today_begin,yesterday_end,date,time,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
     <insert id="insert" parameterType="list">
         INSERT INTO <include refid="table"/> ( <include refid="columns"/>) VALUES
         <foreach collection="list" open="(" close=")" separator=") , (" item="item">
-            #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.buy}, #{item.sale}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time},
+            #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time},
             #{item.buy1}, #{item.buy1Price}, #{item.buy2}, #{item.buy2Price}, #{item.buy3}, #{item.buy3Price}, #{item.sale1}, #{item.sale1Price}, #{item.sale2}, #{item.sale2Price}, #{item.sale3}, #{item.sale2Price},
             #{item.toBuyPrice}, #{item.toSalePrice}, #{item.dealStock}, #{item.dealMoney}
         </foreach>
