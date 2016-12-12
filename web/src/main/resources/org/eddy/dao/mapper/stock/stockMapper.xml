@@ -38,9 +38,13 @@
         <foreach collection="list" open="(" close=")" separator=") , (" item="item">
             #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time},
             #{item.buy1}, #{item.buy1Price}, #{item.buy2}, #{item.buy2Price}, #{item.buy3}, #{item.buy3Price}, #{item.sale1}, #{item.sale1Price}, #{item.sale2}, #{item.sale2Price}, #{item.sale3}, #{item.sale2Price},
-            #{item.toBuyPrice}, #{item.toSalePrice}, #{item.dealStock}, #{item.dealMoney}
+            #{item.tbuyPrice}, #{item.tsalePrice}, #{item.dealStock}, #{item.dealMoney}
         </foreach>
     </insert>
+    <delete id="deleteByDate">
+        DELETE FROM <include refid="table"/>
+        WHERE date = #{date}
+    </delete>
     <select id="selectSotckByNameDateAndTime" resultMap="stock" parameterType="map">
         select <include refid="allColumns"/> FROM <include refid="table"/>
         WHERE stock_code = #{stockCode}
@@ -49,9 +53,24 @@
     </select>
     <select id="countByNameDateAndTime" resultType="java.lang.Integer" parameterType="map">
         SELECT count(*) from <include refid="table"/>
-        WHERE stock_code = #{stockCode}
-        and date = #{date}
+        WHERE date = #{date}
         and time = #{time}
+        and stock_code = #{stockCode}
     </select>
-
+    <select id="selectMaxDate" resultType="java.lang.String">
+        SELECT MAX(date) from <include refid="table"/>
+    </select>
+    <select id="groupByDate" resultType="java.lang.String">
+        SELECT date from <include refid="table"/> GROUP BY date
+    </select>
+    <select id="selectStatisticStock" resultMap="stock">
+        select stock_code, sum(buy1) as buy1, sum(buy2) as buy2, sum(buy3) as buy3, sum(sale1) as sale1, sum(sale2) as sale2, sum(sale3) as sale3
+        from stock.stock_source_data
+        where date = #{date}
+        group by stock_code
+    </select>
+    <select id="selectLastStockOneDay" resultMap="stock">
+        SELECT name,stock_code,price,up,up_price,today_begin,yesterday_end,date,time,to_buy_price,to_sale_price,deal_stock,deal_money
+        FROM <include refid="table"/> t1 where date = #{date} and time = (select max(time) from <include refid="table"/> t2 where date = #{date} and t2.stock_code = t1.stock_code)
+    </select>
 </mapper>

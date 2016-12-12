@@ -1,6 +1,7 @@
 package org.eddy.service.impl;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.eddy.dao.mapper.stock.ErrorStockMapper;
 import org.eddy.dao.mapper.stock.StockMapper;
 import org.eddy.entity.Stock;
@@ -43,5 +44,31 @@ public class StockServiceImpl implements StockService {
         } else {
             return Optional.ofNullable(stockMapper.countByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime())).orElse(0).intValue() == 0;
         }
+    }
+
+    @Override
+    @Transactional
+    public List<Stock> computerDailyStocks() {
+        List<String> dates = stockMapper.groupByDate();
+        String maxDate = stockMapper.selectMaxDate();
+        return dates.stream().flatMap(s -> {
+            List<Stock> ori = stockMapper.selectLastStockOneDay(s);
+            List<Stock> statistic = stockMapper.selectStatisticStock(s);
+            merge(ori, statistic);
+            stockMapper.deleteByDate(s);
+            return  ori.stream();
+        }).collect(Collectors.toList());
+    }
+
+    private void merge(List<Stock> ori, List<Stock> statistic) {
+        ori.stream().forEach(s -> {
+            Stock stock = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst().get();
+            s.setBuy1(stock.getBuy1());
+            s.setBuy2(stock.getBuy2());
+            s.setBuy3(stock.getBuy3());
+            s.setSale1(stock.getSale1());
+            s.setSale2(stock.getSale2());
+            s.setSale3(stock.getSale3());
+        });
     }
 }

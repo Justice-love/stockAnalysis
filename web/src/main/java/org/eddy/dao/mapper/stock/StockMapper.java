@@ -17,4 +17,14 @@ public interface StockMapper {
     List<Stock> selectSotckByNameDateAndTime(@Param("stockCode") String stockCode, @Param("date") String date, @Param("time") String time);
 
     Integer countByNameDateAndTime(@Param("stockCode") String stockCode, @Param("date") String date, @Param("time") String time);
+
+    String selectMaxDate();
+
+    List<String> groupByDate();
+
+    List<Stock> selectStatisticStock(@Param("date") String date);
+
+    List<Stock> selectLastStockOneDay(String date);
+
+    int deleteByDate(String date);
 }

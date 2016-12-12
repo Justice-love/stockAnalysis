@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eddy.dao.mapper.stock.DailyStockMapper" >
+    <resultMap id="stock" type="org.eddy.entity.Stock">
+        <result column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+        <result column="up" property="up"/>
+        <result column="up_price" property="upPrice"/>
+        <result column="today_begin" property="todayBegin"/>
+        <result column="yesterday_end" property="yesterdayEnd"/>
+        <result column="date" property="date"/>
+        <result column="stock_code" property="stockCode"/>
+        <result column="buy1" property="buy1"/>
+        <result column="buy1_price" property="buy1Price"/>
+        <result column="buy2" property="buy2"/>
+        <result column="buy2_price" property="buy2Price"/>
+        <result column="buy3" property="buy3"/>
+        <result column="buy3_price" property="buy3Price"/>
+        <result column="sale1" property="sale1"/>
+        <result column="sale1_price" property="sale1Price"/>
+        <result column="sale2" property="sale2"/>
+        <result column="sale2_price" property="sale1Price"/>
+        <result column="sale3" property="sale3"/>
+        <result column="sale3_price" property="sale3Price"/>
+        <result column="to_buy_price" property="toBuyPrice"/>
+        <result column="to_sale_price" property="toSalePrice"/>
+        <result column="deal_stock" property="dealStock"/>
+        <result column="deal_money" property="dealMoney"/>
+    </resultMap>
+
+    <sql id="table">stock.stock_daily_source</sql>
+    <sql id="columns">name,stock_code,price,up,up_price,today_begin,yesterday_end,date,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
+    <sql id="allColumns">id,name,stock_code,price,up,up_price,today_begin,yesterday_end,date,buy1,buy1_price,buy2,buy2_price,buy3,buy3_price,sale1,sale1_price,sale2,sale2_price,sale3,sale3_price,to_buy_price,to_sale_price,deal_stock,deal_money</sql>
+    <insert id="insert" parameterType="list">
+        INSERT INTO <include refid="table"/> ( <include refid="columns"/>) VALUES
+        <foreach collection="list" open="(" close=")" separator=") , (" item="item">
+            #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date},
+            #{item.buy1}, #{item.buy1Price}, #{item.buy2}, #{item.buy2Price}, #{item.buy3}, #{item.buy3Price}, #{item.sale1}, #{item.sale1Price}, #{item.sale2}, #{item.sale2Price}, #{item.sale3}, #{item.sale2Price},
+            #{item.tbuyPrice}, #{item.tsalePrice}, #{item.dealStock}, #{item.dealMoney}
+        </foreach>
+    </insert>
+
+</mapper>
