@@ -25,7 +25,7 @@ public class StockServiceImpl implements StockService {
     private ErrorStockMapper errorStockMapper;
 
     @Override
-    @Transactional("transaction")
+    @Transactional
     public void loadStockPerMin(List<Stock> list) {
         Map<Boolean, List<Stock>> result = Optional.ofNullable(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
         //正常数据插入
