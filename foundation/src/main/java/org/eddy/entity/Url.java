@@ -86,11 +86,13 @@ public class Url {
         private SelectType selectType;
         private String expression;
         private String property;
+        private Boolean skipTest;
 
-        public UrlRule(SelectType selectType, String expression, String property) {
+        public UrlRule(SelectType selectType, String expression, String property, Boolean skipTest) {
             this.selectType = selectType;
             this.expression = expression;
             this.property = property;
+            this.skipTest = skipTest;
         }
 
         public UrlRule() {
@@ -118,6 +120,14 @@ public class Url {
 
         public void setProperty(String property) {
             this.property = property;
+        }
+
+        public Boolean getSkipTest() {
+            return skipTest;
+        }
+
+        public void setSkipTest(Boolean skipTest) {
+            this.skipTest = skipTest;
         }
     }
 

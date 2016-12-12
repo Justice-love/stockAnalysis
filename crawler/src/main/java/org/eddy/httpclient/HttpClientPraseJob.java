@@ -44,15 +44,26 @@ public class HttpClientPraseJob extends ParseJob {
 
             String content = temp;
             Stock result = new Stock();
-            result.setStockCode(url.getUrl().split("=")[1]);
+            url.getUrlRuleList().stream().filter(s -> s.getSkipTest()).forEach(s -> {
+                SelectType selectType = s.getSelectType();
+                String text = StringUtils.EMPTY;
+                if (selectType == SelectType.parseRequest) {
+                    text = selectType.findElement(url.getUrl(), s.getExpression());
+                }
+                try {
+                    writePropertie(result, s.getProperty(), text);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
             if (!url.getTest().test(content, url)) {
                 result.setHasError(true);
                 result.setErrorContent(getContentWhenError(content));
                 return result;
             }
 
-            List<Url.UrlRule> ruleList =  url.getUrlRuleList();
-            ruleList.stream().filter(r -> SelectType.HTTPCLIENT_TYPE.equals(r.getSelectType().getType())).forEach(r -> {
+            List<Url.UrlRule> ruleList = url.getUrlRuleList();
+            ruleList.stream().filter(r -> !r.getSkipTest() && SelectType.HTTPCLIENT_TYPE.equals(r.getSelectType().getType())).forEach(r -> {
                 String text = StringUtils.EMPTY;
                 SelectType selectType = r.getSelectType();
                 if (selectType == SelectType.computer) {

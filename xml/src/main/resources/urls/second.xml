@@ -4,6 +4,7 @@
         <!--http://hq.sinajs.cn/list=sh601988-->
 <url url="http://hq.sinajs.cn/list=%s" type="httpClient" class="org.eddy.xml.org.eddy.extend.SinaUrlExtendProvider">
     <test selectType="regx" validate="true" >
+        <urlRule selectType="parseRequest" expression="behind =" property="stockCode" skipTest="true"/>
         <urlRule selectType="index" expression="0" property="name" />
         <urlRule selectType="index" expression="3" property="price" />
         <urlRule selectType="index" expression="1" property="todayBegin" />
@@ -11,6 +12,22 @@
         <urlRule selectType="index" expression="2" property="yesterdayEnd" />
         <urlRule selectType="index" expression="30" property="date" />
         <urlRule selectType="index" expression="31" property="time" />
+        <urlRule selectType="index" expression="10" property="buy1" />
+        <urlRule selectType="index" expression="11" property="buy1Price" />
+        <urlRule selectType="index" expression="12" property="buy2" />
+        <urlRule selectType="index" expression="13" property="buy2Price" />
+        <urlRule selectType="index" expression="14" property="buy3" />
+        <urlRule selectType="index" expression="15" property="buy3Price" />
+        <urlRule selectType="index" expression="20" property="sale1" />
+        <urlRule selectType="index" expression="21" property="sale1Price" />
+        <urlRule selectType="index" expression="22" property="sale2" />
+        <urlRule selectType="index" expression="23" property="sale2Price" />
+        <urlRule selectType="index" expression="24" property="sale3" />
+        <urlRule selectType="index" expression="25" property="sale3Price" />
+        <urlRule selectType="index" expression="6" property="toBuyPrice" />
+        <urlRule selectType="index" expression="7" property="toSalePrice" />
+        <urlRule selectType="index" expression="8" property="dealStock" />
+        <urlRule selectType="index" expression="9" property="dealMoney" />
         <urlRule selectType="computer" expression="price - yesterdayEnd" property="upPrice" />
         <urlRule selectType="computer" expression="upPrice / yesterdayEnd" property="up" />
     </test>

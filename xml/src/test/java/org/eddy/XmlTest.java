@@ -40,4 +40,10 @@ public class XmlTest {
         }).collect(Collectors.toList());
         Assert.assertEquals(4000, stockList.size());
     }
+
+    @Test
+    public void test2() {
+        List<Url> urlList = XmlContext.getContext().getUrls();
+        System.out.println(urlList);
+    }
 }

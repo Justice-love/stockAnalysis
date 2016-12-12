@@ -28,7 +28,7 @@ public class CrawlStockManagerImpl implements CrawlStockManager {
 
     @Override
     public void crawlStock() {
-        List<Stock> pendingInsert = Optional.of(crawlerService.crawlStock()).orElse(Arrays.asList()).stream().filter(s -> stockService.isNeedLoad(s)).collect(Collectors.toList());
+        List<Stock> pendingInsert = Optional.ofNullable(crawlerService.crawlStock()).orElse(Arrays.asList()).stream().filter(s -> stockService.isNeedLoad(s)).collect(Collectors.toList());
         stockService.loadStockPerMin(pendingInsert);
     }
 }

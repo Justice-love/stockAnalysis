@@ -106,6 +106,19 @@ public enum SelectType {
                throw new RuntimeException(e);
             }
         }
+    },
+    parseRequest("httpClient") {
+        @Override
+        public String findElement(Object content, String expression) {
+            String url = (String) content;
+            String[] arr = expression.split("\\s");
+            switch (arr[0]) {
+                case "behind":
+                    return url.split(arr[1])[1];
+                default:
+                    return "";
+            }
+        }
     }
     ;
 

@@ -18,4 +18,5 @@
                 selectType  CDATA #REQUIRED
                 expression  CDATA #REQUIRED
                 property  CDATA #REQUIRED
+                skipTest (true|false) #IMPLIED
         >

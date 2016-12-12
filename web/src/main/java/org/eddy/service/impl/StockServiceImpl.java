@@ -27,11 +27,11 @@ public class StockServiceImpl implements StockService {
     @Override
     @Transactional("transaction")
     public void loadStockPerMin(List<Stock> list) {
-        Map<Boolean, List<Stock>> result = Optional.of(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
+        Map<Boolean, List<Stock>> result = Optional.ofNullable(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
         //正常数据插入
-        Optional.of(Lists.partition(null == result.get(Stock.NO_ERROR) ? Arrays.asList() : result.get(Stock.NO_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
+        Optional.ofNullable(Lists.partition(null == result.get(Stock.NO_ERROR) ? Arrays.asList() : result.get(Stock.NO_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
         //插入错误数据
-        Optional.of(Lists.partition(null == result.get(Stock.HAS_ERROR) ? Arrays.asList() : result.get(Stock.HAS_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
+        Optional.ofNullable(Lists.partition(null == result.get(Stock.HAS_ERROR) ? Arrays.asList() : result.get(Stock.HAS_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
     }
 
     @Override

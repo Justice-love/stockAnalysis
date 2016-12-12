@@ -19,10 +19,6 @@ public class Stock {
 
     private String upPrice;
 
-    private String buy;
-
-    private String sale;
-
     private String todayBegin;
 
     private String yesterdayEnd;
@@ -36,6 +32,38 @@ public class Stock {
     private String errorContent;
 
     private boolean hasError;
+
+    private String buy1;
+
+    private String buy1Price;
+
+    private String  buy2;
+
+    private String buy2Price;
+
+    private String buy3;
+
+    private String buy3Price;
+
+    private String sale1;
+
+    private String sale1Price;
+
+    private String sale2;
+
+    private String sale2Price;
+
+    private String sale3;
+
+    private String sale3Price;
+
+    private String toBuyPrice;
+
+    private String toSalePrice;
+
+    private String dealStock;
+
+    private String dealMoney;
 
     public Stock() {
     }
@@ -62,22 +90,6 @@ public class Stock {
 
     public void setUpPrice(String upPrice) {
         this.upPrice = upPrice;
-    }
-
-    public String getBuy() {
-        return buy;
-    }
-
-    public void setBuy(String buy) {
-        this.buy = buy;
-    }
-
-    public String getSale() {
-        return sale;
-    }
-
-    public void setSale(String sale) {
-        this.sale = sale;
     }
 
     public String getName() {
@@ -150,5 +162,133 @@ public class Stock {
 
     public void setHasError(boolean hasError) {
         this.hasError = hasError;
+    }
+
+    public String getBuy1() {
+        return buy1;
+    }
+
+    public void setBuy1(String buy1) {
+        this.buy1 = buy1;
+    }
+
+    public String getBuy1Price() {
+        return buy1Price;
+    }
+
+    public void setBuy1Price(String buy1Price) {
+        this.buy1Price = buy1Price;
+    }
+
+    public String getBuy2() {
+        return buy2;
+    }
+
+    public void setBuy2(String buy2) {
+        this.buy2 = buy2;
+    }
+
+    public String getBuy2Price() {
+        return buy2Price;
+    }
+
+    public void setBuy2Price(String buy2Price) {
+        this.buy2Price = buy2Price;
+    }
+
+    public String getBuy3() {
+        return buy3;
+    }
+
+    public void setBuy3(String buy3) {
+        this.buy3 = buy3;
+    }
+
+    public String getBuy3Price() {
+        return buy3Price;
+    }
+
+    public void setBuy3Price(String buy3Price) {
+        this.buy3Price = buy3Price;
+    }
+
+    public String getSale1() {
+        return sale1;
+    }
+
+    public void setSale1(String sale1) {
+        this.sale1 = sale1;
+    }
+
+    public String getSale1Price() {
+        return sale1Price;
+    }
+
+    public void setSale1Price(String sale1Price) {
+        this.sale1Price = sale1Price;
+    }
+
+    public String getSale2() {
+        return sale2;
+    }
+
+    public void setSale2(String sale2) {
+        this.sale2 = sale2;
+    }
+
+    public String getSale2Price() {
+        return sale2Price;
+    }
+
+    public void setSale2Price(String sale2Price) {
+        this.sale2Price = sale2Price;
+    }
+
+    public String getSale3() {
+        return sale3;
+    }
+
+    public void setSale3(String sale3) {
+        this.sale3 = sale3;
+    }
+
+    public String getSale3Price() {
+        return sale3Price;
+    }
+
+    public void setSale3Price(String sale3Price) {
+        this.sale3Price = sale3Price;
+    }
+
+    public String getToBuyPrice() {
+        return toBuyPrice;
+    }
+
+    public void setToBuyPrice(String toBuyPrice) {
+        this.toBuyPrice = toBuyPrice;
+    }
+
+    public String getToSalePrice() {
+        return toSalePrice;
+    }
+
+    public void setToSalePrice(String toSalePrice) {
+        this.toSalePrice = toSalePrice;
+    }
+
+    public String getDealStock() {
+        return dealStock;
+    }
+
+    public void setDealStock(String dealStock) {
+        this.dealStock = dealStock;
+    }
+
+    public String getDealMoney() {
+        return dealMoney;
+    }
+
+    public void setDealMoney(String dealMoney) {
+        this.dealMoney = dealMoney;
     }
 }

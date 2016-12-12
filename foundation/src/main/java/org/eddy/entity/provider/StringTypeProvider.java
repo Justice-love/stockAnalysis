@@ -12,6 +12,6 @@ public class StringTypeProvider implements TypeProvider<String>{
 
     @Override
     public String convert(String value) {
-        return Optional.of(value).orElse(StringUtils.EMPTY);
+        return Optional.ofNullable(value).orElse(StringUtils.EMPTY);
     }
 }
