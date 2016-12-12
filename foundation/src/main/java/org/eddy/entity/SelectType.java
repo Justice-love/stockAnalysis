@@ -98,7 +98,7 @@ public enum SelectType {
                     case "/":
                         NumberFormat fmt = NumberFormat.getPercentInstance();
                         fmt.setMaximumFractionDigits(2);
-                        return fmt.format(Double.parseDouble(first) / Double.parseDouble(second));
+                        return Double.parseDouble(second) == 0 ? fmt.format(Double.parseDouble(first)) : fmt.format(Double.parseDouble(first) / Double.parseDouble(second));
                     default:
                         return "";
                 }

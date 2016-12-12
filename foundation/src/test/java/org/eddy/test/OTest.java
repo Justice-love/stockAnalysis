@@ -14,5 +14,6 @@ public class OTest {
         String str = "true";
 //        System.out.println(Optional.ofNullable(str).orElse("d"));
         System.out.println(Optional.ofNullable(str).map(s -> Boolean.parseBoolean(s)).orElse(false));
+        System.out.println(Double.parseDouble("0.000") == 0);
     }
 }
