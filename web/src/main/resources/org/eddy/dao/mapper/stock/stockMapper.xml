@@ -47,5 +47,11 @@
         and date = #{date}
         and time = #{time}
     </select>
+    <select id="countByNameDateAndTime" resultType="java.lang.Integer" parameterType="map">
+        SELECT count(*) from <include refid="table"/>
+        WHERE stock_code = #{stockCode}
+        and date = #{date}
+        and time = #{time}
+    </select>
 
 </mapper>

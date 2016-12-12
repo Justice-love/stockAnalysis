@@ -20,6 +20,10 @@
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
         WHERE stock_code = #{stockCode}
     </select>
+    <select id="countByCode" resultType="java.lang.Integer" parameterType="string">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE stock_code = #{stockCode}
+    </select>
 
 
 </mapper>

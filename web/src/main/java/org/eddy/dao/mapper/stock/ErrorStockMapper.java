@@ -15,4 +15,6 @@ public interface ErrorStockMapper {
     int insert(@Param("list") List<Stock> stocks);
 
     List<Stock> selectByCode(String stockCode);
+
+    Integer countByCode(String stockCode);
 }

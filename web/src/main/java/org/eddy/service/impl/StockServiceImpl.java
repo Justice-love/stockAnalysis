@@ -39,9 +39,9 @@ public class StockServiceImpl implements StockService {
         if (null == stock) return false;
         if (stock.isHasError()) {
             //数据为空则需要加载该条数据
-            return errorStockMapper.selectByCode(stock.getStockCode()).isEmpty();
+            return Optional.ofNullable(errorStockMapper.countByCode(stock.getStockCode())).orElse(0).intValue() == 0;
         } else {
-            return stockMapper.selectSotckByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime()).isEmpty();
+            return Optional.ofNullable(stockMapper.countByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime())).orElse(0).intValue() == 0;
         }
     }
 }

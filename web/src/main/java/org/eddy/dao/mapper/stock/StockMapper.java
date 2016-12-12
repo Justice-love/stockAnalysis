@@ -15,4 +15,6 @@ public interface StockMapper {
     int insert(@Param("list") List<Stock> stocks);
 
     List<Stock> selectSotckByNameDateAndTime(@Param("stockCode") String stockCode, @Param("date") String date, @Param("time") String time);
+
+    Integer countByNameDateAndTime(@Param("stockCode") String stockCode, @Param("date") String date, @Param("time") String time);
 }
