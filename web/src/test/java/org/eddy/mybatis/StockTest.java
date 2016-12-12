@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {ApplicationStart.class})
-@ActiveProfiles(value="dev")
+@ActiveProfiles(value="dev,pro")
 public class StockTest {
 
     @Autowired
@@ -52,5 +52,10 @@ public class StockTest {
         List<Stock> list = new ArrayList<>();
         list.add(stock);
         errorStockMapper.insert(list);
+    }
+
+    @Test
+    public void test3() {
+        errorStockMapper.selectByCode("sh600002");
     }
 }
