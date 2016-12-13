@@ -61,7 +61,7 @@
         SELECT MAX(date) from <include refid="table"/>
     </select>
     <select id="groupByDate" resultType="java.lang.String">
-        SELECT date from <include refid="table"/> GROUP BY date order by date limit 1, 5
+        SELECT date from <include refid="table"/> GROUP BY date order by date limit 3, 5
     </select>
     <select id="selectStatisticStock" resultMap="stock">
         select stock_code, sum(buy1) as buy1, sum(buy2) as buy2, sum(buy3) as buy3, sum(sale1) as sale1, sum(sale2) as sale2, sum(sale3) as sale3

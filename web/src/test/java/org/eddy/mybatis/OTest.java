@@ -11,8 +11,18 @@ import java.util.stream.Collectors;
  */
 public class OTest {
 
+    ThreadLocal threadLocal = new ThreadLocal<String>();
+
     @Test
     public void test() {
         Assert.assertNotNull(Arrays.asList().stream().collect(Collectors.toList()));
     }
+
+    @Test
+    public void test1() {
+        threadLocal.set("a");
+        threadLocal.set("b");
+        System.out.println(threadLocal.get());
+    }
+
 }

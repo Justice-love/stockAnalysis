@@ -14,4 +14,8 @@
         FROM <include refid="table"/>
         where id = #{id}
     </select>
+
+    <insert id="insert">
+        INSERT INTO <include refid="table"/>(name) VALUES (#{name})
+    </insert>
 </mapper>

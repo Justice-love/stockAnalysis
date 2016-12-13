@@ -29,8 +29,19 @@ public class UserTest {
     @Test
     @Transactional
     public void test() {
+        List<User> users = userMapper.selectById(2);
+        Assert.assertEquals(1, users.size());
+        Assert.assertEquals(new Integer(2), users.get(0).getId());
+        System.out.println(1);
+    }
+
+    @Test
+    @Transactional
+    public void test2() {
         List<User> users = userMapper.selectById(1);
         Assert.assertEquals(1, users.size());
         Assert.assertEquals(new Integer(1), users.get(0).getId());
+        System.out.println(2);
+        test();
     }
 }
