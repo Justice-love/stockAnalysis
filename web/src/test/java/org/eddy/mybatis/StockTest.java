@@ -7,6 +7,7 @@ import org.eddy.dao.mapper.stock.StockMapper;
 import org.eddy.entity.Stock;
 import org.eddy.entity.Url;
 import org.eddy.exception.JsoupException;
+import org.eddy.service.StockService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,9 @@ public class StockTest {
 
     @Autowired
     ErrorStockMapper errorStockMapper;
+
+    @Autowired
+    StockService stockService;
 
     @Test
     @Transactional
@@ -61,5 +65,27 @@ public class StockTest {
     @Transactional
     public void test3() {
         errorStockMapper.selectByCode("sh600002");
+    }
+
+    @Transactional
+    @Test
+    public void test4() {
+        List<Stock> stocks = stockMapper.selectLastStockOneDay("2016-12-12");
+        Assert.assertEquals(1161, stocks.size());
+    }
+
+    @Test
+    @Transactional
+    public void test5() {
+        List<Stock> stocks = stockMapper.selectStatisticStock("2016-12-12");
+        Assert.assertEquals(1161, stocks.size());
+    }
+
+
+    @Transactional
+    @Test
+    public void test6() {
+        List<Stock> stocks = stockService.computerDailyStocks();
+        Assert.assertEquals(1161, stocks.size());
     }
 }
