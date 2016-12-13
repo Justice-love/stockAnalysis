@@ -29,9 +29,8 @@ CREATE TABLE `stock_source_data` (
   `deal_stock` varchar(45) DEFAULT NULL COMMENT '成交股票数',
   `deal_money` varchar(45) DEFAULT NULL COMMENT '成交金额',
   PRIMARY KEY (`id`),
-  KEY `idx_date_time_stock_code` (`date`,`time`,`stock_code`) COMMENT '日期时间股票编号'
-) ENGINE=InnoDB AUTO_INCREMENT=1162 DEFAULT CHARSET=utf8 COMMENT='股票实时价格信息';
-
+  KEY `idx_date_stock_code_time` (`date`,`stock_code`,`time`) COMMENT '日期+code+时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED COMMENT='股票实时价格信息';
 
 CREATE TABLE `stock_source_error` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
