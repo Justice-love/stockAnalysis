@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+        <!ELEMENT config (import+)>
+
+        <!ELEMENT import EMPTY>
+        <!ATTLIST import
+                path CDATA #REQUIRED
+                >

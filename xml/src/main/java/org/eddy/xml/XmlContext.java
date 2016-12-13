@@ -58,11 +58,7 @@ public class XmlContext {
             }).flatMap(urls -> {
                 return urls.stream();
             }).collect(Collectors.toList());
-        } catch (ParserConfigurationException e) {
-            throw new JsoupException(e.getMessage(), e);
-        }  catch (SAXException e) {
-            throw new JsoupException(e.getMessage(), e);
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new JsoupException(e.getMessage(), e);
         }
     }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
+
+<swings>
+    <swing id="a" validateType="defaultValidate" expression="biaodashi" autoTrigger="true">
+        <swing id="b" validateType="defaultValidate" expression="biaodashi" orElse="d">
+            <swing id="c" validateType="defaultValidate" expression="biaodashi" executor="executor"/>
+        </swing>
+    </swing>
+    <swing id="d" validateType="defaultValidate" expression="biaodashi"/>
+</swings>

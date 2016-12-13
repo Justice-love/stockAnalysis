@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+        <!ELEMENT swings (swing+)>
+
+        <!ELEMENT swing (swing*)>
+        <!ATTLIST swing
+                id ID #REQUIRED
+                validateType CDATA #REQUIRED
+                expression CDATA #REQUIRED
+                autoTrigger (true|false) #IMPLIED
+                orElse IDREF #IMPLIED
+                executor CDATA #IMPLIED
+                >
