@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by eddy on 2016/12/11.
@@ -51,12 +52,25 @@ public class StockServiceImpl implements StockService {
     public List<Stock> computerDailyStocks() {
         List<String> dates = stockMapper.groupByDate();
         return dates.stream().flatMap(s -> {
-            List<Stock> ori = stockMapper.selectLastStockOneDay(s);
+            List<Stock> ori = findLastStocksOneDay(s);
             List<Stock> statistic = stockMapper.selectStatisticStock(s);
             merge(ori, statistic);
             stockMapper.deleteByDate(s);
             return  ori.stream();
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Stock> findLastStocksOneDay(String date) {
+        List<String> stockCodes = stockMapper.groupByStockCode(date);
+        List<Stock> params = stockCodes.stream().map(s -> {
+            Stock stock = new Stock();
+            stock.setDate(date);
+            stock.setStockCode(s);
+            stock.setTime(stockMapper.selectMaxTime(date, s));
+            return stock;
+        }).collect(Collectors.toList());
+        return Lists.partition(Optional.ofNullable(params).orElse(Arrays.asList()), 500).stream().flatMap(s -> stockMapper.selectLastOnes(s).stream()).collect(Collectors.toList());
     }
 
     private void merge(List<Stock> ori, List<Stock> statistic) {

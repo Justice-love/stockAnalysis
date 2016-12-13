@@ -15,4 +15,6 @@ public interface StockService {
     boolean isNeedLoad(Stock stock);
 
     List<Stock> computerDailyStocks();
+
+    List<Stock> findLastStocksOneDay(String date);
 }

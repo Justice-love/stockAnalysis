@@ -67,13 +67,6 @@ public class StockTest {
         errorStockMapper.selectByCode("sh600002");
     }
 
-    @Transactional
-    @Test
-    public void test4() {
-        List<Stock> stocks = stockMapper.selectLastStockOneDay("2016-12-12");
-        Assert.assertEquals(1161, stocks.size());
-    }
-
     @Test
     @Transactional
     public void test5() {

@@ -24,7 +24,11 @@ public interface StockMapper {
 
     List<Stock> selectStatisticStock(@Param("date") String date);
 
-    List<Stock> selectLastStockOneDay(String date);
-
     int deleteByDate(String date);
+
+    List<String> groupByStockCode(String date);
+
+    String selectMaxTime(@Param("code") String code, @Param("date") String date);
+
+    List<Stock> selectLastOnes(@Param("params") List<Stock> params);
 }

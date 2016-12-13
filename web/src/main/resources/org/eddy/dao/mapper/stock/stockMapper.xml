@@ -61,7 +61,7 @@
         SELECT MAX(date) from <include refid="table"/>
     </select>
     <select id="groupByDate" resultType="java.lang.String">
-        SELECT date from <include refid="table"/> GROUP BY date order by date desc limit 1, 5
+        SELECT date from <include refid="table"/> GROUP BY date order by date desc limit 3, 5
     </select>
     <select id="selectStatisticStock" resultMap="stock">
         select stock_code, sum(buy1) as buy1, sum(buy2) as buy2, sum(buy3) as buy3, sum(sale1) as sale1, sum(sale2) as sale2, sum(sale3) as sale3
@@ -69,8 +69,20 @@
         where date = #{date}
         group by stock_code
     </select>
-    <select id="selectLastStockOneDay" resultMap="stock">
-        SELECT name,stock_code,price,up,up_price,today_begin,yesterday_end,date,time,to_buy_price,to_sale_price,deal_stock,deal_money
-        FROM <include refid="table"/> t1 where date = #{date} and time = (select max(time) from <include refid="table"/> t2 where date = #{date} and t2.stock_code = t1.stock_code)
+    <select id="groupByStockCode" resultType="java.lang.String">
+        SELECT stock_code FROM <include refid="table"/>
+        WHERE date = #{date} group by stock_code
     </select>
+    <select id="selectMaxTime" resultType="java.lang.String">
+        SELECT max(time) FROM <include refid="table"/>
+        WHERE date = #{date} and stock_code = #{code}
+    </select>
+    <select id="selectLastOnes" resultType="org.eddy.entity.Stock">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE
+        <foreach collection="params" separator=" or " item="item">
+            (date = #{item.date} and time = #{item.time} and stock_code = #{item.stockCode})
+        </foreach>
+    </select>
+
 </mapper>
