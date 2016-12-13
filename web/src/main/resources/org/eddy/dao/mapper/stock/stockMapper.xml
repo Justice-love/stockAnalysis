@@ -47,15 +47,15 @@
     </delete>
     <select id="selectSotckByNameDateAndTime" resultMap="stock" parameterType="map">
         select <include refid="allColumns"/> FROM <include refid="table"/>
-        WHERE stock_code = #{stockCode}
-        and date = #{date}
+        WHERE date = #{date}
+        and stock_code = #{stockCode}
         and time = #{time}
     </select>
     <select id="countByNameDateAndTime" resultType="java.lang.Integer" parameterType="map">
         SELECT count(*) from <include refid="table"/>
         WHERE date = #{date}
-        and time = #{time}
         and stock_code = #{stockCode}
+        and time = #{time}
     </select>
     <select id="selectMaxDate" resultType="java.lang.String">
         SELECT MAX(date) from <include refid="table"/>
@@ -81,7 +81,7 @@
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
         WHERE
         <foreach collection="params" separator=" or " item="item">
-            (date = #{item.date} and time = #{item.time} and stock_code = #{item.stockCode})
+            (date = #{item.date} and stock_code = #{item.stockCode} and time = #{item.time} )
         </foreach>
     </select>
 
