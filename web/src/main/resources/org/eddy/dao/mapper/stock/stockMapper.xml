@@ -38,7 +38,7 @@
         <foreach collection="list" open="(" close=")" separator=") , (" item="item">
             #{item.name}, #{item.stockCode}, #{item.price}, #{item.up}, #{item.upPrice}, #{item.todayBegin}, #{item.yesterdayEnd}, #{item.date}, #{item.time},
             #{item.buy1}, #{item.buy1Price}, #{item.buy2}, #{item.buy2Price}, #{item.buy3}, #{item.buy3Price}, #{item.sale1}, #{item.sale1Price}, #{item.sale2}, #{item.sale2Price}, #{item.sale3}, #{item.sale2Price},
-            #{item.tobuyPrice}, #{item.tosalePrice}, #{item.dealStock}, #{item.dealMoney}
+            #{item.toBuyPrice}, #{item.toSalePrice}, #{item.dealStock}, #{item.dealMoney}
         </foreach>
     </insert>
     <delete id="deleteByDate">
