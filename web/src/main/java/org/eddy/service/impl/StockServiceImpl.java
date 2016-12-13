@@ -67,7 +67,7 @@ public class StockServiceImpl implements StockService {
             Stock stock = new Stock();
             stock.setDate(date);
             stock.setStockCode(s);
-            stock.setTime(stockMapper.selectMaxTime(date, s));
+            stock.setTime(stockMapper.selectMaxTime(s, date));
             return stock;
         }).collect(Collectors.toList());
         return Lists.partition(Optional.ofNullable(params).orElse(Arrays.asList()), 500).stream().flatMap(s -> stockMapper.selectLastOnes(s).stream()).collect(Collectors.toList());
@@ -75,7 +75,8 @@ public class StockServiceImpl implements StockService {
 
     private void merge(List<Stock> ori, List<Stock> statistic) {
         ori.stream().forEach(s -> {
-            Stock stock = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst().get();
+            Optional<Stock> optional = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst();
+            Stock stock = optional.get();
             s.setBuy1(stock.getBuy1());
             s.setBuy2(stock.getBuy2());
             s.setBuy3(stock.getBuy3());

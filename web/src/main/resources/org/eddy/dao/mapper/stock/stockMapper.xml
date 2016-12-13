@@ -77,7 +77,7 @@
         SELECT max(time) FROM <include refid="table"/>
         WHERE date = #{date} and stock_code = #{code}
     </select>
-    <select id="selectLastOnes" resultType="org.eddy.entity.Stock">
+    <select id="selectLastOnes" resultMap="stock">
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
         WHERE
         <foreach collection="params" separator=" or " item="item">
