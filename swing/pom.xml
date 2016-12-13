@@ -11,7 +11,7 @@
 
     <groupId>org.eddy</groupId>
     <artifactId>swing</artifactId>
-    <name>stock.swing</name>
+    <name>stockAnalysis.swing</name>
 
     <properties>
         <java.version>1.8</java.version>
