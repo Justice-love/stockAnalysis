@@ -2,7 +2,7 @@
 <!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
 
 <swings>
-    <swing id="a" validateType="defaultValidate" expression="biaodashi" autoTrigger="true">
+    <swing id="a" validateType="defaultValidater" expression="biaodashi" autoTrigger="true">
         <swing id="b" validateType="defaultValidate" expression="biaodashi" orElse="d">
             <swing id="c" validateType="defaultValidate" expression="biaodashi" executor="executor"/>
         </swing>

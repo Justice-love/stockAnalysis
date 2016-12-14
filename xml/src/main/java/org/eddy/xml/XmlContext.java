@@ -90,7 +90,7 @@ public class XmlContext {
             url.setType(Optional.ofNullable(root.getAttribute("type")).orElse(Url.HTTPCLIENT_TYPE));
 
             Element test = (Element) root.getElementsByTagName("test").item(0);
-            url.setTest(new Url.Test(SelectType.valueOf(Optional.ofNullable(test.getAttribute("selectType")).orElse("id")), Optional.ofNullable(test.getAttribute("expression")).orElse(null), Optional.ofNullable(test.getAttribute("validate")).orElse(null)));
+            url.setTest(new Url.Test(SelectType.valueOf(Optional.ofNullable(test.getAttribute("selectType")).orElse(SelectType.id.name())), Optional.ofNullable(test.getAttribute("expression")).orElse(null), Optional.ofNullable(test.getAttribute("validate")).orElse(null)));
 
             NodeList ruleList = root.getElementsByTagName(Url.RULE_TAG_NAME);
             List<Url.UrlRule> urlRules = new ArrayList<>(10);
