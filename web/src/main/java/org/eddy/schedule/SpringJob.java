@@ -16,9 +16,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Configurable
 @EnableScheduling
-public class crawlUrl {
+public class SpringJob {
 
-    private static final Logger logger = LoggerFactory.getLogger(crawlUrl.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpringJob.class);
 
     @Autowired
     private CrawlStockManager crawlStockManager;
