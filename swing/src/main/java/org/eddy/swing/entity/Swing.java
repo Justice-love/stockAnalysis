@@ -9,6 +9,7 @@ public class Swing {
     private String id;
     private String expression;
     private Validater validateType;
+    private String expect;
     //IMPLIED
     private boolean autoTrigger;
     private String orElse;
@@ -20,9 +21,10 @@ public class Swing {
 
     public Swing() {
     }
-    public Swing(String id, String expression, Validater validateType) {
+    public Swing(String id, String expression, String expect, Validater validateType) {
         this.id = id;
         this.expression = expression;
+        this.expect = expect;
         this.validateType = validateType;
     }
 
@@ -80,5 +82,13 @@ public class Swing {
 
     public void setValidateType(Validater validateType) {
         this.validateType = validateType;
+    }
+
+    public String getExpect() {
+        return expect;
+    }
+
+    public void setExpect(String expect) {
+        this.expect = expect;
     }
 }
