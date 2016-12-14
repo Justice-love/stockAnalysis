@@ -3,9 +3,9 @@
 
 <swings>
     <swing id="a" validateType="defaultValidater" expression="biaodashi" expect="> 0" autoTrigger="true">
-        <swing id="b" validateType="defaultValidate" expression="biaodashi" expect="> 0" orElse="d">
-            <swing id="c" validateType="defaultValidate" expression="biaodashi" expect="> 0" executor="executor"/>
+        <swing id="b" validateType="defaultValidater" expression="biaodashi" expect="> 0" orElse="d">
+            <swing id="c" validateType="defaultValidater" expression="biaodashi" expect="> 0" executor="executor"/>
         </swing>
     </swing>
-    <swing id="d" validateType="defaultValidate" expect="> 0" expression="biaodashi"/>
+    <swing id="d" validateType="defaultValidater" expect="> 0" expression="biaodashi"/>
 </swings>

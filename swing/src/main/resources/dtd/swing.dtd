@@ -7,7 +7,7 @@
                 id ID #REQUIRED
                 validateType CDATA #REQUIRED
                 expression CDATA #REQUIRED
-                expect CDATA #REQUIRED
+                expect CDATA #IMPLIED
                 autoTrigger (true|false) #IMPLIED
                 orElse IDREF #IMPLIED
                 executor CDATA #IMPLIED
