@@ -26,7 +26,7 @@ public class crawlUrl {
     @Autowired
     private ComputerAndLoadHistoryStock computerAndLoadHistoryStock;
 
-    @Scheduled(fixedDelay = 60_000,initialDelay = 3_000)
+    @Scheduled(cron = "* 0/1 9-15 * * 1/5 ", initialDelay = 1_000)
     public void crawlAllUrl() {
         try {
             crawlStockManager.crawlStock();
@@ -35,6 +35,7 @@ public class crawlUrl {
         }
     }
 
+    @Scheduled(cron = "* 30 9-15 * * 1/5 ", initialDelay = 1_000)
     public void computer() {
         try {
             computerAndLoadHistoryStock.computerAndLoad();
