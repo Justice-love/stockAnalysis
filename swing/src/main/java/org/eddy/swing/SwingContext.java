@@ -1,7 +1,7 @@
 package org.eddy.swing;
 
 import org.eddy.swing.entity.Swing;
-import org.eddy.swing.entity.ValidateType;
+import org.eddy.swing.entity.Validater;
 import org.eddy.swing.entity.exception.SwingException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -92,7 +92,7 @@ public class SwingContext {
 
     private Swing parseSwing(Node node) {
         Element element = (Element) node;
-        Swing swing = new Swing(Optional.ofNullable(element.getAttribute("id")).orElse(""), Optional.ofNullable(element.getAttribute("expression")).orElse(""), ValidateType.valueOf(Optional.ofNullable(element.getAttribute("validateType")).orElse("defaultValidate")));
+        Swing swing = new Swing(Optional.ofNullable(element.getAttribute("id")).orElse(""), Optional.ofNullable(element.getAttribute("expression")).orElse(""), Validater.valueOf(Optional.ofNullable(element.getAttribute("validateType")).orElse("defaultValidate")));
         Element child = findChild(element);
         if (null != child) {
             swing.setChild(parseSwing(child));

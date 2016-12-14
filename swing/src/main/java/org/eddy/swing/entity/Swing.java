@@ -8,7 +8,7 @@ public class Swing {
     //REQUIRED
     private String id;
     private String expression;
-    private ValidateType validateType;
+    private Validater validateType;
     //IMPLIED
     private boolean autoTrigger;
     private String orElse;
@@ -20,7 +20,7 @@ public class Swing {
 
     public Swing() {
     }
-    public Swing(String id, String expression, ValidateType validateType) {
+    public Swing(String id, String expression, Validater validateType) {
         this.id = id;
         this.expression = expression;
         this.validateType = validateType;
@@ -66,19 +66,19 @@ public class Swing {
         this.executor = executor;
     }
 
-    public ValidateType getValidateType() {
-        return validateType;
-    }
-
-    public void setValidateType(ValidateType validateType) {
-        this.validateType = validateType;
-    }
-
     public Swing getChild() {
         return child;
     }
 
     public void setChild(Swing child) {
         this.child = child;
+    }
+
+    public Validater getValidateType() {
+        return validateType;
+    }
+
+    public void setValidateType(Validater validateType) {
+        this.validateType = validateType;
     }
 }
