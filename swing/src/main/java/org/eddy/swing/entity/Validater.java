@@ -73,7 +73,8 @@ public enum Validater {
                 int buyCount = Integer.parseInt(stock.getBuy1()) + Integer.parseInt(stock.getBuy2()) + Integer.parseInt(stock.getBuy3());
                 int saleCount = Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1());
                 //卖出大于买入
-                if (saleCount * (1 + precent) > buyCount ) {
+                double count = saleCount * (1 + precent);
+                if (count > buyCount ) {
                     return false;
                 }
             }
@@ -99,7 +100,7 @@ public enum Validater {
                 int buyCount = Integer.parseInt(stock.getBuy1()) + Integer.parseInt(stock.getBuy2()) + Integer.parseInt(stock.getBuy3());
                 int saleCount = Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1());
                 //买入大于卖出
-                if (buyCount * (1 + precent) >= saleCount) {
+                if (buyCount * (1 + precent) > saleCount) {
                     return false;
                 }
             }
