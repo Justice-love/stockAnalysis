@@ -116,8 +116,7 @@ public enum Validater {
             String[] arr = expression.trim().split(CHAR);
             Assert.isTrue(arr.length == 2, "error expression: " + expression);
             int time = Integer.parseInt(arr[0]);
-            double precent = Double.parseDouble(arr[1]);
-            Assert.isTrue(precent >= 0, "percent must >= 0");
+            double precent = Double.parseDouble(arr[1]) * 0.01;
             SortedMap<String, List<Stock>> headMap = groupStocks.headMap(groupStocks.lastKey());
             Assert.isTrue(headMap.size() >= time, "history data not enough");
             Map.Entry<String, List<Stock>>[] entries = (Map.Entry<String, List<Stock>>[]) headMap.entrySet().toArray();
@@ -148,7 +147,7 @@ public enum Validater {
             String[] arr = expression.trim().split(CHAR);
             Assert.isTrue(arr.length == 2, "error expression: " + expression);
             int time = Integer.parseInt(arr[0]);
-            double precent = Double.parseDouble(arr[1]);
+            double precent = Double.parseDouble(arr[1]) * 0.01;
             SortedMap<String, List<Stock>> headMap = groupStocks.headMap(groupStocks.lastKey());
             Assert.isTrue(headMap.size() >= time, "history data not enough");
             Map.Entry<String, List<Stock>>[] entries = (Map.Entry<String, List<Stock>>[]) headMap.entrySet().toArray();
@@ -162,7 +161,7 @@ public enum Validater {
                 }
                 double p = (Double.parseDouble(stock.getPrice()) - Double.parseDouble(stock.getYesterdayEnd())) / Double.parseDouble(stock.getYesterdayEnd());
                 //有一次涨了或者希望的幅度大于实际的幅度，则不符合规则
-                if (p > 0 || Math.abs(precent) > Math.abs(p)) {
+                if (p > precent) {
                     return false;
                 }
             }
