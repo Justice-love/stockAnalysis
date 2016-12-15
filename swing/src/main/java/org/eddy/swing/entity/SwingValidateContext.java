@@ -10,17 +10,21 @@ import java.util.Objects;
 /**
  * Created by eddy on 16/12/15.
  */
-public class SwingContext {
+public class SwingValidateContext {
 
     private List<Swing> flowSwings = new ArrayList<>();
 
     private Stock stock;
 
-    public SwingContext(Swing first, Stock stock) {
+    private List<Stock> sources;
+
+    public SwingValidateContext(Swing first, Stock stock, List<Stock> source) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(stock);
+        Assert.notEmpty(source);
         this.flowSwings.add(first);
         this.stock = stock;
+        this.sources = source;
     }
 
     public void addSwing(Swing swing) {
@@ -47,5 +51,13 @@ public class SwingContext {
 
     public void setStock(Stock stock) {
         this.stock = stock;
+    }
+
+    public List<Stock> getSources() {
+        return sources;
+    }
+
+    public void setSources(List<Stock> sources) {
+        this.sources = sources;
     }
 }
