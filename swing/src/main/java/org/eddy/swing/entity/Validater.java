@@ -13,6 +13,16 @@ import java.util.SortedMap;
  */
 public enum Validater {
     /**
+     * 默认调用器
+     */
+    defaultValidater {
+        @Override
+        public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
+            return true;
+        }
+    },
+
+    /**
      * 买入价格持续高于当前价格
      */
     buyPrice {
