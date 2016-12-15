@@ -26,7 +26,7 @@ public class SpringJob {
     @Autowired
     private ComputerAndLoadHistoryStock computerAndLoadHistoryStock;
 
-    @Scheduled(cron = "* 0/1 9-15 * * 1/5 ")
+    @Scheduled(cron = "10 0-59 9-15 * * 1-5 ")
     public void crawlAllUrl() {
         try {
             crawlStockManager.crawlStock();
@@ -35,7 +35,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "* 30 16 * * 1/5 ")
+    @Scheduled(cron = "10 30 16 * * 1-5 ")
     public void computer() {
         try {
             computerAndLoadHistoryStock.computerAndLoad();
