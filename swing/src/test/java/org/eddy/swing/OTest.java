@@ -18,4 +18,9 @@ public class OTest {
         sortedMap.put("d", "d");
         System.out.println(sortedMap.lastKey());
     }
+
+    @Test
+    public void test2() {
+        System.out.println(-0.2 > -0.1);
+    }
 }
