@@ -14,7 +14,7 @@ public class LogFlowSolver implements SwingFlowSolver {
     @Override
     public void solve(SwingValidateContext context) throws SwingException {
         logger.info("execute LogFlowSolver");
-        logger.info("stock name:" + context.getStock().getName());
+        logger.info("stock name:" + context.getStock().getName() + ", code:" + context.getStock().getStockCode());
         context.getFlowSwings().stream().forEach(s -> {
             logger.info("execute swing" + s.getId() + ", " + s.getValidateType().name());
         });

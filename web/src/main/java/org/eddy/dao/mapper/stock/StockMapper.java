@@ -31,4 +31,8 @@ public interface StockMapper {
     String selectMaxTime(@Param("code") String code, @Param("date") String date);
 
     List<Stock> selectLastOnes(@Param("params") List<Stock> params);
+
+    List<Stock> selectGroupByStock(String date);
+
+    List<Stock> selectSortedStocks(String code);
 }

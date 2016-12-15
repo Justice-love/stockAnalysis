@@ -68,6 +68,11 @@ public class Stock {
     public Stock() {
     }
 
+    public Stock(String name, String stockCode) {
+        this.name = name;
+        this.stockCode = stockCode;
+    }
+
     public String getPrice() {
         return price;
     }

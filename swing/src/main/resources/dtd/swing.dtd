@@ -6,7 +6,7 @@
         <!ATTLIST swing
                 id ID #REQUIRED
                 validateType CDATA #REQUIRED
-                expression CDATA #REQUIRED
+                expression CDATA #IMPLIED
                 expect CDATA #IMPLIED
                 autoTrigger (true|false) #IMPLIED
                 orElse IDREF #IMPLIED

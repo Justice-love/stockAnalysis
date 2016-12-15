@@ -8,6 +8,7 @@ import org.eddy.swing.entity.SwingValidateContext;
 import org.eddy.swing.entity.Validater;
 import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.util.CallUtil;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by eddy on 16/12/15.
  */
+@Component
 public class SwingFlow {
 
 
