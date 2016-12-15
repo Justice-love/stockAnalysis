@@ -17,7 +17,9 @@ public class Swing {
     private Swing child;
 
     //method
-
+    public boolean hasChild() {
+        return null != child;
+    }
 
     public Swing() {
     }

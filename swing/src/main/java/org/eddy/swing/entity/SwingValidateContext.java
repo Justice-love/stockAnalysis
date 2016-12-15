@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.SortedMap;
 
 /**
  * Created by eddy on 16/12/15.
@@ -16,18 +17,17 @@ public class SwingValidateContext {
 
     private Stock stock;
 
-    private List<Stock> sources;
+    private SortedMap<String, List<Stock>> groupStocks;
 
-    public SwingValidateContext(Swing first, Stock stock, List<Stock> source) {
+    public SwingValidateContext(Swing first, Stock stock, SortedMap<String, List<Stock>> groupStocks) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(stock);
-        Assert.notEmpty(source);
         this.flowSwings.add(first);
         this.stock = stock;
-        this.sources = source;
+        this.groupStocks = groupStocks;
     }
 
-    public void addSwing(Swing swing) {
+    public void addSwingChain(Swing swing) {
         Objects.requireNonNull(swing);
         this.getFlowSwings().add(swing);
     }
@@ -53,11 +53,11 @@ public class SwingValidateContext {
         this.stock = stock;
     }
 
-    public List<Stock> getSources() {
-        return sources;
+    public SortedMap<String, List<Stock>> getGroupStocks() {
+        return groupStocks;
     }
 
-    public void setSources(List<Stock> sources) {
-        this.sources = sources;
+    public void setGroupStocks(SortedMap<String, List<Stock>> groupStocks) {
+        this.groupStocks = groupStocks;
     }
 }
