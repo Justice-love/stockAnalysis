@@ -32,7 +32,7 @@ public enum Validater {
             List<Stock> stockList = groupStocks.get(groupStocks.lastKey());
             int time = Integer.parseInt(expression.trim());
             //adjust
-            if (stockList.size() < time) time = stockList.size();
+            if (stockList.size() < time) return false;
             for (int i = 0; i < time; i++) {
                 Stock stock = stockList.get(i);
                 //当前价格 > 想要买入的价格， 跌落
@@ -53,7 +53,7 @@ public enum Validater {
             List<Stock> stockList = groupStocks.get(groupStocks.lastKey());
             int time = Integer.parseInt(expression.trim());
             //adjust
-            if (stockList.size() < time) time = stockList.size();
+            if (stockList.size() < time) return false;
             for (int i = 0; i < time; i++) {
                 Stock stock = stockList.get(i);
                 //当前价格 > 希望卖出的价格 抛售
@@ -77,7 +77,7 @@ public enum Validater {
             int time = Integer.parseInt(arr[0]);
             double precent = Double.parseDouble(arr[1]);
             //adjust
-            if (stockList.size() < time) time = stockList.size();
+            if (stockList.size() < time) return false;
             for (int i = 0; i < time; i++) {
                 Stock stock = stockList.get(i);
                 int buyCount = Integer.parseInt(stock.getBuy1()) + Integer.parseInt(stock.getBuy2()) + Integer.parseInt(stock.getBuy3());
@@ -104,7 +104,7 @@ public enum Validater {
             int time = Integer.parseInt(arr[0]);
             double precent = Double.parseDouble(arr[1]);
             //adjust
-            if (stockList.size() < time) time = stockList.size();
+            if (stockList.size() < time) return false;
             for (int i = 0; i < time; i++) {
                 Stock stock = stockList.get(i);
                 int buyCount = Integer.parseInt(stock.getBuy1()) + Integer.parseInt(stock.getBuy2()) + Integer.parseInt(stock.getBuy3());
