@@ -17,7 +17,7 @@
     <sql id="allColumns">id, name, stock_code, validaters, create_time, update_time</sql>
 
     <insert id="insert" parameterType="org.eddy.entity.StockWantBuy">
-        INSERT INSERT <include refid="table"/> (<include refid="basicColumns"/>) VALUES
+        INSERT INTO <include refid="table"/> (<include refid="basicColumns"/>) VALUES
         (#{name}, #{stockCode}, #{currentPrice}, #{currentUp}, #{validaters})
     </insert>
     <update id="updateById">
