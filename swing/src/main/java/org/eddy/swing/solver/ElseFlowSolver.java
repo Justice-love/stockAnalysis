@@ -15,10 +15,10 @@ public class ElseFlowSolver implements SwingFlowSolver{
 
     @Override
     public void solve(SwingValidateContext context) throws SwingException {
-        logger.info("execute ElseFlowSolver");
-        logger.info("stock name:" + context.getStock().getName());
-        context.getFlowSwings().stream().forEach(s -> {
-            logger.info("execute swing" + s.getId() + ", " + s.getValidateType().name());
-        });
+//        logger.info("execute ElseFlowSolver");
+//        logger.info("stock name:" + context.getStock().getName());
+//        context.getFlowSwings().stream().forEach(s -> {
+//            logger.info("execute swing" + s.getId() + ", " + s.getValidateType().name());
+//        });
     }
 }
