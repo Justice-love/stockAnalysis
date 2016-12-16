@@ -130,9 +130,9 @@ public enum Validater {
             double precent = Double.parseDouble(arr[1]) * 0.01;
             SortedMap<String, List<Stock>> headMap = groupStocks.headMap(groupStocks.lastKey());
             Assert.isTrue(headMap.size() >= time, "history data not enough");
-            Map.Entry<String, List<Stock>>[] entries = (Map.Entry<String, List<Stock>>[]) headMap.entrySet().toArray();
+            Map.Entry<String, List<Stock>>[] entries = (Map.Entry<String, List<Stock>>[]) headMap.entrySet().toArray(new Map.Entry[1]);
             for (int i= 1; i <= time; i++) {
-                List<Stock> history = entries[entries.length - 1 - i- 1].getValue();
+                List<Stock> history = history = entries[entries.length - 1 - (i - 1)].getValue();
                 Assert.notEmpty(history, "history size is empty");
                 Stock stock = history.get(0);
                 //昨天数据为0

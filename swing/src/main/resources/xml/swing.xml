@@ -2,9 +2,9 @@
 <!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
 
 <swings>
-    <swing id="buy" validateType="buyPrice" expression="2">
-        <swing id="buyCount" validateType="buyCountPercent" expression="2#0.2" orElse="defaultTrue">
-            <swing id="log" validateType="defaultValidater" executor="org.eddy.swing.solver.LogFlowSolver"/>
+    <swing id="buy" validateType="buyPrice" expression="10">
+        <swing id="buyCount" validateType="buyCountPercent" expression="10#0.2" orElse="defaultTrue">
+            <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="org.eddy.swing.solver.LogFlowSolver"/>
         </swing>
     </swing>
     <swing id="defaultTrue" validateType="defaultValidater" executor="org.eddy.swing.solver.ElseFlowSolver"/>

@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {ApplicationStart.class})
-@ActiveProfiles(value="dev")
+@ActiveProfiles(value="pro")
 @Transactional
 public class SwingTest {
 
@@ -47,7 +47,7 @@ public class SwingTest {
         Swing swing = SwingContext.getContext().getSwings().get("buy").get(0);
         try {
             swingFlow.flow(temp, new Stock(name, code), swing);
-        } catch (SwingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -85,7 +85,7 @@
         </foreach>
     </select>
     <select id="selectGroupByStock" resultMap="stock">
-        select name, stock_code FROM <include refid="table"/>  WHERE  date = #{date} GROUP BY stock_code;
+        select name, stock_code FROM <include refid="table"/>  WHERE  date = #{date} GROUP BY stock_code, name;
     </select>
     <select id="selectSortedStocks" resultMap="stock">
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
