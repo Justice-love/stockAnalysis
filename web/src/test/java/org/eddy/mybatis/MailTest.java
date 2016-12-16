@@ -2,10 +2,16 @@ package org.eddy.mybatis;
 
 import org.apache.velocity.app.VelocityEngine;
 import org.eddy.ApplicationStart;
+import org.eddy.entity.Stock;
 import org.eddy.entity.pojo.User;
+import org.eddy.service.NotifyService;
+import org.eddy.swing.entity.Swing;
+import org.eddy.swing.entity.SwingValidateContext;
+import org.eddy.swing.entity.Validater;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -27,30 +33,14 @@ import java.util.Map;
 public class MailTest {
 
     @Autowired
-    JavaMailSender mailSender;
-    @Autowired
-    VelocityEngine velocityEngine;
+    @Qualifier("email")
+    NotifyService mailService;
 
     @Test
     public void testMail() {
-        User user = new User();
-        user.setId(1);
-        user.setName("eddy");
-
-        MimeMessagePreparator preparator = new MimeMessagePreparator() {
-            public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-                message.setTo("eddyxu1213@126.com");
-                message.setFrom("stock@just-love.cn");
-                message.setSubject("test");
-                Map model = new HashMap();
-                model.put("user", user);
-                model.put("email", "sharter@126.com");
-                String text = VelocityEngineUtils.mergeTemplateIntoString(
-                        velocityEngine, "template/emailTemplate.vm", model);
-                message.setText(text, true);
-            }
-        };
-        this.mailSender.send(preparator);
+        SwingValidateContext context = new SwingValidateContext(new Swing(null, null, null, Validater.buyCountPercent), new Stock("第一支", "sh000001"), null);
+        context.addSwingChain(new Swing(null, null, null, Validater.buyPrice));
+        context.addSwingChain(new Swing(null, null, null, Validater.defaultValidater));
+        mailService.notify(context, "toBuyTemplate", "eddyxu1213@126.com", "第一支");
     }
 }
