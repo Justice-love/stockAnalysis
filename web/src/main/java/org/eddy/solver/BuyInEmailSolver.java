@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class BuyInEmailSolver implements SwingFlowSolver {
 
     private static String TO_EMAIL = "eddyxu1213@126.com";
-    private static String BUY_IN = "买入提醒";
+    private static String BUY_IN = "买入提醒(%s)";
 
     @Autowired
     @Qualifier("email")
@@ -37,6 +37,6 @@ public class BuyInEmailSolver implements SwingFlowSolver {
         stockWantBu.setCurrentUp(context.getStock().getUp());
         stockWantBu.setValidaters(context.getFlowSwings().stream().map(swing -> swing.getValidateType().name()).collect(Collectors.joining(" | ")));
         Boolean flag = stockWantBuyService.insertOrUpdateNeedNotify(stockWantBu);
-        emailService.notify(context, "toBuyTemplate", TO_EMAIL, BUY_IN);
+        emailService.notify(context, "toBuyTemplate", TO_EMAIL, String.format(BUY_IN, stockWantBu.getName()));
     }
 }
