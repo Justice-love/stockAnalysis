@@ -40,7 +40,7 @@ public class BuyInEmailSolver implements SwingFlowSolver {
         stockWantBu.setValidaters(context.getFlowSwings().stream().map(swing -> swing.getValidateType().name()).collect(Collectors.joining(" | ")));
         Boolean flag = stockWantBuyService.insertOrUpdateNeedNotify(stockWantBu);
         if (flag) {
-            emailService.notify(context, "toBuyTemplate", TO_EMAIL, String.format(BUY_IN, stockWantBu.getName()));
+            emailService.asyncNotify(context, "toBuyTemplate", TO_EMAIL, String.format(BUY_IN, stockWantBu.getName()));
         }
     }
 }

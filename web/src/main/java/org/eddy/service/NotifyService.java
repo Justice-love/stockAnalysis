@@ -13,4 +13,6 @@ public interface NotifyService {
      * @param others 0:template 1:to 2:subject
      */
     void notify(SwingValidateContext context, String ... others);
+
+    void asyncNotify(SwingValidateContext context, String ... others);
 }
