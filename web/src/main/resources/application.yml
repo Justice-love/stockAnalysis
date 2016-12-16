@@ -2,9 +2,9 @@ spring:
     profiles:
       active: pro
     mail:
-      host: smtp.126.com
+      host: smtp.mxhichina.com
       port: 25
-      username: sharter@126.com
-      password: taobao1234
+      username: stock@just-love.cn
+      password: Taobao1234
 mybatis:
   mapper-locations: classpath*:org/eddy/dao/mapper/*/*.xml
