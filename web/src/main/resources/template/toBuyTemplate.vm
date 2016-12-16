@@ -2,6 +2,8 @@
 <ul>
     <li>股票名称：${context.stock.name}</li>
     <li>股票代码：${context.stock.stockCode}</li>
+    <li>当前价格：${context.stock.price}</li>
+    <li>当前涨幅：${context.stock.up}</li>
     <li>时   间：${time}</li>
     <li>通过规则：#foreach($item in $context.flowSwings) $item.validateType.name() | #end</li>
 </ul>
