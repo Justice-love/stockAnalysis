@@ -13,4 +13,6 @@ import java.util.List;
 public interface DailyStockMapper {
 
     int insert(@Param("list") List<Stock> stocks);
+
+    List<Stock> selectSortedStocks(String code);
 }

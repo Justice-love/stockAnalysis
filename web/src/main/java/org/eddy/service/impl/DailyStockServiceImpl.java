@@ -28,4 +28,9 @@ public class DailyStockServiceImpl implements DailyStockService {
             dailyStockMapper.insert(stocks);
         });
     }
+
+    @Override
+    public List<Stock> selectSortedStocks(String code) {
+        return dailyStockMapper.selectSortedStocks(code);
+    }
 }

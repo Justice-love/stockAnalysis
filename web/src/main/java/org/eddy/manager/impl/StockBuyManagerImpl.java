@@ -2,6 +2,7 @@ package org.eddy.manager.impl;
 
 import org.eddy.entity.Stock;
 import org.eddy.manager.StockBuyManager;
+import org.eddy.service.DailyStockService;
 import org.eddy.service.StockService;
 import org.eddy.swing.SwingContext;
 import org.eddy.swing.entity.Swing;
@@ -28,12 +29,16 @@ public class StockBuyManagerImpl implements StockBuyManager {
     private StockService stockService;
 
     @Autowired
+    private DailyStockService dailyStockService;
+
+    @Autowired
     private SwingFlow swingFlow;
 
     @Override
     public void needBy() {
         stockService.groupStock().forEach(stock -> {
             List<Stock> stockList = stockService.selectSortedStocks(stock.getStockCode());
+            stockList.addAll(dailyStockService.selectSortedStocks(stock.getStockCode()));
             SortedMap<String, List<Stock>> listSortedMap =  new TreeMap<>(stockList.stream().collect(Collectors.groupingBy(s -> s.getDate())));
             Swing swing = SwingContext.getContext().getSwings().get("buy").get(0);
             try {

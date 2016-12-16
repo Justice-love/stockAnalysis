@@ -40,5 +40,10 @@
             #{item.toBuyPrice}, #{item.toSalePrice}, #{item.dealStock}, #{item.dealMoney}
         </foreach>
     </insert>
+    <select id="selectSortedStocks" resultMap="stock">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE stock_code = #{code}
+        ORDER BY date desc
+    </select>
 
 </mapper>

@@ -10,4 +10,6 @@ import java.util.List;
 public interface DailyStockService {
 
     void loadDailyStock(List<Stock> source);
+
+    List<Stock> selectSortedStocks(String code);
 }
