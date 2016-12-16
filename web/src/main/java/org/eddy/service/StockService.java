@@ -17,4 +17,8 @@ public interface StockService {
     List<Stock> computerDailyStocks();
 
     List<Stock> findLastStocksOneDay(String date);
+
+    List<Stock> groupStock();
+
+    List<Stock> selectSortedStocks(String code);
 }

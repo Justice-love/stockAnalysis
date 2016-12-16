@@ -73,6 +73,16 @@ public class StockServiceImpl implements StockService {
         return Lists.partition(Optional.ofNullable(params).orElse(Arrays.asList()), 500).stream().flatMap(s -> stockMapper.selectLastOnes(s).stream()).collect(Collectors.toList());
     }
 
+    @Override
+    public List<Stock> groupStock() {
+        return stockMapper.selectGroupByStock(stockMapper.selectMaxDate());
+    }
+
+    @Override
+    public List<Stock> selectSortedStocks(String code) {
+        return stockMapper.selectSortedStocks(code);
+    }
+
     private void merge(List<Stock> ori, List<Stock> statistic) {
         ori.stream().forEach(s -> {
             Optional<Stock> optional = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst();
