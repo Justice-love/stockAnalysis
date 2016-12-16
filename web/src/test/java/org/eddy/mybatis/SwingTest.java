@@ -46,7 +46,7 @@ public class SwingTest {
         SortedMap<String, List<Stock>> temp =  new TreeMap<>(stockList.stream().collect(Collectors.groupingBy(s -> s.getDate())));
         Swing swing = SwingContext.getContext().getSwings().get("buy").get(0);
         try {
-            swingFlow.flow(temp, new Stock(name, code), swing);
+            swingFlow.flow(temp, stockList.get(0), swing);
         } catch (Exception e) {
             e.printStackTrace();
         }

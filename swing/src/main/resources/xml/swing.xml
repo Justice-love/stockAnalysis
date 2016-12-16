@@ -4,8 +4,8 @@
 <swings>
     <swing id="buy" validateType="buyPrice" expression="10">
         <swing id="buyCount" validateType="buyCountPercent" expression="10#0.2" orElse="defaultTrue">
-            <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="org.eddy.solver.BuyInEmailSolver"/>
+            <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInEmailSolver"/>
         </swing>
     </swing>
-    <swing id="defaultTrue" validateType="defaultValidater" executor="org.eddy.swing.solver.ElseFlowSolver"/>
+    <swing id="defaultTrue" validateType="defaultValidater" executor="elseSolver"/>
 </swings>

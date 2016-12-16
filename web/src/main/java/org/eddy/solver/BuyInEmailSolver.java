@@ -8,12 +8,14 @@ import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.solver.define.SwingFlowSolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 /**
  * Created by eddy on 2016/12/15.
  */
+@Component("buyInEmailSolver")
 public class BuyInEmailSolver implements SwingFlowSolver {
 
     private static String TO_EMAIL = "eddyxu1213@126.com";
