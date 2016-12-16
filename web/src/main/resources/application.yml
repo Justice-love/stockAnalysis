@@ -1,6 +1,6 @@
 spring:
     profiles:
-      active: pro
+      active: dev
     mail:
       host: smtp.mxhichina.com
       port: 25
