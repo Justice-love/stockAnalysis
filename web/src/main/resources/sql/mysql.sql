@@ -68,3 +68,6 @@ CREATE TABLE `stock_daily_source` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='股票每日价格汇总信息';
 
+
+CREATE INDEX `idx_stock_code`  ON `stock`.`stock_source_data` (stock_code)
+
