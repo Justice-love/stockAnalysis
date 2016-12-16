@@ -77,15 +77,14 @@ CREATE TABLE `stock_want_buy` (
   `stock_code` varchar(45) DEFAULT NULL COMMENT '股票代码',
   `current_price` varchar(45) DEFAULT NULL,
   `current_up` varchar(45) DEFAULT NULL,
+  `current_stock_date` varchar(45) DEFAULT NULL,
+  `current_stock_time` varchar(45) DEFAULT NULL,
   `validaters` varchar(100) DEFAULT NULL COMMENT '通过的校验器, ｜分隔',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间时间',
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='希望买入的股票';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='希望买入的股票';
 
-ALTER TABLE `stock`.`stock_want_buy`
-ADD COLUMN `current_date` VARCHAR(45) NULL AFTER `current_up`,
-ADD COLUMN `current_time` VARCHAR(45) NULL AFTER `current_date`;
 
 
 

@@ -6,8 +6,8 @@
         <result column="name" property="name"/>
         <result column="stock_code" property="stockCode"/>
         <result column="current_price" property="currentPrice"/>
-        <result column="current_date" property="currentDate"/>
-        <result column="current_time" property="currentTime"/>
+        <result column="current_stock_date" property="currentDate"/>
+        <result column="current_stock_time" property="currentTime"/>
         <result column="current_up" property="currentUp"/>
         <result column="validaters" property="validaters"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
@@ -15,8 +15,8 @@
     </resultMap>
 
     <sql id="table">stock.stock_want_buy</sql>
-    <sql id="basicColumns">name, stock_code, current_price, current_up, validaters, current_date, current_time</sql>
-    <sql id="allColumns">id, name, stock_code, validaters, create_time, update_time</sql>
+    <sql id="basicColumns">name, stock_code, current_price, current_up, validaters, current_stock_date, current_stock_time</sql>
+    <sql id="allColumns">id, name, stock_code, validaters, create_time, update_time, current_stock_date, current_stock_time</sql>
 
     <insert id="insert" parameterType="org.eddy.entity.StockWantBuy">
         INSERT INTO <include refid="table"/> (<include refid="basicColumns"/>) VALUES
@@ -27,8 +27,8 @@
         SET update_time = #{now}
         , current_price = #{item.currentPrice}
         , current_up = #{item.currentUp}
-        , current_date = #{item.currentDate}
-        , current_time = #{item.currentTime}
+        , current_stock_date = #{item.currentDate}
+        , current_stock_time = #{item.currentTime}
         where id = #{id}
     </update>
     <select id="selectByNameAndCode" resultMap="wantBuy">
