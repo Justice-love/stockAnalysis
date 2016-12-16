@@ -40,7 +40,7 @@ public class EmailNotifyService implements NotifyService {
                 message.setSubject(others[2]);
                 Map model = new HashMap();
                 model.put("context", context);
-                model.put("time", DateFormatUtils.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss", Locale.SIMPLIFIED_CHINESE));
+                model.put("time", DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss", Locale.SIMPLIFIED_CHINESE));
                 String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "template/"+ others[0] +".vm", model);
                 message.setText(text, true);
             }
