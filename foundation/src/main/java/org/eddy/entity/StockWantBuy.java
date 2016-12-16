@@ -17,6 +17,10 @@ public class StockWantBuy {
 
     private String currentUp;
 
+    private String currentTime;
+
+    private String currentDate;
+
     private String validaters;
 
     private Date createTime;
@@ -85,5 +89,21 @@ public class StockWantBuy {
 
     public void setCurrentUp(String currentUp) {
         this.currentUp = currentUp;
+    }
+
+    public String getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(String currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public String getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(String currentDate) {
+        this.currentDate = currentDate;
     }
 }

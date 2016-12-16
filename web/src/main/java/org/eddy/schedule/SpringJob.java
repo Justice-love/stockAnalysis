@@ -48,7 +48,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "10 0-59/10 9-15 * * 1-5 ")
+    @Scheduled(fixedDelay = 10_000)
     public void analysisToBuyStock() {
         try {
             stockBuyManager.needBy();

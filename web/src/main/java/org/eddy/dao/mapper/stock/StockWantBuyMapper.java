@@ -17,5 +17,5 @@ public interface StockWantBuyMapper {
 
     List<StockWantBuy> selectByNameAndCode(@Param("name") String name, @Param("code") String code);
 
-    int updateById(@Param("id") int id, @Param("now") Date now, @Param("currentPrice") String currentPrice, @Param("currentUp") String currentUp);
+    int updateById(@Param("id") int id, @Param("now") Date now, @Param("item") StockWantBuy stockWantBuy);
 }

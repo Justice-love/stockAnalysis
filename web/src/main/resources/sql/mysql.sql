@@ -83,6 +83,10 @@ CREATE TABLE `stock_want_buy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='希望买入的股票';
 
+ALTER TABLE `stock`.`stock_want_buy`
+ADD COLUMN `current_date` VARCHAR(45) NULL AFTER `current_up`,
+ADD COLUMN `current_time` VARCHAR(45) NULL AFTER `current_date`;
+
 
 
 

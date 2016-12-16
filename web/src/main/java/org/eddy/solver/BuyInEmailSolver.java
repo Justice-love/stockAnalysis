@@ -35,6 +35,8 @@ public class BuyInEmailSolver implements SwingFlowSolver {
         stockWantBu.setStockCode(context.getStock().getStockCode());
         stockWantBu.setCurrentPrice(context.getStock().getPrice());
         stockWantBu.setCurrentUp(context.getStock().getUp());
+        stockWantBu.setCurrentDate(context.getStock().getDate());
+        stockWantBu.setCurrentTime(context.getStock().getTime());
         stockWantBu.setValidaters(context.getFlowSwings().stream().map(swing -> swing.getValidateType().name()).collect(Collectors.joining(" | ")));
         Boolean flag = stockWantBuyService.insertOrUpdateNeedNotify(stockWantBu);
         if (flag) {
