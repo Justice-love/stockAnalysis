@@ -296,4 +296,20 @@ public class Stock {
     public void setDealMoney(String dealMoney) {
         this.dealMoney = dealMoney;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", up='" + up + '\'' +
+                ", upPrice='" + upPrice + '\'' +
+                ", todayBegin='" + todayBegin + '\'' +
+                ", yesterdayEnd='" + yesterdayEnd + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", stockCode='" + stockCode + '\'' +
+                '}';
+    }
 }

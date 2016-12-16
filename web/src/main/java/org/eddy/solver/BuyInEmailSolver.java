@@ -1,11 +1,15 @@
 package org.eddy.solver;
 
+import org.eddy.entity.StockWantBuy;
 import org.eddy.service.NotifyService;
+import org.eddy.service.StockWantBuyService;
 import org.eddy.swing.entity.SwingValidateContext;
 import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.solver.define.SwingFlowSolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.util.stream.Collectors;
 
 /**
  * Created by eddy on 2016/12/15.
@@ -19,8 +23,18 @@ public class BuyInEmailSolver implements SwingFlowSolver {
     @Qualifier("email")
     private NotifyService emailService;
 
+    @Autowired
+    private StockWantBuyService stockWantBuyService;
+
     @Override
     public void solve(SwingValidateContext context) throws SwingException {
+        StockWantBuy stockWantBu = new StockWantBuy();
+        stockWantBu.setName(context.getStock().getName());
+        stockWantBu.setStockCode(context.getStock().getStockCode());
+        stockWantBu.setCurrentPrice(context.getStock().getPrice());
+        stockWantBu.setCurrentUp(context.getStock().getUp());
+        stockWantBu.setValidaters(context.getFlowSwings().stream().map(swing -> swing.getValidateType().name()).collect(Collectors.joining(" | ")));
+        Boolean flag = stockWantBuyService.insertOrUpdateNeedNotify(stockWantBu);
         emailService.notify(context, "toBuyTemplate", TO_EMAIL, BUY_IN);
     }
 }
