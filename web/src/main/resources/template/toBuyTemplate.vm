@@ -5,5 +5,7 @@
     <li>当前价格：${context.stock.price}</li>
     <li>当前涨幅：${context.stock.up}</li>
     <li>时   间：${time}</li>
-    <li>通过规则：#foreach($item in $context.flowSwings) $item.validateType.name() | #end</li>
+    <li>通过规则：<br/>
+        #foreach($item in $context.flowSwings) $item.validateType.name()($item.validateType.description)<br/>#end
+    </li>
 </ul>

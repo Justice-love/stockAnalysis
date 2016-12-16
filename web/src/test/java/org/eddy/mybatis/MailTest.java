@@ -38,7 +38,10 @@ public class MailTest {
 
     @Test
     public void testMail() {
-        SwingValidateContext context = new SwingValidateContext(new Swing(null, null, null, Validater.buyCountPercent), new Stock("第一支", "sh000001"), null);
+        Stock stock = new Stock("第一支", "sh000001");
+        stock.setPrice("12.38");
+        stock.setUp("3.7%");
+        SwingValidateContext context = new SwingValidateContext(new Swing(null, null, null, Validater.buyCountPercent), stock, null);
         context.addSwingChain(new Swing(null, null, null, Validater.buyPrice));
         context.addSwingChain(new Swing(null, null, null, Validater.defaultValidater));
         mailService.notify(context, "toBuyTemplate", "eddyxu1213@126.com", "第一支");

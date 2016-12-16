@@ -15,7 +15,7 @@ public enum Validater {
     /**
      * 默认调用器
      */
-    defaultValidater {
+    defaultValidater("默认校验器") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             return true;
@@ -25,7 +25,7 @@ public enum Validater {
     /**
      * 买入价格持续高于当前价格
      */
-    buyPrice {
+    buyPrice("买入价格高于当前价格") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -46,7 +46,7 @@ public enum Validater {
     /**
      * 卖出价格持续高于当前价格
      */
-    salePrice {
+    salePrice("卖出价格持续高于当前价格") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -67,7 +67,7 @@ public enum Validater {
     /**
      * 买入持续比卖出高于一定比例
      */
-    buyCountPercent {
+    buyCountPercent("买入数目高于卖出数目") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -94,7 +94,7 @@ public enum Validater {
     /**
      * 卖出持续比买入高于一定比例
      */
-    saleContentPercent {
+    saleContentPercent("卖出数目高于买入数目") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -120,7 +120,7 @@ public enum Validater {
     /**
      * 持续涨幅
      */
-    continuedUp {
+    continuedUp("持续上涨") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -151,7 +151,7 @@ public enum Validater {
     /**
      * 持续下跌超过一定幅度
      */
-    continueDown {
+    continueDown("持续下跌") {
         @Override
         public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
             Assert.notEmpty(groupStocks, "groupStocks can not be empty");
@@ -183,5 +183,15 @@ public enum Validater {
     protected static String CHAR = "#";
     public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
         throw new UnsupportedOperationException("not support");
+    }
+
+    private String description;
+
+    private Validater(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
