@@ -9,6 +9,8 @@ import org.eddy.httpclient.HttpClientPraseJob;
 import org.eddy.jsoup.JsoupParseJob;
 import org.eddy.service.CrawlerService;
 import org.eddy.xml.XmlContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
  */
 @Service
 public class CrawlerServiceImpl implements CrawlerService{
+
+    private static final Logger logger = LoggerFactory.getLogger(CrawlerServiceImpl.class);
 
     private ParseJob jsoupJob = new JsoupParseJob();
     private ParseJob httpClientJob = new HttpClientPraseJob();
@@ -36,9 +40,10 @@ public class CrawlerServiceImpl implements CrawlerService{
                 }
                 return stock;
             } catch (JsoupException e) {
-                throw new RuntimeException(e);
+                logger.error("crawlStock error,url:" + s.getUrl(), e);
+                return null;
             }
-        }).collect(Collectors.toList());
+        }).filter(stock -> stock != null).collect(Collectors.toList());
         return stockList;
     }
 }
