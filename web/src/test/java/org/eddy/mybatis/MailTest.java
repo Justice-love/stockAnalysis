@@ -41,7 +41,7 @@ public class MailTest {
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
                 message.setTo("eddyxu1213@126.com");
-                message.setFrom("sharter@126.com");
+                message.setFrom("stock@just-love.cn");
                 message.setSubject("test");
                 Map model = new HashMap();
                 model.put("user", user);
