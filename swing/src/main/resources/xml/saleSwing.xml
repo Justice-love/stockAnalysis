@@ -6,6 +6,6 @@
         <swing id="defaultTrue" validateType="defaultValidater" executor="logFlowSolver"/>
     </swing>
     <swing id="down" validateType="lowerThanPaid" expect="{boughtPrice}">
-        <swing id="bothSale" validateType="saleContentPercent" expression="5#0.1" executor="saleOutEmailSolver"/>
+        <swing id="bothSale" validateType="saleContentPercent" expression="5#0.03" executor="saleOutEmailSolver"/>
     </swing>
 </swings>
