@@ -3,6 +3,7 @@ package org.eddy.schedule;
 import org.eddy.manager.ComputerAndLoadHistoryStock;
 import org.eddy.manager.CrawlStockManager;
 import org.eddy.manager.StockBuyManager;
+import org.eddy.manager.StockSaleManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class SpringJob {
     @Autowired
     private StockBuyManager stockBuyManager;
 
+    @Autowired
+    private StockSaleManager stockSaleManager;
+
     @Scheduled(cron = "10 0-59 9-15 * * 1-5 ")
     public void crawlAllUrl() {
         try {
@@ -54,6 +58,15 @@ public class SpringJob {
             stockBuyManager.needBy();
         } catch (Exception e) {
             logger.error("execute Schedule analysisToBuyStock error", e);
+        }
+    }
+
+    @Scheduled(cron = "50 0-59/3 9-15 * * 1-5 ")
+    public void analysisToSaleStock() {
+        try {
+            stockSaleManager.shouldSale();
+        } catch (Exception e) {
+            logger.error("execute Schedule analysisToSaleStock error", e);
         }
     }
 
