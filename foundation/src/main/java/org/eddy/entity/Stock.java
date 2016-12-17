@@ -1,5 +1,7 @@
 package org.eddy.entity;
 
+import java.util.Date;
+
 /**
  * Created by eddy on 2016/12/7.
  */
@@ -64,6 +66,11 @@ public class Stock {
     private String dealStock;
 
     private String dealMoney;
+
+    //已买股票信息
+    private String boughtPrice;
+
+    private Date boughtTime;
 
     public Stock() {
     }
@@ -295,6 +302,22 @@ public class Stock {
 
     public void setDealMoney(String dealMoney) {
         this.dealMoney = dealMoney;
+    }
+
+    public String getBoughtPrice() {
+        return boughtPrice;
+    }
+
+    public void setBoughtPrice(String boughtPrice) {
+        this.boughtPrice = boughtPrice;
+    }
+
+    public Date getBoughtTime() {
+        return boughtTime;
+    }
+
+    public void setBoughtTime(Date boughtTime) {
+        this.boughtTime = boughtTime;
     }
 
     @Override

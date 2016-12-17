@@ -66,4 +66,15 @@ public class BoughtStock {
     public void setRemoved(boolean removed) {
         this.removed = removed;
     }
+
+    @Override
+    public String toString() {
+        return "BoughtStock{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", stockCode='" + stockCode + '\'' +
+                ", buyTime=" + buyTime +
+                ", buyPrice='" + buyPrice + '\'' +
+                '}';
+    }
 }
