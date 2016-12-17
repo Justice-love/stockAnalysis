@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>卖出股票提醒邮件</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3 id="-">卖出股票提醒</h3>
+<ul>
+    <li>股票名称：<span  th:text="${context.stock.name}"/></li>
+    <li>股票代码：<span  th:text="${context.stock.stockCode}"/></li>
+    <li>当前价格：<span  th:text="${context.stock.price}"/></li>
+    <li>当前涨幅：<span  th:text="${context.stock.up}"/></li>
+    <li>当前日期：<span  th:text="${context.stock.date}"/></li>
+    <li>当前时间：<span  th:text="${context.stock.time}"/></li>
+    <li>推送时间：<span  th:text="${#dates.format(pushTime, 'yyyy-MM-dd HH:mm:ss')}"/></li>
+    <li>通过规则：
+        <ul th:each="item : ${context.flowSwings}">
+            <li th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')'"/>
+        </ul>
+    </li>
+</ul></body>
+</html>

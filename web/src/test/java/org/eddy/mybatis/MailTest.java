@@ -1,9 +1,7 @@
 package org.eddy.mybatis;
 
-import org.apache.velocity.app.VelocityEngine;
 import org.eddy.ApplicationStart;
 import org.eddy.entity.Stock;
-import org.eddy.entity.pojo.User;
 import org.eddy.service.NotifyService;
 import org.eddy.swing.entity.Swing;
 import org.eddy.swing.entity.SwingValidateContext;
@@ -13,16 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.ui.velocity.VelocityEngineUtils;
-
-import javax.mail.internet.MimeMessage;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by eddy on 2016/12/15.
@@ -41,7 +31,9 @@ public class MailTest {
         Stock stock = new Stock("第一支", "sh000001");
         stock.setPrice("12.38");
         stock.setUp("3.7%");
-        SwingValidateContext context = new SwingValidateContext(new Swing(null, null, null, Validater.buyCountPercent), stock, null);
+        stock.setDate("2016");
+        stock.setTime("17:00");
+        SwingValidateContext context = new SwingValidateContext(new Swing("id", null, null, Validater.buyCountPercent), stock, null);
         context.addSwingChain(new Swing(null, null, null, Validater.buyPrice));
         context.addSwingChain(new Swing(null, null, null, Validater.defaultValidater));
         mailService.notify(context, "toBuyTemplate", "eddyxu1213@126.com", "第一支");

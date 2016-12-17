@@ -1,7 +1,5 @@
 package org.eddy.service.impl;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.velocity.app.VelocityEngine;
 import org.eddy.service.NotifyService;
 import org.eddy.swing.entity.SwingValidateContext;
 import org.slf4j.Logger;
@@ -9,16 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.velocity.VelocityEngineUtils;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.PostConstruct;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,24 +37,26 @@ public class EmailNotifyService implements NotifyService {
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
-    private VelocityEngine velocityEngine;
+    private TemplateEngine templateEngine;
 
     @Override
     public void notify(SwingValidateContext context, String ... others) {
-        MimeMessagePreparator preparator = new MimeMessagePreparator() {
-            public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-                message.setTo(others[1]);
-                message.setFrom(EMAIL_FROM);
-                message.setSubject(others[2]);
-                Map model = new HashMap();
-                model.put("context", context);
-                model.put("time", DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss", Locale.SIMPLIFIED_CHINESE));
-                String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "template/"+ others[0] +".vm", model);
-                message.setText(text, true);
-            }
-        };
-        this.mailSender.send(preparator);
+        final Context ctx = new Context(Locale.SIMPLIFIED_CHINESE);
+        ctx.setVariable("context", context);
+        ctx.setVariable("pushTime", new Date());
+        final String htmlContent = this.templateEngine.process("mail/"+others[0], ctx);
+        final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
+        final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
+        try {
+            message.setFrom(EMAIL_FROM);
+            message.setTo(others[1]);
+            message.setSubject(others[2]);
+            message.setText(htmlContent, true);
+            this.mailSender.send(mimeMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
