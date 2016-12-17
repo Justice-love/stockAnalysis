@@ -1,4 +1,4 @@
-package org.eddy.mybatis;
+package org.eddy.test;
 
 import org.eddy.ApplicationStart;
 import org.eddy.manager.ComputerAndLoadHistoryStock;

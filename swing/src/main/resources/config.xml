@@ -3,4 +3,5 @@
 
 <config>
     <import path="xml/swing.xml"/>
+    <import path="xml/saleSwing.xml"/>
 </config>

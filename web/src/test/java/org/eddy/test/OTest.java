@@ -1,4 +1,4 @@
-package org.eddy.mybatis;
+package org.eddy.test;
 
 import org.junit.Assert;
 import org.junit.Test;

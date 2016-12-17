@@ -1,12 +1,9 @@
-package org.eddy.mybatis;
+package org.eddy.test;
 
-import org.apache.commons.lang3.StringUtils;
 import org.eddy.ApplicationStart;
 import org.eddy.dao.mapper.stock.ErrorStockMapper;
 import org.eddy.dao.mapper.stock.StockMapper;
 import org.eddy.entity.Stock;
-import org.eddy.entity.Url;
-import org.eddy.exception.JsoupException;
 import org.eddy.service.StockService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by eddy on 2016/12/11.

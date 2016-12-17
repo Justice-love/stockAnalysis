@@ -82,8 +82,8 @@ public class SwingFlow {
             }
         } else if (computerM.matches()) {
             String[] arr = content.split("\\s");
-            String key1 = arr[0].substring(0, content.length() - 1).substring(1);
-            String key2 = arr[2].substring(0, content.length() - 1).substring(1);
+            String key1 = arr[0].substring(0, arr[0].length() - 1).substring(1);
+            String key2 = arr[2].substring(0, arr[2].length() - 1).substring(1);
             try {
                 double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
                 double value2 = Double.parseDouble(BeansUtil.readPropertie(stock, key2));
@@ -93,7 +93,7 @@ public class SwingFlow {
             }
         } else if (xM.matches()) {
             String[] arr = content.split("\\s");
-            String key1 = arr[0].substring(0, content.length() - 1).substring(1);
+            String key1 = arr[0].substring(0, arr[0].length() - 1).substring(1);
             try {
                 double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
                 double value2 = Double.parseDouble(arr[2]);

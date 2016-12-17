@@ -1,11 +1,10 @@
-package org.eddy.mybatis;
+package org.eddy.test;
 
 import org.eddy.ApplicationStart;
 import org.eddy.dao.mapper.stock.StockMapper;
 import org.eddy.entity.Stock;
 import org.eddy.swing.SwingContext;
 import org.eddy.swing.entity.Swing;
-import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.flow.SwingFlow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
