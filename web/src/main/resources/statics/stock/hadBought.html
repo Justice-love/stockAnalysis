@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>已购买股票信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3 id="-">已购买股票信息</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th style="text-align:center">股票名称</th>
+        <th style="text-align:center">股票代码</th>
+        <th style="text-align:center">购买价格</th>
+        <th style="text-align:center">购买时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="toBuys" type="java"*/-->
+    <tr th:each="item : ${bought}">
+        <td th:text="${item.id}"/>
+        <td style="text-align:center" th:text="${item.name}"/>
+        <td style="text-align:center" th:text="${item.stockCode}"/>
+        <td style="text-align:center" th:text="${item.buyPrice}"/>
+        <td style="text-align:center" th:text="${#dates.format(item.buyTime, 'yyyy-MM-dd HH:mm:ss')}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

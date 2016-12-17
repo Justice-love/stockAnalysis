@@ -1,0 +1,17 @@
+package org.eddy.service;
+
+import org.eddy.entity.BoughtStock;
+
+import java.util.List;
+
+/**
+ * Created by eddy on 2016/12/17.
+ */
+public interface BoughtStockService {
+
+    void insertOne(BoughtStock boughtStock);
+
+    void deleteOne(int id);
+
+    List<BoughtStock> selectAll();
+}

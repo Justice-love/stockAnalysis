@@ -7,6 +7,7 @@ import org.eddy.service.StockWantBuyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,14 @@ public class StockWantBuyServiceImpl implements StockWantBuyService {
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         stockWantBuyMapper.deleteById(id);
+    }
+
+    @Override
+    public StockWantBuy selectById(int id) {
+        Assert.isTrue(id > 0);
+        return stockWantBuyMapper.selectById(id);
     }
 }

@@ -22,4 +22,6 @@ public interface StockWantBuyMapper {
     List<StockWantBuy> selectAll();
 
     int deleteById(int id);
+
+    StockWantBuy selectById(int id);
 }

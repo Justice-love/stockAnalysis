@@ -85,7 +85,13 @@ CREATE TABLE `stock_want_buy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='希望买入的股票';
 
-
-
-
+CREATE TABLE `stock`.`stock_had_buy` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL COMMENT '股票名称',
+  `stock_code` VARCHAR(45) NULL COMMENT '股票代码',
+  `buy_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '买入时间',
+  `buy_price` VARCHAR(45) NULL COMMENT '买入价格',
+  `removed` TINYINT NULL DEFAULT 0 COMMENT '是否删除',
+  PRIMARY KEY (`id`))
+COMMENT = '已买股票';
 

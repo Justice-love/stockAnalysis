@@ -92,5 +92,11 @@
         WHERE stock_code = #{code}
         ORDER BY date desc, time desc
     </select>
+    <select id="selectSortedStockOneDate" resultMap="stock">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+        WHERE stock_code = #{code}
+        and date = #{date}
+        order by time desc
+    </select>
 
 </mapper>

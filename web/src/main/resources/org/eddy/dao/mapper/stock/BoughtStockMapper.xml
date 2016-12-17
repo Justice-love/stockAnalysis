@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eddy.dao.mapper.stock.BoughtStockMapper" >
+<resultMap id="bought" type="org.eddy.entity.BoughtStock">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="stock_code" property="stockCode"/>
+    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP"/>
+    <result column="buy_price" property="buyPrice"/>
+    <result column="removed" property="removed" jdbcType="BIT"/>
+</resultMap>
+    <sql id="table">stock.stock_had_buy</sql>
+    <sql id="columns">name,stock_code,buy_time,buy_price</sql>
+    <sql id="allcolumns">id,name,stock_code,buy_time,buy_price,removed</sql>
+
+    <insert id="insertOne" parameterType="org.eddy.entity.BoughtStock">
+        INSERT INTO <include refid="table"/> (<include refid="columns"/>) VALUES
+        (#{name}, #{stockCode}, #{buyTime}, #{buyPrice})
+    </insert>
+    <update id="deleteOne">
+        UPDATE <include refid="table"/>
+        SET removed = 1
+        where id = #{id}
+    </update>
+    <select id="selectBought" resultMap="bought">
+        SELECT <include refid="allcolumns"/> FROM <include refid="table"/>
+        WHERE removed = 0;
+    </select>
+
+
+</mapper>

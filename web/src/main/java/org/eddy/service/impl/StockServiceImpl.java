@@ -9,6 +9,7 @@ import org.eddy.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -81,6 +82,13 @@ public class StockServiceImpl implements StockService {
     @Override
     public List<Stock> selectSortedStocks(String code) {
         return stockMapper.selectSortedStocks(code);
+    }
+
+    @Override
+    public List<Stock> selectSortedStocksOneDate(String code, String date) {
+        Assert.notNull(code);
+        Assert.notNull(date);
+        return stockMapper.selectSortedStockOneDate(code, date);
     }
 
     private void merge(List<Stock> ori, List<Stock> statistic) {

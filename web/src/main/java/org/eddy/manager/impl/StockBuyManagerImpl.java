@@ -1,8 +1,10 @@
 package org.eddy.manager.impl;
 
+import org.eddy.entity.BoughtStock;
 import org.eddy.entity.Stock;
 import org.eddy.entity.StockWantBuy;
 import org.eddy.manager.StockBuyManager;
+import org.eddy.service.BoughtStockService;
 import org.eddy.service.DailyStockService;
 import org.eddy.service.StockService;
 import org.eddy.service.StockWantBuyService;
@@ -13,7 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
+import java.util.Date;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -35,6 +40,9 @@ public class StockBuyManagerImpl implements StockBuyManager {
 
     @Autowired
     private StockWantBuyService stockWantBuyService;
+
+    @Autowired
+    private BoughtStockService boughtStockService;
 
     @Autowired
     private SwingFlow swingFlow;
@@ -60,7 +68,29 @@ public class StockBuyManagerImpl implements StockBuyManager {
     }
 
     @Override
+    @Transactional
     public void deleteOneById(int id) {
         stockWantBuyService.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void buyStock(int id) {
+        StockWantBuy stockWantBuy = stockWantBuyService.selectById(id);
+        List<Stock> stockList = stockService.selectSortedStocksOneDate(stockWantBuy.getStockCode(), stockWantBuy.getCurrentDate());
+        Assert.notEmpty(stockList);
+        Stock message = stockList.get(0);
+        BoughtStock boughtStock = new BoughtStock();
+        boughtStock.setName(message.getName());
+        boughtStock.setStockCode(message.getStockCode());
+        boughtStock.setBuyPrice(message.getPrice());
+        boughtStock.setBuyTime(new Date());
+        boughtStockService.insertOne(boughtStock);
+        stockWantBuyService.deleteById(id);
+    }
+
+    @Override
+    public List<BoughtStock> showBought() {
+        return boughtStockService.selectAll();
     }
 }

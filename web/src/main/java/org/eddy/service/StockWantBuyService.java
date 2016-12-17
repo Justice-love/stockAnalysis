@@ -19,4 +19,6 @@ public interface StockWantBuyService {
     List<StockWantBuy> selectAllToBuy();
 
     void deleteById(int id);
+
+    StockWantBuy selectById(int id);
 }

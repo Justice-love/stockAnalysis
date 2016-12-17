@@ -41,5 +41,8 @@
     <select id="selectAll" resultMap="wantBuy">
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
     </select>
+    <select id="selectById" resultMap="wantBuy">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/> WHERE id = #{id}
+    </select>
 
 </mapper>
