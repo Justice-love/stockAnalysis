@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
+
+<swings>
+    <swing id="sale" validateType="higherThanExpected" expression="3" expect="{boughtPrice} * 1.1" orElse="down">
+        <swing id="defaultTrue" validateType="defaultValidater" executor="logFlowSolver"/>
+    </swing>
+    <swing id="down" validateType="lowerThanPaid" expect="{boughtPrice}">
+        <swing id="bothSale" validateType="saleContentPercent" expression="5#0.1" executor="saleOutEmailSolver"/>
+    </swing>
+</swings>

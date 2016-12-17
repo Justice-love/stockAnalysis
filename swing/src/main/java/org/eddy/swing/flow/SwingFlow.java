@@ -33,6 +33,7 @@ public class SwingFlow {
 
     private final Pattern oneField = Pattern.compile("^\\{\\w+\\}$");
     private final Pattern computer = Pattern.compile("^\\{\\w+\\}\\s+[+|-|*|/]\\s+\\{\\w+\\}$");
+    private final Pattern x = Pattern.compile("^\\{\\w+\\}\\s+[+|-|*|/]\\s+\\d+.?\\d*$");
     private final DecimalFormat df = new DecimalFormat("0.00");
 
     @PostConstruct
@@ -71,6 +72,7 @@ public class SwingFlow {
         String content = expect.trim();
         Matcher oneFieldM = oneField.matcher(content);
         Matcher computerM = computer.matcher(content);
+        Matcher xM = x.matcher(content);
         if (oneFieldM.matches()) {
             String key = content.substring(0, content.length() - 1).substring(1);
             try {
@@ -85,24 +87,42 @@ public class SwingFlow {
             try {
                 double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
                 double value2 = Double.parseDouble(BeansUtil.readPropertie(stock, key2));
-                switch (arr[1]) {
-                    case "+":
-                        return Double.toString(value1 + value2);
-                    case "-":
-                        double result = value1 - value2;
-                        return df.format(result);
-                    case "*":
-                        result = value1 * value2;
-                        return df.format(result);
-                    case "/":
-                        return value2 == 0 ? df.format(value1) : df.format(value1 / value2);
-                    default:
-                        throw new SwingException("not support, content:" + content);
-                }
+                return calculation(arr[1], value1, value2);
+            } catch (Exception e) {
+                throw new SwingException("computer genExpect error, content:" + content, e);
+            }
+        } else if (xM.matches()) {
+            String[] arr = content.split("\\s");
+            String key1 = arr[0].substring(0, content.length() - 1).substring(1);
+            try {
+                double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
+                double value2 = Double.parseDouble(arr[2]);
+                return calculation(arr[1], value1, value2);
             } catch (Exception e) {
                 throw new SwingException("computer genExpect error, content:" + content, e);
             }
         }
         return expect;
+    }
+
+    private String calculation(String operator, double value1, double value2) throws SwingException {
+        try {
+            switch (operator) {
+                case "+":
+                    return Double.toString(value1 + value2);
+                case "-":
+                    double result = value1 - value2;
+                    return df.format(result);
+                case "*":
+                    result = value1 * value2;
+                    return df.format(result);
+                case "/":
+                    return value2 == 0 ? df.format(value1) : df.format(value1 / value2);
+                default:
+                    throw new SwingException("not support operator");
+            }
+        } catch (Exception e) {
+            throw new SwingException("computer genExpect error", e);
+        }
     }
 }

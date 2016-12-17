@@ -6,10 +6,12 @@ import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.solver.define.SwingFlowSolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by eddy on 16/12/16.
  */
+@Component("saleOutEmailSolver")
 public class SaleOutEmailSolver implements SwingFlowSolver {
 
     private static String TO_EMAIL = "eddyxu1213@126.com";

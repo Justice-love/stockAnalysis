@@ -5,10 +5,12 @@ import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.solver.define.SwingFlowSolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by eddy on 2016/12/15.
  */
+@Component("logFlowSolver")
 public class LogFlowSolver implements SwingFlowSolver {
     private static final Logger logger = LoggerFactory.getLogger(LogFlowSolver.class);
     @Override

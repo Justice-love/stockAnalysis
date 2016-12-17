@@ -27,6 +27,14 @@ public class RegxTest {
     }
 
     @Test
+    public void test5() {
+        Pattern pattern = Pattern.compile("^\\{\\w+\\}\\s+[+|-|*|/]\\s+\\d+.?\\d*$");
+        String text = "{aa} + ";
+        Matcher matcher = pattern.matcher(text);
+        System.out.println(matcher.matches());
+    }
+
+    @Test
     public void test3() {
         System.out.println("{aa} + {b}".contains("{") && "{aa} + {b}".contains("}"));
     }

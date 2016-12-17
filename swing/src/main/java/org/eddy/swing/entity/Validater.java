@@ -178,6 +178,37 @@ public enum Validater {
             }
             return true;
         }
+    },
+    higherThanExpected("价格高于预期，存在风险") {
+        @Override
+        public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
+            Assert.notEmpty(groupStocks, "groupStocks can not be empty");
+            List<Stock> stockList = groupStocks.get(groupStocks.lastKey());
+            int time = Integer.parseInt(expression.trim());
+            //adjust
+            if (stockList.size() < time) return false;
+            for (int i = 0; i < time; i++) {
+                Stock stock = stockList.get(i);
+                //当前价格 > 想要买入的价格， 跌落
+                if (Double.parseDouble(stock.getPrice()) < Double.parseDouble(expect)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    },
+    lowerThanPaid("价格低于购买价") {
+        @Override
+        public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
+            Assert.notEmpty(groupStocks, "groupStocks can not be empty");
+            List<Stock> stockList = groupStocks.get(groupStocks.lastKey());
+            Assert.notEmpty(stockList);
+            Stock last = stockList.get(0);
+            if (Double.parseDouble(last.getPrice()) < Double.parseDouble(expect)) {
+                return true;
+            }
+            return false;
+        }
     }
     ;
     protected static String CHAR = "#";
