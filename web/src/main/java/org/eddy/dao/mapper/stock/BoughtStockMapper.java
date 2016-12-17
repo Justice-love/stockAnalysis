@@ -16,4 +16,6 @@ public interface BoughtStockMapper {
     int deleteOne(int id);
 
     List<BoughtStock> selectBought();
+
+    List<BoughtStock> selectByCode(String code);
 }

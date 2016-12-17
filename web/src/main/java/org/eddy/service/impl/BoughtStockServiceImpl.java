@@ -37,4 +37,10 @@ public class BoughtStockServiceImpl implements BoughtStockService {
     public List<BoughtStock> selectAll() {
         return boughtStockMapper.selectBought();
     }
+
+    @Override
+    public List<BoughtStock> selectByCode(String code) {
+        Assert.notNull(code);
+        return boughtStockMapper.selectByCode(code);
+    }
 }

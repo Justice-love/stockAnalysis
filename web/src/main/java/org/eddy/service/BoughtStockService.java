@@ -14,4 +14,6 @@ public interface BoughtStockService {
     void deleteOne(int id);
 
     List<BoughtStock> selectAll();
+
+    List<BoughtStock> selectByCode(String code);
 }

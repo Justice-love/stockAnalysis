@@ -2,7 +2,9 @@ package org.eddy.service.impl;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.eddy.dao.mapper.stock.StockWantBuyMapper;
+import org.eddy.entity.BoughtStock;
 import org.eddy.entity.StockWantBuy;
+import org.eddy.service.BoughtStockService;
 import org.eddy.service.StockWantBuyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,17 @@ public class StockWantBuyServiceImpl implements StockWantBuyService {
     @Autowired
     private StockWantBuyMapper stockWantBuyMapper;
 
+    @Autowired
+    private BoughtStockService boughtStockService;
+
     @Override
     @Transactional
     public boolean insertOrUpdateNeedNotify(StockWantBuy stockWantBuy) {
+        Assert.notNull(stockWantBuy);
+        List<BoughtStock> boughtStocks = boughtStockService.selectByCode(stockWantBuy.getStockCode());
+        if (CollectionUtils.isNotEmpty(boughtStocks)) {
+            return false;
+        }
         List<StockWantBuy> stockWantBuys = stockWantBuyMapper.selectByNameAndCode(stockWantBuy.getName(), stockWantBuy.getStockCode());
         if (CollectionUtils.isEmpty(stockWantBuys)) {
             stockWantBuyMapper.insert(stockWantBuy);

@@ -26,6 +26,10 @@
         SELECT <include refid="allcolumns"/> FROM <include refid="table"/>
         WHERE removed = 0;
     </select>
+    <select id="selectByCode" resultMap="bought">
+        SELECT <include refid="allcolumns"/> FROM <include refid="table"/>
+        WHERE stock_code = #{code}
+    </select>
 
 
 </mapper>
