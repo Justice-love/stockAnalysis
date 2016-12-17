@@ -6,5 +6,11 @@ spring:
       port: 25
       username: stock@just-love.cn
       password: Taobao1234
+    thymeleaf:
+      suffix: .html
+      content-type: text/html
+      mode: HTML5
+      prefix: classpath:/static/
+      encoding: UTF-8
 mybatis:
   mapper-locations: classpath*:org/eddy/dao/mapper/*/*.xml

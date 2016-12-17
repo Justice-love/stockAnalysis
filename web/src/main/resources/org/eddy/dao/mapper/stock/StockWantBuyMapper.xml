@@ -35,5 +35,8 @@
       SELECT <include refid="allColumns"/> FROM <include refid="table"/>
       WHERE name = #{name} and stock_code = #{code}
     </select>
+    <select id="selectAll" resultType="org.eddy.entity.StockWantBuy">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/>
+    </select>
 
 </mapper>

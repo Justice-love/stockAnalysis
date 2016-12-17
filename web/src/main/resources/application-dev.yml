@@ -15,3 +15,5 @@ spring:
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
+  thymeleaf:
+    cache: false

@@ -35,4 +35,9 @@ public class StockWantBuyServiceImpl implements StockWantBuyService {
         }
         return false;
     }
+
+    @Override
+    public List<StockWantBuy> selectAllToBuy() {
+        return stockWantBuyMapper.selectAll();
+    }
 }
