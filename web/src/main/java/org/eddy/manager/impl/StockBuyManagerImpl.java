@@ -1,9 +1,11 @@
 package org.eddy.manager.impl;
 
 import org.eddy.entity.Stock;
+import org.eddy.entity.StockWantBuy;
 import org.eddy.manager.StockBuyManager;
 import org.eddy.service.DailyStockService;
 import org.eddy.service.StockService;
+import org.eddy.service.StockWantBuyService;
 import org.eddy.swing.SwingContext;
 import org.eddy.swing.entity.Swing;
 import org.eddy.swing.flow.SwingFlow;
@@ -32,6 +34,9 @@ public class StockBuyManagerImpl implements StockBuyManager {
     private DailyStockService dailyStockService;
 
     @Autowired
+    private StockWantBuyService stockWantBuyService;
+
+    @Autowired
     private SwingFlow swingFlow;
 
     @Override
@@ -47,5 +52,10 @@ public class StockBuyManagerImpl implements StockBuyManager {
                 logger.error("stock: " + stock, e);
             }
         });
+    }
+
+    @Override
+    public List<StockWantBuy> selectAll() {
+        return stockWantBuyService.selectAllToBuy();
     }
 }

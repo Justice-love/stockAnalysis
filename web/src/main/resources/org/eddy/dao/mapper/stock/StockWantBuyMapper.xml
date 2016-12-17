@@ -16,7 +16,7 @@
 
     <sql id="table">stock.stock_want_buy</sql>
     <sql id="basicColumns">name, stock_code, current_price, current_up, validaters, current_stock_date, current_stock_time</sql>
-    <sql id="allColumns">id, name, stock_code, validaters, create_time, update_time, current_stock_date, current_stock_time</sql>
+    <sql id="allColumns">id, name, stock_code, current_price, current_up, validaters, create_time, update_time, current_stock_date, current_stock_time</sql>
 
     <insert id="insert" parameterType="org.eddy.entity.StockWantBuy">
         INSERT INTO <include refid="table"/> (<include refid="basicColumns"/>) VALUES
@@ -35,7 +35,7 @@
       SELECT <include refid="allColumns"/> FROM <include refid="table"/>
       WHERE name = #{name} and stock_code = #{code}
     </select>
-    <select id="selectAll" resultType="org.eddy.entity.StockWantBuy">
+    <select id="selectAll" resultMap="wantBuy">
         SELECT <include refid="allColumns"/> FROM <include refid="table"/>
     </select>
 

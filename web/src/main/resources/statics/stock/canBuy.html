@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>可买股票信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3 id="-">可买股票信息</h3>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th style="text-align:center">股票名称</th>
+        <th style="text-align:center">股票代码</th>
+        <th style="text-align:center">当前价格</th>
+        <th style="text-align:center">当前涨幅</th>
+        <th style="text-align:center">股价更新日期</th>
+        <th style="text-align:center">股价更新时间</th>
+        <th style="text-align:center">校验规则</th>
+        <th style="text-align:center">入库时间</th>
+        <th style="text-align:center">更新时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="toBuys" type="java"*/-->
+    <tr th:each="item : ${toBuys}">
+        <td th:text="${item.id}"/>
+        <td style="text-align:center" th:text="${item.name}"/>
+        <td style="text-align:center" th:text="${item.stockCode}"/>
+        <td style="text-align:center" th:text="${item.currentPrice}"/>
+        <td style="text-align:center" th:text="${item.currentUp}"/>
+        <td style="text-align:center" th:text="${item.currentTime}"/>
+        <td style="text-align:center" th:text="${item.currentDate}"/>
+        <td style="text-align:center" th:text="${item.validaters}"/>
+        <!--<td style="text-align:center" th:text="${#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}"/>-->
+        <!--<td style="text-align:center" th:text="${#dates.format(updateTime, 'yyyy-MM-dd HH:mm:ss')}"/>-->
+        <td style="text-align:center" th:text="${item.createTime}"/>
+        <td style="text-align:center" th:text="${item.updateTime}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
