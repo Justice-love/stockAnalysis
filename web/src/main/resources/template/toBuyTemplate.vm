@@ -7,7 +7,8 @@
     <li>当前日期：${context.stock.date}</li>
     <li>当前时间：${context.stock.time}</li>
     <li>推送时间：${time}</li>
-    <li>通过规则：<br/>
-        #foreach($item in $context.flowSwings) $item.validateType.name()($item.validateType.description)<br/>#end
+    <li>通过规则：<ul>
+        #foreach($item in $context.flowSwings)<li> $item.validateType.name()($item.validateType.description)</li>#end
+    </ul>
     </li>
 </ul>

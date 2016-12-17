@@ -29,7 +29,7 @@ public class StockWantBuyServiceImpl implements StockWantBuyService {
             return true;
         }
         StockWantBuy stockW = stockWantBuys.get(0);
-        if (stockW.getUpdateTime().getTime() - System.currentTimeMillis() >= 60 * 60 * 1_000) {
+        if (System.currentTimeMillis() - stockW.getUpdateTime().getTime() >= 60 * 60 * 1_000) {
             stockWantBuyMapper.updateById(stockW.getId(), new Date(), stockWantBuy);
             return true;
         }
