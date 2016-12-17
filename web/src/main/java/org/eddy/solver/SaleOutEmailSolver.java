@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class SaleOutEmailSolver implements SwingFlowSolver {
 
     private static String TO_EMAIL = "eddyxu1213@126.com";
-    private static String SALE_OUT = "卖出提醒";
+    private static String SALE_OUT = "卖出提醒(%s)";
 
     @Autowired
     @Qualifier("email")
@@ -23,6 +23,6 @@ public class SaleOutEmailSolver implements SwingFlowSolver {
 
     @Override
     public void solve(SwingValidateContext context) throws SwingException {
-        emailService.notify(context, "toSaleTemplate", TO_EMAIL, SALE_OUT);
+        emailService.notify(context, "toSaleTemplate", TO_EMAIL, String.format(SALE_OUT, context.getStock().getName()));
     }
 }

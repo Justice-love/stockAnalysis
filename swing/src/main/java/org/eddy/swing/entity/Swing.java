@@ -15,6 +15,8 @@ public class Swing {
     private String orElse;
     private String executor;
     private Swing child;
+    //result
+    private boolean success;
 
     //method
     public boolean hasChild() {
@@ -92,5 +94,13 @@ public class Swing {
 
     public void setExpect(String expect) {
         this.expect = expect;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }

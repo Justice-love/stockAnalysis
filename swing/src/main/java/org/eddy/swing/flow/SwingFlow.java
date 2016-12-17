@@ -50,6 +50,7 @@ public class SwingFlow {
         Swing swing = swingValidateContext.getLastSwing();
         Validater validater = swing.getValidateType();
         boolean result = validater.validate(swingValidateContext.getGroupStocks(), swing.getExpression(), genExpect(swing.getExpect(), swingValidateContext.getStock()));
+        swing.setSuccess(result);
         if (result && swing.hasChild()) {
             swingValidateContext.addSwingChain(swing.getChild());
             excute(swingValidateContext);

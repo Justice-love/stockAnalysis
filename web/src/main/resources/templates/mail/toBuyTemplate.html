@@ -16,7 +16,7 @@
     <li>推送时间：<span  th:text="${#dates.format(pushTime, 'yyyy-MM-dd HH:mm:ss')}"/></li>
     <li>通过规则：
         <ul th:each="item : ${context.flowSwings}">
-            <li th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')'"/>
+            <li th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')&nbsp;' + ${item.success}"/>
         </ul>
     </li>
 </ul></body>
