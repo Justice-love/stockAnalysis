@@ -58,4 +58,9 @@ public class StockBuyManagerImpl implements StockBuyManager {
     public List<StockWantBuy> selectAll() {
         return stockWantBuyService.selectAllToBuy();
     }
+
+    @Override
+    public void deleteOneById(int id) {
+        stockWantBuyService.deleteById(id);
+    }
 }

@@ -20,4 +20,6 @@ public interface StockWantBuyMapper {
     int updateById(@Param("id") int id, @Param("now") Date now, @Param("item") StockWantBuy stockWantBuy);
 
     List<StockWantBuy> selectAll();
+
+    int deleteById(int id);
 }

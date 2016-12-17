@@ -40,4 +40,9 @@ public class StockWantBuyServiceImpl implements StockWantBuyService {
     public List<StockWantBuy> selectAllToBuy() {
         return stockWantBuyMapper.selectAll();
     }
+
+    @Override
+    public void deleteById(int id) {
+        stockWantBuyMapper.deleteById(id);
+    }
 }

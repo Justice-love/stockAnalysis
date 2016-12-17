@@ -12,4 +12,6 @@ public interface StockBuyManager {
     void needBy();
 
     List<StockWantBuy> selectAll();
+
+    void deleteOneById(int id);
 }

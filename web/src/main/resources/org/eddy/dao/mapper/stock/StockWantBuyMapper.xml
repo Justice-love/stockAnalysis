@@ -31,6 +31,9 @@
         , current_stock_time = #{item.currentTime}
         where id = #{id}
     </update>
+    <delete id="deleteById">
+        DELETE FROM <include refid="table"/> WHERE id = #{id}
+    </delete>
     <select id="selectByNameAndCode" resultMap="wantBuy">
       SELECT <include refid="allColumns"/> FROM <include refid="table"/>
       WHERE name = #{name} and stock_code = #{code}
