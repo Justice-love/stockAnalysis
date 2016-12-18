@@ -15,8 +15,8 @@
     <li>当前时间：<span  th:text="${context.stock.time}"/></li>
     <li>推送时间：<span  th:text="${#dates.format(pushTime, 'yyyy-MM-dd HH:mm:ss')}"/></li>
     <li>通过规则：
-        <ul th:each="item : ${context.flowSwings}">
-            <li th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')&nbsp;' + ${item.success}"/>
+        <ul>
+            <li th:each="item : ${context.flowSwings}" th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')&nbsp;' + ${item.success}"/>
         </ul>
     </li>
 </ul></body>

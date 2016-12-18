@@ -23,7 +23,6 @@
     </tr>
     </thead>
     <tbody>
-    <!--/*@thymesVar id="toBuys" type="java"*/-->
     <tr th:each="item : ${toBuys}">
         <td th:text="${item.id}"/>
         <td style="text-align:center" th:text="${item.name}"/>
