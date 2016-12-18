@@ -3,7 +3,7 @@
 
 <swings>
     <swing id="buy" validateType="buyPrice" expression="10">
-        <swing id="buyCount" validateType="buyCountPercent" expression="10#0.2" orElse="defaultTrue">
+        <swing id="buyCount" validateType="buyCountPercent" expression="5#0.1" orElse="defaultTrue">
             <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInEmailSolver"/>
         </swing>
     </swing>
