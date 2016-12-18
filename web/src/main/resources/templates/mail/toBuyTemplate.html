@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h3 id="-">股票购买提醒</h3>
+<h2 id="-">股票购买提醒</h2>
+<h4 id="-0">基本信息</h4>
 <ul>
     <li>股票名称：<span  th:text="${context.stock.name}"/></li>
     <li>股票代码：<span  th:text="${context.stock.stockCode}"/></li>
@@ -19,5 +20,15 @@
             <li th:each="item : ${context.flowSwings}" th:text="${item.validateType.name()} + '&nbsp;(' + ${item.validateType.description} + ')&nbsp;' + ${item.success}"/>
         </ul>
     </li>
-</ul></body>
+</ul>
+<h4 id="-2">趋势图</h4>
+<ul>
+    <li>日K线</li>
+</ul>
+<p><img th:src="'http://image.sinajs.cn/newchart/daily/n/' + ${context.stock.stockCode} + '.gif'" alt="日K线"/></p>
+<ul>
+    <li>分时线</li>
+</ul>
+<p><img th:src="'http://image.sinajs.cn/newchart/min/n/' + ${context.stock.stockCode} + '.gif'" alt="分时线"/></p>
+</body>
 </html>
