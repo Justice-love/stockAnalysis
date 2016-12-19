@@ -52,7 +52,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "10 0-59/10 9-15 * * 1-5 ")
+    @Scheduled(cron = "10 0-59 9-15 * * 1-5 ")
     public void analysisToBuyStock() {
         try {
             stockBuyManager.needBy();
@@ -61,7 +61,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "50 0-59/3 9-15 * * 1-5 ")
+    @Scheduled(cron = "50 0-59 9-15 * * 1-5 ")
     public void analysisToSaleStock() {
         try {
             stockSaleManager.shouldSale();
