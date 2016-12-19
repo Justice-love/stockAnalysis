@@ -19,6 +19,6 @@ public class ToBuy {
     @RequestMapping("/toBuy")
     public String showToBuy(Model model) {
         model.addAttribute("toBuys", stockBuyManager.selectAll());
-        return "/stock/canBuy";
+        return "stock/canBuy";
     }
 }

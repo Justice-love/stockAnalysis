@@ -32,6 +32,6 @@ public class BuyStock {
     @RequestMapping("/show")
     public String show(Model model) {
         model.addAttribute("bought", stockBuyManager.showBought());
-        return "/stock/hadBought";
+        return "stock/hadBought";
     }
 }
