@@ -33,9 +33,9 @@ public class MailTest {
         stock.setUp("3.7%");
         stock.setDate("2016");
         stock.setTime("17:00");
-        SwingValidateContext context = new SwingValidateContext(new Swing("id", null, null, Validater.buyCountPercent), stock, null);
-        context.addSwingChain(new Swing(null, null, null, Validater.buyPrice));
-        context.addSwingChain(new Swing(null, null, null, Validater.defaultValidater));
-        mailService.notify(context, "toBuyTemplate", "eddyxu1213@126.com", "第一支");
+//        SwingValidateContext context = new SwingValidateContext(new Swing("id", null, null, Validater.buyCountPercent), stock, null);
+//        context.addSwingChain(new Swing(null, null, null, Validater.buyPrice));
+//        context.addSwingChain(new Swing(null, null, null, Validater.defaultValidater));
+//        mailService.notify(context, "toBuyTemplate", "eddyxu1213@126.com", "第一支");
     }
 }

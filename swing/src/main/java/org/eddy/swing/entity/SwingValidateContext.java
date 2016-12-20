@@ -13,13 +13,13 @@ import java.util.SortedMap;
  */
 public class SwingValidateContext {
 
-    private List<Swing> flowSwings = new ArrayList<>();
+    private List<ValidateSwing> flowSwings = new ArrayList<>();
 
     private Stock stock;
 
     private SortedMap<String, List<Stock>> groupStocks;
 
-    public SwingValidateContext(Swing first, Stock stock, SortedMap<String, List<Stock>> groupStocks) {
+    public SwingValidateContext(ValidateSwing first, Stock stock, SortedMap<String, List<Stock>> groupStocks) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(stock);
         this.flowSwings.add(first);
@@ -27,21 +27,21 @@ public class SwingValidateContext {
         this.groupStocks = groupStocks;
     }
 
-    public void addSwingChain(Swing swing) {
+    public void addSwingChain(ValidateSwing swing) {
         Objects.requireNonNull(swing);
         this.getFlowSwings().add(swing);
     }
 
-    public Swing getLastSwing() {
+    public ValidateSwing getLastSwing() {
         Assert.notEmpty(flowSwings, "rule modules can't be null/empty");
         return flowSwings.get(flowSwings.size() - 1);
     }
 
-    public List<Swing> getFlowSwings() {
+    public List<ValidateSwing> getFlowSwings() {
         return flowSwings;
     }
 
-    public void setFlowSwings(List<Swing> flowSwings) {
+    public void setFlowSwings(List<ValidateSwing> flowSwings) {
         this.flowSwings = flowSwings;
     }
 

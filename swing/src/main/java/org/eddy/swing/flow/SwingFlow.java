@@ -5,6 +5,7 @@ import org.eddy.entity.Stock;
 import org.eddy.swing.SwingContext;
 import org.eddy.swing.entity.Swing;
 import org.eddy.swing.entity.SwingValidateContext;
+import org.eddy.swing.entity.ValidateSwing;
 import org.eddy.swing.entity.Validater;
 import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.util.CallUtil;
@@ -42,23 +43,24 @@ public class SwingFlow {
     }
 
     public void flow(SortedMap<String, List<Stock>> groupStocks, Stock stock, Swing swing) throws SwingException{
-        SwingValidateContext swingValidateContext = new SwingValidateContext(swing, stock, groupStocks);
+        SwingValidateContext swingValidateContext = new SwingValidateContext(new ValidateSwing(swing), stock, groupStocks);
         excute(swingValidateContext);
     }
 
     private void excute(SwingValidateContext swingValidateContext) throws SwingException{
-        Swing swing = swingValidateContext.getLastSwing();
+        ValidateSwing validateSwing = swingValidateContext.getLastSwing();
+        Swing swing = validateSwing.getSwing();
         Validater validater = swing.getValidateType();
         boolean result = validater.validate(swingValidateContext.getGroupStocks(), swing.getExpression(), genExpect(swing.getExpect(), swingValidateContext.getStock()));
-        swing.setSuccess(result);
+        validateSwing.setSuccess(result);
         if (result && swing.hasChild()) {
-            swingValidateContext.addSwingChain(swing.getChild());
+            swingValidateContext.addSwingChain(new ValidateSwing(swing.getChild()));
             excute(swingValidateContext);
         } else if (result){
             CallUtil.call(swing.getExecutor(), swingValidateContext);
         } else if (!result && StringUtils.isNotBlank(swing.getOrElse())) {
             Swing or = SwingContext.getContext().getSwings().get(swing.getOrElse()).stream().filter(s -> StringUtils.equals(s.getId(), swing.getOrElse())).findFirst().orElseThrow(() -> new SwingException("not fount swing id: " + swing.getOrElse()));
-            swingValidateContext.addSwingChain(or);
+            swingValidateContext.addSwingChain(new ValidateSwing(or));
             excute(swingValidateContext);
         }
     }
