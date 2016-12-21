@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eddy.dao.mapper.swing.StockRuleSwingMapper">
+    <resultMap id="swing" type="org.eddy.swing.entity.Swing">
+        <result column="id" property="id"/>
+        <result column="expression" property="expression"/>
+        <result column="validate_type" property="validateType"/>
+        <result column="expect" property="expect"/>
+        <result column="auto_trigger" property="autoTrigger"/>
+        <result column="or_else" property="orElse"/>
+        <result column="executor" property="executor"/>
+        <result column="child_id" property="child" typeHandler="org.eddy.dao.SwingChildTypeHandler"/>
+        <result column="root" property="root"/>
+    </resultMap>
+    <sql id="table">stock.stock_rule_swing</sql>
+    <sql id="columns">id,expression,validate_type,expect,auto_trigger,or_else,executor, child_id, root</sql>
+
+    <select id="selectAll" resultMap="swing">
+        SELECT <include refid="columns"/> FROM <include refid="table"/>
+    </select>
+</mapper>

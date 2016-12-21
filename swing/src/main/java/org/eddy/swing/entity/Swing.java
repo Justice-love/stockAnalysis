@@ -15,6 +15,8 @@ public class Swing {
     private String orElse;
     private String executor;
     private Swing child;
+    //other
+    private boolean root;
 
     //method
     public boolean hasChild() {
@@ -92,5 +94,13 @@ public class Swing {
 
     public void setExpect(String expect) {
         this.expect = expect;
+    }
+
+    public boolean isRoot() {
+        return root;
+    }
+
+    public void setRoot(boolean root) {
+        this.root = root;
     }
 }

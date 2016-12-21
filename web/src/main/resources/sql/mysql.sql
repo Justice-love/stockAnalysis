@@ -93,5 +93,22 @@ CREATE TABLE `stock`.`stock_had_buy` (
   `buy_price` VARCHAR(45) NULL COMMENT '买入价格',
   `removed` TINYINT NULL DEFAULT 0 COMMENT '是否删除',
   PRIMARY KEY (`id`))
-COMMENT = '已买股票';
+ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT = '已买股票';
+
+CREATE TABLE `stock_rule_swing` (
+  `pri_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(45) DEFAULT NULL,
+  `root` tinyint(4) DEFAULT '0',
+  `expression` varchar(45) DEFAULT NULL,
+  `validate_type` varchar(45) DEFAULT NULL,
+  `expect` varchar(45) DEFAULT NULL,
+  `auto_trigger` tinyint(4) DEFAULT NULL,
+  `or_else` varchar(45) DEFAULT NULL,
+  `executor` varchar(45) DEFAULT NULL,
+  `child_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`pri_id`),
+  UNIQUE KEY `idx_swing_id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='规则模块';
+
+
 
