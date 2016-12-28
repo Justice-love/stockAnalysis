@@ -4,7 +4,7 @@
     <resultMap id="swing" type="org.eddy.swing.entity.Swing">
         <result column="id" property="id"/>
         <result column="expression" property="expression"/>
-        <result column="validate_type" property="validateType"/>
+        <result column="validate_type" property="validateType" typeHandler="org.eddy.dao.SwingChildTypeHandler"/>
         <result column="expect" property="expect"/>
         <result column="auto_trigger" property="autoTrigger"/>
         <result column="or_else" property="orElse"/>

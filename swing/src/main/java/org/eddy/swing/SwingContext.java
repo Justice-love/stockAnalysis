@@ -92,7 +92,7 @@ public class SwingContext {
 
     private Swing parseSwing(Node node) {
         Element element = (Element) node;
-        Swing swing = new Swing(Optional.ofNullable(element.getAttribute("id")).orElse(""), Optional.ofNullable(element.getAttribute("expression")).orElse(""), Optional.ofNullable(element.getAttribute("expect")).orElse(""), Validater.valueOf(Optional.ofNullable(element.getAttribute("validateType")).orElse(Validater.buyPrice.name())));
+        Swing swing = new Swing(Optional.ofNullable(element.getAttribute("id")).orElse(""), Optional.ofNullable(element.getAttribute("expression")).orElse(""), Optional.ofNullable(element.getAttribute("expect")).orElse(""), Validater.valueOf(Optional.ofNullable(element.getAttribute("validateType")).orElseThrow(() -> new NullPointerException("validateType can not be null"))));
         Element child = findChild(element);
         if (null != child) {
             swing.setChild(parseSwing(child));
