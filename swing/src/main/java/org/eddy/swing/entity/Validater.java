@@ -4,10 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.Stock;
 import org.springframework.util.Assert;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -36,5 +33,9 @@ public abstract class Validater {
     }
 
     public abstract String name();
+
+    public static Set<Map.Entry<String, Validater>> getAll() {
+        return validaterMap.entrySet();
+    }
 
 }
