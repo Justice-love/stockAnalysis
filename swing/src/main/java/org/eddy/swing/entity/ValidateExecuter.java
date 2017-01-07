@@ -1,4 +1,4 @@
-package org.eddy.swing.entity.groovy.execute;
+package org.eddy.swing.entity;
 
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;

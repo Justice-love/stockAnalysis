@@ -2,7 +2,7 @@ package org.eddy.swing.entity.groovy.handler;
 
 import org.eddy.entity.Stock;
 import org.eddy.swing.entity.Validater;
-import org.eddy.swing.entity.groovy.execute.ValidateExecuter;
+import org.eddy.swing.entity.ValidateExecuter;
 
 import java.util.List;
 import java.util.SortedMap;
