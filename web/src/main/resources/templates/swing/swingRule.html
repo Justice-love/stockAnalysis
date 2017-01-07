@@ -20,5 +20,21 @@
     </tr>
     </tbody>
 </table>
+<h4 id="-2">编辑规则</h4>
+<input type="button" th:value="增加根节点" onclick="addRoot()"/>
+<div id="rule">
+<hr/>
+<p>id:<input type="text" name="id"/>, root: <select name="root"><option value="false">false</option><option value="true" selected="selected">true</option></select>, expression:<input type="text" name="expression"/>, validate_type:<select name="validateType"><option value="buyPrice">buyPrice</option></select>,expect:<input type="text" name="expect"/>, or_else:<input type="text" name="orElse"/>, child_id:<input type="text" name="child"/>。 <input type="button" onclick="addChild(this);" value="&#x589E;&#x52A0;&#x5B50;&#x8282;&#x70B9;"/></p>
+</div>
 </body>
+<script>
+    function addChild(element) {
+        var p = element;
+        p.parentNode.innerHTML = p.parentNode.innerHTML + '<br/>id:<input type="text" name="id"/>, root: <select name="root"><option value="false">false</option><option value="true">true</option></select>, expression:<input type="text" name="expression"/>, validate_type:<select name="validateType"><option value="buyPrice">buyPrice</option></select>,expect:<input type="text" name="expect"/>, or_else:<input type="text" name="orElse"/>, child_id:<input type="text" name="child"/>。 <input type="button" onclick="addChild(this);" value="&#x589E;&#x52A0;&#x5B50;&#x8282;&#x70B9;"/>';
+    }
+    function addRoot() {
+        var d = document.getElementById('rule');
+        d.innerHTML = d.innerHTML + '<hr/><p>id:<input type="text" name="id"/>, root: <select name="root"><option value="false">false</option><option selected="selected" value="true">true</option></select>, expression:<input type="text" name="expression"/>, validate_type:<select name="validateType"><option value="buyPrice">buyPrice</option></select>,expect:<input type="text" name="expect"/>, or_else:<input type="text" name="orElse"/>, child_id:<input type="text" name="child"/>。 <input type="button" onclick="addChild(this);" value="&#x589E;&#x52A0;&#x5B50;&#x8282;&#x70B9;"/></p>';
+    }
+</script>
 </html>
