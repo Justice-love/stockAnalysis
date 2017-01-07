@@ -111,4 +111,14 @@ CREATE TABLE `stock_rule_swing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='规则模块';
 
 
+CREATE TABLE `stock_swing_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `script_name` varchar(45) DEFAULT NULL COMMENT '脚本名称',
+  `script_content` text COMMENT '脚本内容',
+  `script_description` varchar(45) DEFAULT NULL COMMENT '脚本描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='swing在线脚本';
+
+
+
 

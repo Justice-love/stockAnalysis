@@ -28,6 +28,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
+                    <jvmArguments>-parameters</jvmArguments>
                 </configuration>
             </plugin>
         </plugins>
