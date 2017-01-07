@@ -28,6 +28,9 @@ public class ValidateExecuter {
         return (boolean) shell.evaluate(script);
     }
 
+    public ValidateExecuter() {
+    }
+
     public ValidateExecuter(String script, String scriptName, String description) {
         Assert.assertNotNull(script);
         Assert.assertNotNull(scriptName);

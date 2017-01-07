@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eddy.dao.mapper.swing.SwingScriptMapper">
+    <resultMap id="swingScript" type="org.eddy.swing.entity.ValidateExecuter">
+        <result column="script_name" property="scriptName"/>
+        <result column="script_content" property="script"/>
+        <result column="script_description" property="description"/>
+    </resultMap>
+
+    <sql id="table">stock.stock_swing_script</sql>
+    <sql id="columns">script_name, script_content, script_description</sql>
+
+    <insert id="insert" parameterType="org.eddy.swing.entity.ValidateExecuter">
+        INSERT INTO <include refid="table"/> (<include refid="columns"/>) VALUES
+        (#{scriptName}, #{script}, #{description})
+    </insert>
+    <select id="selectAll" resultMap="swingScript">
+        SELECT <include refid="columns"/> FROM <include refid="table"/>
+    </select>
+</mapper>
