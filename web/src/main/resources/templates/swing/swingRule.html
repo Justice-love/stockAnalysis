@@ -6,7 +6,7 @@
 </head>
 <body>
 <h4 id="-">规则模块</h4>
-<table>
+<table border="1">
     <thead>
     <tr>
         <th style="text-align:right">script name</th>
@@ -14,9 +14,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="item : ">
-        <td style="text-align:right" th:text=""/>
-        <td style="text-align:left" th:text=""/>
+    <tr th:each="item : ${validates}">
+        <td style="text-align:right" th:text="${item.getKey()}"/>
+        <td style="text-align:left" th:text="${item.getValue().getDescription()}"/>
     </tr>
     </tbody>
 </table>
