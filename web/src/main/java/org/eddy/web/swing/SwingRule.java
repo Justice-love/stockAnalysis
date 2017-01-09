@@ -1,10 +1,15 @@
 package org.eddy.web.swing;
 
 import org.eddy.manager.SwingScriptManager;
+import org.eddy.web.requestEntity.SwingFormList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by eddy on 2017/1/7.
@@ -19,6 +24,12 @@ public class SwingRule {
     @RequestMapping("/rule")
     public String rule(Model model) {
         model.addAttribute("validates", scriptManager.getAllSwings());
+        return "swing/swingRule";
+    }
+
+    @RequestMapping(value = "/swingAdd", method = RequestMethod.POST)
+    public String swingAdd(SwingFormList formList, Model model) {
+//        System.out.println(swingList);
         return "swing/swingRule";
     }
 
