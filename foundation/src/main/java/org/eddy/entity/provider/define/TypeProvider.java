@@ -6,4 +6,6 @@ package org.eddy.entity.provider.define;
 public interface TypeProvider<T> {
 
     T convert(String value);
+
+    boolean isNotBlank(Object object);
 }

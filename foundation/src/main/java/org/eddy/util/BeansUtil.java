@@ -31,11 +31,15 @@ public class BeansUtil {
         }
     }
 
-    public static String readPropertie(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
+    public static String readPropertie4String(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
+        return readPropertieWithType(obj, key).toString();
+    }
+
+    public static Object readPropertieWithType(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
         BeanInfo beanInfo = Introspector.getBeanInfo(Stock.class);
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         PropertyDescriptor propertyDescriptor = findPropertyDescriptor(obj.getClass(), key);
         Object value = propertyDescriptor.getReadMethod().invoke(obj);
-        return value.toString();
+        return value;
     }
 }

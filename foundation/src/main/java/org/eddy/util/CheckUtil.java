@@ -29,7 +29,7 @@ public class CheckUtil {
         arg1.values().stream().forEach(strings -> {
             try {
                 if (strings.size() == 1) {
-                    BeansUtil.readPropertie(object, strings.get(0));
+                    Object r = BeansUtil.readPropertieWithType(object, strings.get(0));
                 }
             } catch (Exception e) {
 

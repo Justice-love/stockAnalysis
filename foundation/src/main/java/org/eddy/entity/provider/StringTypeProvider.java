@@ -10,8 +10,17 @@ import java.util.Optional;
  */
 public class StringTypeProvider implements TypeProvider<String>{
 
+
     @Override
     public String convert(String value) {
         return Optional.ofNullable(value).orElse(StringUtils.EMPTY);
+    }
+
+    @Override
+    public boolean isNotBlank(Object object) {
+        if (null == object) {
+            return false;
+        }
+        return StringUtils.isNotBlank(object.toString());
     }
 }

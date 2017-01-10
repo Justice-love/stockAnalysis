@@ -82,8 +82,8 @@ public enum SelectType {
             Stock stock = (Stock) content;
             String[] expressions = expression.split("\\s");
             try {
-                String first = BeansUtil.readPropertie(stock, expressions[0]);
-                String second = BeansUtil.readPropertie(stock, expressions[2]);
+                String first = BeansUtil.readPropertie4String(stock, expressions[0]);
+                String second = BeansUtil.readPropertie4String(stock, expressions[2]);
                 String computer =  expressions[1];
                 switch (computer) {
                     case "+":

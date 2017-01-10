@@ -79,7 +79,7 @@ public class SwingFlow {
         if (oneFieldM.matches()) {
             String key = content.substring(0, content.length() - 1).substring(1);
             try {
-                return BeansUtil.readPropertie(stock, key);
+                return BeansUtil.readPropertie4String(stock, key);
             } catch (Exception e) {
                 throw new SwingException("genExpect error, content:" + content, e);
             }
@@ -88,8 +88,8 @@ public class SwingFlow {
             String key1 = arr[0].substring(0, arr[0].length() - 1).substring(1);
             String key2 = arr[2].substring(0, arr[2].length() - 1).substring(1);
             try {
-                double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
-                double value2 = Double.parseDouble(BeansUtil.readPropertie(stock, key2));
+                double value1 = Double.parseDouble(BeansUtil.readPropertie4String(stock, key1));
+                double value2 = Double.parseDouble(BeansUtil.readPropertie4String(stock, key2));
                 return calculation(arr[1], value1, value2);
             } catch (Exception e) {
                 throw new SwingException("computer genExpect error, content:" + content, e);
@@ -98,7 +98,7 @@ public class SwingFlow {
             String[] arr = content.split("\\s");
             String key1 = arr[0].substring(0, arr[0].length() - 1).substring(1);
             try {
-                double value1 = Double.parseDouble(BeansUtil.readPropertie(stock, key1));
+                double value1 = Double.parseDouble(BeansUtil.readPropertie4String(stock, key1));
                 double value2 = Double.parseDouble(arr[2]);
                 return calculation(arr[1], value1, value2);
             } catch (Exception e) {
