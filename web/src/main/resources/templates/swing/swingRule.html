@@ -28,9 +28,10 @@
 </form>
 </body>
 <script>
+    var i = 1;
     function addChild(element) {
         var p = element;
-        p.parentNode.innerHTML = p.parentNode.innerHTML + '<br/>id:<input type="text" name="list[0].id"/>, root: <select name="list[0].root"><option value="false">false</option><option value="true">true</option></select>, expression:<input type="text" name="list[0].expression"/>, validate_type:<select name="list[0].validateType"><option value="buyPrice">buyPrice</option></select>,expect:<input type="text" name="list[0].expect"/>, or_else:<input type="text" name="list[0].orElse"/>, child_id:<input type="text" name="list[0].child.id"/>。 <input type="button" onclick="addChild(this);" value="&#x589E;&#x52A0;&#x5B50;&#x8282;&#x70B9;"/>';
+        p.parentNode.innerHTML = p.parentNode.innerHTML + '<br/>id:<input type="text" name="list['+i+'].id"/>, root: <select name="list['+i+'].root"><option value="false">false</option><option value="true">true</option></select>, expression:<input type="text" name="list['+i+'].expression"/>, validate_type:<select name="list['+i+'].validateType"><option value="buyPrice">buyPrice</option></select>,expect:<input type="text" name="list['+i+'].expect"/>, or_else:<input type="text" name="list['+i+'].orElse"/>, child_id:<input type="text" name="list['+i+'].child.id"/>。 <input type="button" onclick="addChild(this);" value="&#x589E;&#x52A0;&#x5B50;&#x8282;&#x70B9;"/>';
     }
     function addRoot() {
         var d = document.getElementById('rule');
