@@ -7,5 +7,9 @@ public interface TypeProvider<T> {
 
     T convert(String value);
 
-    boolean isNotBlank(Object object);
+    boolean isNotBlank();
+
+    T hold(Object object);
+
+    T get();
 }

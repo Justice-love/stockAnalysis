@@ -2,6 +2,7 @@ package org.eddy.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eddy.entity.Stock;
+import org.eddy.entity.provider.ObjectTypeProvider;
 import org.eddy.entity.provider.StringTypeProvider;
 import org.eddy.entity.provider.define.TypeProvider;
 
@@ -27,19 +28,19 @@ public class BeansUtil {
         if (propertyDescriptor.getPropertyType() == String.class) {
             return new StringTypeProvider();
         } else {
-            return new StringTypeProvider();
+            return new ObjectTypeProvider();
         }
     }
 
     public static String readPropertie4String(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        return readPropertieWithType(obj, key).toString();
+        return readPropertieWithType(obj, key).get().toString();
     }
 
-    public static Object readPropertieWithType(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        BeanInfo beanInfo = Introspector.getBeanInfo(Stock.class);
-        PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+    public static TypeProvider readPropertieWithType(Object obj, String key) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
         PropertyDescriptor propertyDescriptor = findPropertyDescriptor(obj.getClass(), key);
+        TypeProvider typeProvider = findTypeProvider(propertyDescriptor);
         Object value = propertyDescriptor.getReadMethod().invoke(obj);
-        return value;
+        typeProvider.hold(value);
+        return typeProvider;
     }
 }

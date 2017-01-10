@@ -1,14 +1,21 @@
 package org.eddy.swing.entity;
 
+import org.eddy.entity.check.BlankCheck;
+import org.eddy.entity.check.GroupCheck;
+
 /**
  * Created by eddy on 2016/12/13.
  */
 public class Swing {
 
     //REQUIRED
+    @BlankCheck
     private String id;
+    @GroupCheck(name = "c")
     private String expression;
+    @BlankCheck
     private Validater validateType;
+    @GroupCheck(name = "c")
     private String expect;
     //IMPLIED
     private boolean autoTrigger;

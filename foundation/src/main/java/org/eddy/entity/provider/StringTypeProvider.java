@@ -10,6 +10,7 @@ import java.util.Optional;
  */
 public class StringTypeProvider implements TypeProvider<String>{
 
+    private String value;
 
     @Override
     public String convert(String value) {
@@ -17,10 +18,23 @@ public class StringTypeProvider implements TypeProvider<String>{
     }
 
     @Override
-    public boolean isNotBlank(Object object) {
-        if (null == object) {
+    public boolean isNotBlank() {
+        if (null == value) {
             return false;
         }
-        return StringUtils.isNotBlank(object.toString());
+        return StringUtils.isNotBlank(value.toString());
     }
+
+    @Override
+    public String hold(Object object) {
+        value = (String) object;
+        return value;
+    }
+
+    @Override
+    public String get() {
+        return value;
+    }
+
+
 }
