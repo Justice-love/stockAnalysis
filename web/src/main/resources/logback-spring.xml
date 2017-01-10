@@ -3,7 +3,12 @@
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <logger name="org.springframework.web" level="debug"/>
 
+    <springProfile name="pro">
+        <logger name="org.springframework.web" level="info"/>
+    </springProfile>
+
     <springProfile name="dev">
+        <logger name="org.springframework.web" level="debug"/>
         <logger name="org.eddy.dao.mapper" level="debug"></logger>
     </springProfile>
 

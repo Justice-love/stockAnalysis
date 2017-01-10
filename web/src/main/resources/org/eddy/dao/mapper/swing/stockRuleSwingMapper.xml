@@ -4,7 +4,7 @@
     <resultMap id="swing" type="org.eddy.swing.entity.Swing">
         <result column="id" property="id"/>
         <result column="expression" property="expression"/>
-        <result column="validate_type" property="validateType" typeHandler="org.eddy.dao.SwingChildTypeHandler"/>
+        <result column="validate_type" property="validateType" typeHandler="org.eddy.dao.SwingValidaterHandler"/>
         <result column="expect" property="expect"/>
         <result column="auto_trigger" property="autoTrigger"/>
         <result column="or_else" property="orElse"/>
@@ -14,6 +14,19 @@
     </resultMap>
     <sql id="table">stock.stock_rule_swing</sql>
     <sql id="columns">id,expression,validate_type,expect,auto_trigger,or_else,executor, child_id, root</sql>
+    <insert id="insert" parameterType="org.eddy.swing.entity.Swing">
+        INSERT INTO <include refid="table"/> (<include refid="columns"/>) VALUES
+        <foreach collection="list" open="(" close=")" separator=") , (" item="item">
+            #{item.id},
+            #{item.expression},
+            #{item.validateType, typeHandler=org.eddy.dao.SwingValidaterHandler},
+            #{item.expect},
+            #{item.autoTrigger},
+            #{item.orElse},
+            #{item.child, typeHandler=org.eddy.dao.SwingChildTypeHandler}，
+            #{item.root}
+        </foreach>
+    </insert>
 
     <select id="selectAll" resultMap="swing">
         SELECT <include refid="columns"/> FROM <include refid="table"/>

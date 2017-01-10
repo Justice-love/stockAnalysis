@@ -12,4 +12,6 @@ import java.util.List;
 public interface StockRuleSwingMapper {
 
     List<Swing> selectAll();
+
+    void insert(List<Swing> list);
 }
