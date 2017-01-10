@@ -18,4 +18,6 @@ public interface SwingScriptManager {
     List<ValidateExecuter> selectAll();
 
     Set<Map.Entry<String, Validater>> getAllSwings();
+
+    void insertSwings(List<Swing> list);
 }

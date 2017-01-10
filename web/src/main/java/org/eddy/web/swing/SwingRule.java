@@ -5,11 +5,8 @@ import org.eddy.web.requestEntity.SwingFormList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by eddy on 2017/1/7.
@@ -29,7 +26,7 @@ public class SwingRule {
 
     @RequestMapping(value = "/swingAdd", method = RequestMethod.POST)
     public String swingAdd(SwingFormList formList, Model model) {
-//        System.out.println(swingList);
+        scriptManager.insertSwings(formList.getList());
         return "swing/swingRule";
     }
 

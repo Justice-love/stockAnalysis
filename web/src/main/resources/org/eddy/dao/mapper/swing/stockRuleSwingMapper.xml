@@ -23,7 +23,8 @@
             #{item.expect},
             #{item.autoTrigger},
             #{item.orElse},
-            #{item.child, typeHandler=org.eddy.dao.SwingChildTypeHandler}，
+            #{item.executor},
+            #{item.child, typeHandler=org.eddy.dao.SwingChildTypeHandler},
             #{item.root}
         </foreach>
     </insert>
