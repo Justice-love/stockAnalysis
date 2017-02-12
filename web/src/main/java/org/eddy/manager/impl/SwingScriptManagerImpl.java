@@ -6,6 +6,7 @@ import org.eddy.service.SwingService;
 import org.eddy.swing.entity.Swing;
 import org.eddy.swing.entity.ValidateExecuter;
 import org.eddy.swing.entity.Validater;
+import org.eddy.swing.util.GroovyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,17 @@ public class SwingScriptManagerImpl implements SwingScriptManager {
 
     @Override
     public List<ValidateExecuter> selectAll() {
-        return scriptService.selectAll();
+        List<ValidateExecuter> list =  scriptService.selectAll();
+        for (ValidateExecuter executer : list) {
+            try {
+                GroovyUtil.genGroovyValidater(executer.getScript());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public Set<Map.Entry<String, Validater>> getAllSwings() {

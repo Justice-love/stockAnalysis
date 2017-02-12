@@ -119,11 +119,6 @@ CREATE TABLE `stock_swing_script` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='swing在线脚本';
 
-CREATE TABLE `stock`.`stock_swing_groovy` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `stock_swing_groovy_script` TEXT NOT NULL,
-  PRIMARY KEY (`id`));
-
 
 
 
