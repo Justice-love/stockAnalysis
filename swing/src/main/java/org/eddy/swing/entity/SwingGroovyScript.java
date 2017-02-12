@@ -7,4 +7,6 @@ public class SwingGroovyScript {
 
     private Integer id;
 
+    private String script;
+
 }
