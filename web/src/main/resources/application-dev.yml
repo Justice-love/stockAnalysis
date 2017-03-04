@@ -6,15 +6,15 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    minIdle: 1
-    maxActive: 2
-    initialSize: 1
+    minIdle: 3
+    maxActive: 10
+    initialSize: 5
     timeBetweenEvictionRunsMillis: 3000
     minEvictableIdleTimeMillis: 300000
     validationQuery: SELECT 'T' FROM DUAL
     testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
+    testOnBorrow: true
+    testOnReturn: true
   thymeleaf:
     cache: false
 stock:
