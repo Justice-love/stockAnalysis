@@ -18,6 +18,5 @@ spring:
   thymeleaf:
     cache: false
 stock:
-  token: d1d7ad00d65b2e1156ad55e614e24ee2c283513d657d53fee63e0c49e0424920
   url: https://oapi.dingtalk.com/robot/send
   arg: access_token
