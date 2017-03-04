@@ -50,7 +50,7 @@ public class HttpUtil {
     }
 
     private static boolean sendHttpsMsg(HttpMessage message) throws IOException {
-        return false;
+        return sendHttpMsg(message);
     }
 
     private static boolean convertResponse(HttpEntity response) throws IOException {

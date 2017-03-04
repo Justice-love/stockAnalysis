@@ -4,14 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Justice-love on 2017/3/4.
  */
 @ConfigurationProperties(prefix = "stock")
-@Getter
-@Setter
-@ToString
+@Component
 public class StockSolverConfig {
 
     private String token;
@@ -19,4 +18,28 @@ public class StockSolverConfig {
     private String url;
 
     private String arg;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getArg() {
+        return arg;
+    }
+
+    public void setArg(String arg) {
+        this.arg = arg;
+    }
 }
