@@ -7,5 +7,5 @@
     </swing>
     <swing id="down" validateType="lowerThanPaid" expect="{boughtPrice}"  executor="saleOutEmailSolver" orElse="bothSale">
     </swing>
-    <swing id="bothSale" validateType="saleContentPercent" expression="3#0.01" executor="saleOutEmailSolver"/>
+    <swing id="bothSale" validateType="saleContentPercent" expression="3#0.01" executor="saleOutImSolver"/>
 </swings>

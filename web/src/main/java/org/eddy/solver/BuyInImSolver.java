@@ -1,6 +1,5 @@
 package org.eddy.solver;
 
-import com.alibaba.fastjson.JSONObject;
 import org.eddy.config.StockSolverConfig;
 import org.eddy.entity.StockWantBuy;
 import org.eddy.service.StockWantBuyService;
@@ -8,7 +7,6 @@ import org.eddy.swing.entity.SwingValidateContext;
 import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.entity.httpMessage.HttpMessage;
 import org.eddy.swing.solver.define.SwingFlowSolver;
-import org.eddy.swing.util.MarkdownUtil;
 import org.eddy.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
