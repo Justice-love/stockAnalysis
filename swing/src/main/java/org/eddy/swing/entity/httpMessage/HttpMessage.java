@@ -22,13 +22,16 @@ public class HttpMessage {
             public String createBuyContent(SwingValidateContext context) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("title", "购买提醒");
-                jsonObject.put("text", MarkdownUtil.createMarkdownContent(context));
+                jsonObject.put("text", MarkdownUtil.createMarkdownBuyInContent(context));
                 return jsonObject.toJSONString();
             }
 
             @Override
             public String createSaleContent(SwingValidateContext context) {
-                return super.createSaleContent(context);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("title", "卖出提醒");
+                jsonObject.put("text", MarkdownUtil.createMarkdownSaleOutContent(context));
+                return jsonObject.toJSONString();
             }
         };
 
