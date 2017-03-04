@@ -4,14 +4,12 @@ import com.alibaba.fastjson.JSONObject;
 import org.eddy.ApplicationStart;
 import org.eddy.config.StockSolverConfig;
 import org.eddy.entity.Stock;
-import org.eddy.entity.pojo.HttpMessage;
 import org.eddy.swing.entity.Swing;
 import org.eddy.swing.entity.SwingValidateContext;
 import org.eddy.swing.entity.ValidateSwing;
-import org.eddy.swing.entity.Validater;
 import org.eddy.swing.entity.groovy.BuyPrice;
+import org.eddy.swing.entity.httpMessage.HttpMessage;
 import org.eddy.util.HttpUtil;
-import org.eddy.util.MarkdownUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,10 +60,7 @@ public class HttpUtilTest {
         message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
         message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("title", "购买提醒");
-        jsonObject.put("text", MarkdownUtil.createMarkdownContent(context));
-        message.setContent(jsonObject.toJSONString());
+        message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
         boolean result = HttpUtil.sendMsg(message);
         Assert.assertTrue(result);
 

@@ -3,12 +3,12 @@ package org.eddy.solver;
 import com.alibaba.fastjson.JSONObject;
 import org.eddy.config.StockSolverConfig;
 import org.eddy.entity.StockWantBuy;
-import org.eddy.entity.pojo.HttpMessage;
 import org.eddy.service.StockWantBuyService;
 import org.eddy.swing.entity.SwingValidateContext;
 import org.eddy.swing.entity.exception.SwingException;
+import org.eddy.swing.entity.httpMessage.HttpMessage;
 import org.eddy.swing.solver.define.SwingFlowSolver;
-import org.eddy.util.MarkdownUtil;
+import org.eddy.swing.util.MarkdownUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,10 +42,7 @@ public class BuyInImSolver implements SwingFlowSolver {
             message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
             message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
             message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("title", "购买提醒");
-            jsonObject.put("text", MarkdownUtil.createMarkdownContent(context));
-            message.setContent(jsonObject.toJSONString());
+            message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
         }
     }
 }

@@ -9,7 +9,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
-import org.eddy.entity.pojo.HttpMessage;
+import org.eddy.swing.entity.httpMessage.HttpMessage;
 
 import java.io.IOException;
 import java.util.Objects;

@@ -1,7 +1,5 @@
-package org.eddy.util;
+package org.eddy.swing.util;
 
-import org.eddy.entity.Stock;
-import org.eddy.swing.entity.Swing;
 import org.eddy.swing.entity.SwingValidateContext;
 
 import java.time.LocalDateTime;
