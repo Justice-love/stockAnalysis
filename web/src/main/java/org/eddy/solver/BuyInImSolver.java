@@ -43,7 +43,7 @@ public class BuyInImSolver implements SwingFlowSolver {
             message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
             message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("title", "股票购买提醒");
+            jsonObject.put("title", "购买提醒");
             jsonObject.put("text", MarkdownUtil.createMarkdownContent(context));
             message.setContent(jsonObject.toJSONString());
         }
