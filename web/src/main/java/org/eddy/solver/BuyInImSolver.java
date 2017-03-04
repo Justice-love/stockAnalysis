@@ -9,9 +9,13 @@ import org.eddy.swing.entity.exception.SwingException;
 import org.eddy.swing.entity.httpMessage.HttpMessage;
 import org.eddy.swing.solver.define.SwingFlowSolver;
 import org.eddy.swing.util.MarkdownUtil;
+import org.eddy.util.HttpUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
@@ -19,6 +23,8 @@ import java.util.stream.Collectors;
  */
 @Component("buyInImSolver")
 public class BuyInImSolver implements SwingFlowSolver {
+
+    private static Logger logger = LoggerFactory.getLogger(BuyInImSolver.class);
 
     @Autowired
     private StockWantBuyService stockWantBuyService;
@@ -43,6 +49,14 @@ public class BuyInImSolver implements SwingFlowSolver {
             message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
             message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
             message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
+            try {
+                boolean result = HttpUtil.sendMsg(message);
+                if (!result) {
+                    logger.error("send dingding notify error: buy in");
+                }
+            } catch (IOException e) {
+                logger.error("notify sale out error", e);
+            }
         }
     }
 }
