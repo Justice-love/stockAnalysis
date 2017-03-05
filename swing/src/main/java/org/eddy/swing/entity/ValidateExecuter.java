@@ -19,15 +19,6 @@ public class ValidateExecuter {
 
     private String description;
 
-    public boolean execute(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
-        Binding binding = new Binding();
-        GroovyShell shell = new GroovyShell(binding);
-        binding.setVariable("groupStocks", groupStocks);
-        binding.setVariable("expression", expression);
-        binding.setVariable("expect", expect);
-        return (boolean) shell.evaluate(script);
-    }
-
     public ValidateExecuter() {
     }
 
