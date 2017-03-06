@@ -34,7 +34,7 @@ public class SpringJob {
     @Autowired
     private StockSaleManager stockSaleManager;
 
-    @Scheduled(cron = "10 0-59 9-15 * * 1-5 ")
+    @Scheduled(cron = "10 0-59 9-14 * * 1-5 ")
     public void crawlAllUrl() {
         try {
             crawlStockManager.crawlStock();
@@ -43,7 +43,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "10 30 15 * * 1-5 ")
+    @Scheduled(cron = "0 2 15 * * 1-5 ")
     public void computer() {
         try {
             computerAndLoadHistoryStock.computerAndLoad();
@@ -52,7 +52,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "10 0-59 9-15 * * 1-5 ")
+    @Scheduled(cron = "10 0-59 9-14 * * 1-5 ")
     public void analysisToBuyStock() {
         try {
             stockBuyManager.needBy();
@@ -61,7 +61,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "50 0-59 9-15 * * 1-5 ")
+    @Scheduled(cron = "50 0-59 9-14 * * 1-5 ")
     public void analysisToSaleStock() {
         try {
             stockSaleManager.shouldSale();
