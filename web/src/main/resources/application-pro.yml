@@ -2,7 +2,7 @@ spring:
   datasource:
     name: stock
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/stock?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    url: jdbc:mysql://192.168.99.100:3306/stock?useUnicode=true&characterEncoding=UTF-8&useSSL=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

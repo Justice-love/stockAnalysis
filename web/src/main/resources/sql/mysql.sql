@@ -69,7 +69,7 @@ CREATE TABLE `stock_daily_source` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='股票每日价格汇总信息';
 
 
-CREATE INDEX `idx_stock_code`  ON `stock`.`stock_source_data` (stock_code)
+CREATE INDEX `idx_stock_code`  ON `stock`.`stock_source_data` (stock_code);
 
 CREATE TABLE `stock_want_buy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
