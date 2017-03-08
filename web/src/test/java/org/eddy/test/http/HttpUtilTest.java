@@ -87,6 +87,10 @@ public class HttpUtilTest {
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
         message.setContent(HttpMessage.MessageTypeEnum.markdown.createSaleContent(context));
         boolean result = HttpUtil.sendMsg(message);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+            HttpUtil.sendMsg(message);
+        }
         Assert.assertTrue(result);
     }
 }

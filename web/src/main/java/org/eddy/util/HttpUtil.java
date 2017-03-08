@@ -2,7 +2,7 @@ package org.eddy.util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -40,12 +40,12 @@ public class HttpUtil {
     }
 
     private static boolean sendHttpMsg(HttpMessage message) throws IOException {
-        try(CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pools).build()) {
-            HttpPost post = new HttpPost(message.getUrl());
-            post.setHeader("Content-Type", "application/json");
-            post.setEntity(new StringEntity(buildJsonMessage(message), "UTF-8"));
-            HttpResponse httpresponse = httpClient.execute(post);
-            return convertResponse(httpresponse.getEntity());
+        CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pools).build();
+        HttpPost post = new HttpPost(message.getUrl());
+        post.setHeader("Content-Type", "application/json");
+        post.setEntity(new StringEntity(buildJsonMessage(message), "UTF-8"));
+        try(CloseableHttpResponse httpResponse = httpClient.execute(post)) {
+            return convertResponse(httpResponse.getEntity());
         }
     }
 
