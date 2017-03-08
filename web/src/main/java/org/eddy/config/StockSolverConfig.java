@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Justice-love on 2017/3/4.
  */
-@ConfigurationProperties(prefix = "stock")
+@ConfigurationProperties(prefix = "stock.im")
 @Component
 public class StockSolverConfig {
 

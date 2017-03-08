@@ -1,7 +1,11 @@
 spring:
-  datasource:
-    name: stock
-    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    cache: false
+stock:
+  im:
+    url: https://oapi.dingtalk.com/robot/send
+    arg: access_token
+  dataSource:
     url: jdbc:mysql://192.168.99.100:3306/stock?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: root
@@ -15,8 +19,3 @@ spring:
     testWhileIdle: true
     testOnBorrow: true
     testOnReturn: true
-  thymeleaf:
-    cache: false
-stock:
-  url: https://oapi.dingtalk.com/robot/send
-  arg: access_token
