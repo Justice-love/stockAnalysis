@@ -2,7 +2,12 @@
 <!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
 
 <swings>
-    <swing id="buy" validateType="buyPrice" expression="10">
+    <swing id="buy" validateType="risePercent" expression="5#2">
+        <swing id="up" validateType="risePercent" expression="3#3" orElse="defaultTrue">
+            <swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1" executor="buyInImSolver"/>
+        </swing>
+    </swing>
+    <swing id="buy_bak" validateType="buyPrice" expression="10">
         <swing id="buyCount" validateType="buyCountPercent" expression="5#0.1" orElse="defaultTrue">
             <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInImSolver"/>
         </swing>

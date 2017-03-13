@@ -44,6 +44,6 @@ public class RisePercent extends Validater {
 
     @Override
     public String name() {
-        return "RisePercent";
+        return "risePercent";
     }
 }
