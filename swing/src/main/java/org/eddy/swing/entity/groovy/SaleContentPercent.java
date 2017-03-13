@@ -27,7 +27,7 @@ public class SaleContentPercent extends Validater{
         String[] arr = expression.trim().split(CHAR);
         Assert.isTrue(arr.length == 2, "error expression: " + expression);
         int time = Integer.parseInt(arr[0]);
-        double precent = Double.parseDouble(arr[1]);
+        double percent = Double.parseDouble(arr[1]);
         //adjust
         if (stockList.size() < time) return false;
         for (int i = 0; i < time; i++) {
@@ -35,7 +35,7 @@ public class SaleContentPercent extends Validater{
             int buyCount = Integer.parseInt(stock.getBuy1()) + Integer.parseInt(stock.getBuy2()) + Integer.parseInt(stock.getBuy3());
             int saleCount = Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1()) + Integer.parseInt(stock.getSale1());
             //买入大于卖出
-            if (buyCount * (1 + precent) > saleCount) {
+            if (buyCount * (1 + percent) > saleCount) {
                 return false;
             }
         }
