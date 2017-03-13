@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
- *  股票上涨大于一定比例
+ *  上涨大于一定比例
  * Created by Justice-love on 2017/3/13.
  */
 public class RisePercent extends Validater {
@@ -24,7 +24,7 @@ public class RisePercent extends Validater {
 
     @Override
     public String getDescription() {
-        return null;
+        return "价格上涨百分比大于一定比例";
     }
 
     @Override
