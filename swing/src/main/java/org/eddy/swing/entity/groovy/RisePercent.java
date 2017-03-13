@@ -3,6 +3,7 @@ package org.eddy.swing.entity.groovy;
 import org.eddy.entity.Stock;
 import org.eddy.swing.entity.Validater;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.SortedMap;
 
@@ -10,7 +11,12 @@ import java.util.SortedMap;
  *  股票上涨大于一定比例
  * Created by Justice-love on 2017/3/13.
  */
-public class Rise extends Validater {
+public class RisePercent extends Validater {
+
+    @PostConstruct
+    public void init() {
+        register(name());
+    }
     @Override
     public boolean validate(SortedMap<String, List<Stock>> groupStocks, String expression, String expect) {
         return false;
@@ -23,6 +29,6 @@ public class Rise extends Validater {
 
     @Override
     public String name() {
-        return null;
+        return "RisePercent";
     }
 }
