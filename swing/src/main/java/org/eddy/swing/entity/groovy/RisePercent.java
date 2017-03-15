@@ -2,6 +2,7 @@ package org.eddy.swing.entity.groovy;
 
 import org.eddy.entity.Stock;
 import org.eddy.swing.entity.Validater;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import java.util.SortedMap;
  *  价格上涨百分比大于一定比例
  * Created by Justice-love on 2017/3/13.
  */
+@Component
 public class RisePercent extends Validater {
 
     @PostConstruct
