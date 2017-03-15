@@ -30,7 +30,7 @@ public class ApplicationStart {
 
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(ApplicationStart.class);
-        springApplication.addListeners(new ApplicationPidFileWriter());
+        springApplication.addListeners(new ApplicationPidFileWriter("stock.pid"));
         springApplication.run(args);
     }
 }
