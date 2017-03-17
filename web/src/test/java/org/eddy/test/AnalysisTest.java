@@ -30,7 +30,7 @@ public class AnalysisTest {
     @Test
     public void test2() {
         Stock stock = new Stock();
-        stock.setStockCode("sh600656");
+        stock.setStockCode("sh603678");
         stockBuyManager.needBuy(stock);
     }
 
