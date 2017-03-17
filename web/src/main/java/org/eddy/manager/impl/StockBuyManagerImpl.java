@@ -50,21 +50,29 @@ public class StockBuyManagerImpl implements StockBuyManager {
     @Override
     public void needBuy() {
         stockService.groupStock().forEach(stock -> {
-            List<Stock> stockList = stockService.selectSortedStocks(stock.getStockCode());
-            stockList.addAll(dailyStockService.selectSortedStocks(stock.getStockCode()));
-            SortedMap<String, List<Stock>> listSortedMap =  new TreeMap<>(stockList.stream().collect(Collectors.groupingBy(s -> s.getDate())));
-            Swing swing = SwingContext.getContext().getSwings().get("buy").get(0);
-            try {
-                swingFlow.flow(listSortedMap, stockList.get(0), swing);
-            } catch (Exception e) {
-                logger.error("stock: " + stock, e);
-            }
+            analysis(stock);
         });
     }
 
     @Override
     public void needBuy(Stock stock) {
+        Assert.notNull(stock);
+        stockService.groupStock(stock).forEach(s -> {
+            analysis(s);
+        });
+    }
 
+    private void analysis(Stock stock) {
+        Assert.notNull(stock);
+        List<Stock> stockList = stockService.selectSortedStocks(stock.getStockCode());
+        stockList.addAll(dailyStockService.selectSortedStocks(stock.getStockCode()));
+        SortedMap<String, List<Stock>> listSortedMap =  new TreeMap<>(stockList.stream().collect(Collectors.groupingBy(s -> s.getDate())));
+        Swing swing = SwingContext.getContext().getSwings().get("buy").get(0);
+        try {
+            swingFlow.flow(listSortedMap, stockList.get(0), swing);
+        } catch (Exception e) {
+            logger.error("stock: " + stock, e);
+        }
     }
 
     @Override
