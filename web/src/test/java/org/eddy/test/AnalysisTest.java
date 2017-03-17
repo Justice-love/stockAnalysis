@@ -1,6 +1,7 @@
 package org.eddy.test;
 
 import org.eddy.ApplicationStart;
+import org.eddy.entity.Stock;
 import org.eddy.manager.StockBuyManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,13 @@ public class AnalysisTest {
     @Test
     public void test() {
         stockBuyManager.needBuy();
+    }
+
+    @Test
+    public void test2() {
+        Stock stock = new Stock();
+        stock.setStockCode("sh600656");
+        stockBuyManager.needBuy(stock);
     }
 
 }

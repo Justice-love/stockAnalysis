@@ -32,7 +32,7 @@ public class RisePercent extends Validater {
         for (int i = 0; i < time; i++) {
             Stock stock = stockList.get(i);
             //存在一次涨幅小于或等于期望的值，则不符合
-            if ((Double.parseDouble(stock.getUpPrice()) / Double.parseDouble(stock.getYesterdayEnd())) * 100 <= percent) {
+            if (Double.parseDouble(stock.getYesterdayEnd()) == 0.0 || (Double.parseDouble(stock.getUpPrice()) / Double.parseDouble(stock.getYesterdayEnd())) * 100 <= percent) {
                 return false;
             }
         }

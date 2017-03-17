@@ -49,17 +49,13 @@ public class StockBuyManagerImpl implements StockBuyManager {
 
     @Override
     public void needBuy() {
-        stockService.groupStock().forEach(stock -> {
-            analysis(stock);
-        });
+        stockService.groupStock().forEach(stock -> analysis(stock));
     }
 
     @Override
     public void needBuy(Stock stock) {
         Assert.notNull(stock);
-        stockService.groupStock(stock).forEach(s -> {
-            analysis(s);
-        });
+        stockService.groupStock(stock).forEach(s -> analysis(s));
     }
 
     private void analysis(Stock stock) {
