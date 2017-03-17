@@ -34,7 +34,7 @@ public interface StockMapper {
 
     List<Stock> selectGroup(String date);
 
-    List<Stock> selectGroupByStock(String date, Stock stock);
+    List<Stock> selectGroupByStock(@Param("date") String date, @Param("stock") Stock stock);
 
     List<Stock> selectSortedStocks(String code);
 
