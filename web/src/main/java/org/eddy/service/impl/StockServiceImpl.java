@@ -32,9 +32,9 @@ public class StockServiceImpl implements StockService {
     public void loadStockPerMin(List<Stock> list) {
         Map<Boolean, List<Stock>> result = Optional.ofNullable(list).orElse(new ArrayList<Stock>()).stream().collect(Collectors.groupingBy(s -> s.isHasError()));
         //正常数据插入
-        Optional.ofNullable(Lists.partition(null == result.get(Stock.NO_ERROR) ? Arrays.asList() : result.get(Stock.NO_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
+        Optional.of(Lists.partition(null == result.get(Stock.NO_ERROR) ? Collections.emptyList() : result.get(Stock.NO_ERROR), 500)).orElse(Collections.emptyList()).forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) stockMapper.insert(stocks);});
         //插入错误数据
-        Optional.ofNullable(Lists.partition(null == result.get(Stock.HAS_ERROR) ? Arrays.asList() : result.get(Stock.HAS_ERROR), 500)).orElse(Arrays.asList()).stream().forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
+        Optional.of(Lists.partition(null == result.get(Stock.HAS_ERROR) ? Collections.emptyList() : result.get(Stock.HAS_ERROR), 500)).orElse(Collections.emptyList()).forEach(stocks -> {if (null != stocks && !stocks.isEmpty()) errorStockMapper.insert(stocks);});
     }
 
     @Override
@@ -42,9 +42,9 @@ public class StockServiceImpl implements StockService {
         if (null == stock) return false;
         if (stock.isHasError()) {
             //数据为空则需要加载该条数据
-            return Optional.ofNullable(errorStockMapper.countByCode(stock.getStockCode())).orElse(0).intValue() == 0;
+            return Optional.ofNullable(errorStockMapper.countByCode(stock.getStockCode())).orElse(0) == 0;
         } else {
-            return Optional.ofNullable(stockMapper.countByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime())).orElse(0).intValue() == 0;
+            return Optional.ofNullable(stockMapper.countByNameDateAndTime(stock.getStockCode(), stock.getDate(), stock.getTime())).orElse(0) == 0;
         }
     }
 
@@ -71,12 +71,17 @@ public class StockServiceImpl implements StockService {
             stock.setTime(stockMapper.selectMaxTime(s, date));
             return stock;
         }).collect(Collectors.toList());
-        return Lists.partition(Optional.ofNullable(params).orElse(Arrays.asList()), 500).stream().flatMap(s -> stockMapper.selectLastOnes(s).stream()).collect(Collectors.toList());
+        return Lists.partition(Optional.ofNullable(params).orElse(Collections.emptyList()), 500).stream().flatMap(s -> stockMapper.selectLastOnes(s).stream()).collect(Collectors.toList());
     }
 
     @Override
     public List<Stock> groupStock() {
         return stockMapper.selectGroupByStock(stockMapper.selectMaxDate());
+    }
+
+    @Override
+    public List<Stock> groupStock(Stock stock) {
+        return null;
     }
 
     @Override
@@ -92,7 +97,7 @@ public class StockServiceImpl implements StockService {
     }
 
     private void merge(List<Stock> ori, List<Stock> statistic) {
-        ori.stream().forEach(s -> {
+        ori.forEach(s -> {
             Optional<Stock> optional = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst();
             Stock stock = optional.get();
             s.setBuy1(stock.getBuy1());

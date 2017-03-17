@@ -20,6 +20,8 @@ public interface StockService {
 
     List<Stock> groupStock();
 
+    List<Stock> groupStock(Stock stock);
+
     List<Stock> selectSortedStocks(String code);
 
     List<Stock> selectSortedStocksOneDate(String code, String date);
