@@ -23,6 +23,7 @@ public class AnalysisTest {
 
     @Test
     public void test() {
-        stockBuyManager.needBy();
+        stockBuyManager.needBuy();
     }
+
 }

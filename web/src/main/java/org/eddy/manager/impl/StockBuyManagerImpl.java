@@ -48,7 +48,7 @@ public class StockBuyManagerImpl implements StockBuyManager {
     private SwingFlow swingFlow;
 
     @Override
-    public void needBy() {
+    public void needBuy() {
         stockService.groupStock().forEach(stock -> {
             List<Stock> stockList = stockService.selectSortedStocks(stock.getStockCode());
             stockList.addAll(dailyStockService.selectSortedStocks(stock.getStockCode()));
@@ -60,6 +60,11 @@ public class StockBuyManagerImpl implements StockBuyManager {
                 logger.error("stock: " + stock, e);
             }
         });
+    }
+
+    @Override
+    public void needBuy(Stock stock) {
+
     }
 
     @Override

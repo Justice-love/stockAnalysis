@@ -1,6 +1,7 @@
 package org.eddy.manager;
 
 import org.eddy.entity.BoughtStock;
+import org.eddy.entity.Stock;
 import org.eddy.entity.StockWantBuy;
 
 import java.util.List;
@@ -10,7 +11,9 @@ import java.util.List;
  */
 public interface StockBuyManager {
 
-    void needBy();
+    void needBuy();
+
+    void needBuy(Stock stock);
 
     List<StockWantBuy> selectAll();
 

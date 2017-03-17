@@ -55,7 +55,7 @@ public class SpringJob {
     @Scheduled(cron = "10 0-59 9-14 * * 1-5 ")
     public void analysisToBuyStock() {
         try {
-            stockBuyManager.needBy();
+            stockBuyManager.needBuy();
         } catch (Exception e) {
             logger.error("execute Schedule analysisToBuyStock error", e);
         }
