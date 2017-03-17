@@ -76,7 +76,7 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public List<Stock> groupStock() {
-        return stockMapper.selectGroupByStock(stockMapper.selectMaxDate());
+        return stockMapper.selectGroup(stockMapper.selectMaxDate());
     }
 
     @Override

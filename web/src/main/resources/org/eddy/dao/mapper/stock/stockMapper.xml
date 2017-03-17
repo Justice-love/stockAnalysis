@@ -84,7 +84,7 @@
             (date = #{item.date} and stock_code = #{item.stockCode} and time = #{item.time} )
         </foreach>
     </select>
-    <select id="selectGroupByStock" resultMap="stock">
+    <select id="selectGroup" resultMap="stock">
         select name, stock_code FROM <include refid="table"/>  WHERE  date = #{date} GROUP BY stock_code, name;
     </select>
     <select id="selectSortedStocks" resultMap="stock">

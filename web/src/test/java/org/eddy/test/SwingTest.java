@@ -36,7 +36,7 @@ public class SwingTest {
 
     @Test
     public void testGetContent() {
-        mapper.selectGroupByStock(mapper.selectMaxDate()).stream().forEach(s -> testSwing(s.getName(), s.getStockCode()));
+        mapper.selectGroup(mapper.selectMaxDate()).stream().forEach(s -> testSwing(s.getName(), s.getStockCode()));
     }
 
     public void testSwing(String name, String code) {

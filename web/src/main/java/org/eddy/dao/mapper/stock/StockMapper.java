@@ -32,7 +32,9 @@ public interface StockMapper {
 
     List<Stock> selectLastOnes(@Param("params") List<Stock> params);
 
-    List<Stock> selectGroupByStock(String date);
+    List<Stock> selectGroup(String date);
+
+    List<Stock> selectGroupByStock(String date, Stock stock);
 
     List<Stock> selectSortedStocks(String code);
 
