@@ -4,7 +4,9 @@
 <swings>
     <swing id="buy" validateType="risePercent" expression="5#2">
         <swing id="up" validateType="risePercent" expression="3#3" orElse="defaultTrue">
-            <swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1" executor="buyInImSolver"/>
+            <swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1" >
+                <swing id="withoutLimit" validateType="withoutLimit" executor="buyInImSolver"/>
+            </swing>
         </swing>
     </swing>
     <swing id="buy_bak" validateType="buyPrice" expression="10">
