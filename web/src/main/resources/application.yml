@@ -11,5 +11,7 @@ spring:
       content-type: text/html
       mode: HTML5
       encoding: UTF-8
+    aop:
+      auto: true
 mybatis:
   mapper-locations: classpath*:org/eddy/dao/mapper/*/*.xml
