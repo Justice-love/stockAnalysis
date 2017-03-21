@@ -1,5 +1,6 @@
 package org.eddy.web.stock;
 
+import org.eddy.annotation.LoginCheck;
 import org.eddy.manager.StockBuyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class ToBuy {
     private StockBuyManager stockBuyManager;
 
     @RequestMapping("/toBuy")
+    @LoginCheck
     public String showToBuy(Model model) {
         model.addAttribute("toBuys", stockBuyManager.selectAll());
         return "stock/canBuy";
