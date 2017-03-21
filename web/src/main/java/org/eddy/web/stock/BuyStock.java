@@ -1,5 +1,6 @@
 package org.eddy.web.stock;
 
+import org.eddy.annotation.LoginCheck;
 import org.eddy.manager.StockBuyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +19,21 @@ public class BuyStock {
     private StockBuyManager stockBuyManager;
 
     @RequestMapping("/ignore")
+    @LoginCheck
     public String ignore(@RequestParam("id") int id) {
         stockBuyManager.deleteOneById(id);
         return "redirect:/stock/toBuy.html";
     }
 
     @RequestMapping("/buy")
+    @LoginCheck
     public String buy(@RequestParam("id") int id) {
         stockBuyManager.buyStock(id);
         return "redirect:/stock/show.html";
     }
 
     @RequestMapping("/show")
+    @LoginCheck
     public String show(Model model) {
         model.addAttribute("bought", stockBuyManager.showBought());
         return "stock/hadBought";

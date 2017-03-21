@@ -1,5 +1,6 @@
 package org.eddy.web.swing;
 
+import org.eddy.annotation.LoginCheck;
 import org.eddy.manager.SwingScriptManager;
 import org.eddy.web.requestEntity.SwingFormList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,14 @@ public class SwingRule {
     private SwingScriptManager scriptManager;
 
     @RequestMapping("/rule")
+    @LoginCheck
     public String rule(Model model) {
         model.addAttribute("validates", scriptManager.getAllSwings());
         return "swing/swingRule";
     }
 
     @RequestMapping(value = "/swingAdd", method = RequestMethod.POST)
+    @LoginCheck
     public String swingAdd(SwingFormList formList, Model model) {
         scriptManager.insertSwings(formList.getList());
         return "swing/swingRule";
