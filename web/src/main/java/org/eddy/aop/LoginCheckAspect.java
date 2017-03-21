@@ -6,6 +6,11 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 /**
  * Created by eddy on 2017/3/21.
@@ -47,6 +52,8 @@ public class LoginCheckAspect {
      * @return true:用户已登陆
      */
     private boolean loginCheck() {
-        return true;
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        return Optional.ofNullable(request.getAttribute(LOGIN_ATTR_KEY)).map(s -> true).orElseGet(() -> false);
     }
 }
