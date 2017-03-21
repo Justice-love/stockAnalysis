@@ -22,10 +22,15 @@ public class Login {
     private LoginUserMessageConfig loginConfig;
 
     @RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
-    public String login(HttpSession session, @RequestAttribute("password") String password) {
+    public String login(HttpSession session, String password) {
         if (StringUtils.equals(password, loginConfig.getPassword())) {
             session.setAttribute(LoginCheckAspect.LOGIN_ATTR_KEY, true);
         }
         return "stock/hadBought";
+    }
+
+    @RequestMapping("/toLogin")
+    public String login() {
+        return "login/login";
     }
 }

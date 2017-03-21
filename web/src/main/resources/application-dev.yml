@@ -19,3 +19,5 @@ stock:
     testWhileIdle: true
     testOnBorrow: true
     testOnReturn: true
+  login:
+    password: 123456
