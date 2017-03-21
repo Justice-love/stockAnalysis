@@ -26,7 +26,7 @@ public class Login {
         if (StringUtils.equals(password, loginConfig.getPassword())) {
             session.setAttribute(LoginCheckAspect.LOGIN_ATTR_KEY, true);
         }
-        return "stock/hadBought";
+        return "redirect:/stock/show.html";
     }
 
     @RequestMapping("/toLogin")
