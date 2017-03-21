@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginCheckAspect {
 
-    public static final String FORBIDDEN = "forbidden";
+    public static final String FORBIDDEN = "login/login";
+
+    public static final String LOGIN_ATTR_KEY = "LOGIN_ATTR_KEY";
 
     @Pointcut("execution(* org.eddy.web..*(..)) && (@annotation(org.eddy.annotation.LoginCheck))")
     public void loginCheckPointcut(){}
