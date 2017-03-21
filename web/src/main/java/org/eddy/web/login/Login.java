@@ -1,8 +1,11 @@
 package org.eddy.web.login;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eddy.aop.LoginCheckAspect;
-import org.springframework.http.HttpMethod;
+import org.eddy.config.LoginUserMessageConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,9 +18,14 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/login")
 public class Login {
 
+    @Autowired
+    private LoginUserMessageConfig loginConfig;
+
     @RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
-    public String login(HttpSession session) {
-        session.setAttribute(LoginCheckAspect.LOGIN_ATTR_KEY, true);
+    public String login(HttpSession session, @RequestAttribute("password") String password) {
+        if (StringUtils.equals(password, loginConfig.getPassword())) {
+            session.setAttribute(LoginCheckAspect.LOGIN_ATTR_KEY, true);
+        }
         return "stock/hadBought";
     }
 }
