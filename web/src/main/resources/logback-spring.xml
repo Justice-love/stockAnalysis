@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml" />
-    <logger name="org.springframework.web" level="debug"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="stock" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/stock.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/stock.log.%d</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
 
     <springProfile name="pro">
         <logger name="org.springframework.web" level="info"/>
+        <root level="INFO">
+            <appender-ref ref="stock"/>
+        </root>
     </springProfile>
 
     <springProfile name="dev">
         <logger name="org.springframework.web" level="debug"/>
-        <logger name="org.eddy.dao.mapper" level="debug"></logger>
+        <root level="INFO">
+            <appender-ref ref="stock"/>
+        </root>
     </springProfile>
 
 </configuration>
