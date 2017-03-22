@@ -26,8 +26,7 @@
     </springProfile>
 
     <springProfile name="dev">
-        <logger name="org.springframework.web" level="debug"/>
-        <root level="INFO">
+        <root level="debug">
             <appender-ref ref="stock"/>
             <appender-ref ref="STDOUT"/>
         </root>
