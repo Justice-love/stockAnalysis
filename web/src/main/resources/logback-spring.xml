@@ -20,7 +20,6 @@
     </appender>
 
     <springProfile name="pro">
-        <logger name="org.springframework.web" level="info"/>
         <root level="INFO">
             <appender-ref ref="stock"/>
         </root>
@@ -30,6 +29,7 @@
         <logger name="org.springframework.web" level="debug"/>
         <root level="INFO">
             <appender-ref ref="stock"/>
+            <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
 
