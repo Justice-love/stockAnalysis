@@ -19,7 +19,7 @@ import java.util.Optional;
 @Component
 public class LoginCheckAspect {
 
-    public static final String FORBIDDEN = "login/login";
+    public static final String FORBIDDEN = "redirect:/login/toLogin.html";
 
     public static final String LOGIN_ATTR_KEY = "LOGIN_ATTR_KEY";
 
