@@ -52,7 +52,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "0 2 15 * * 1-5 ")
+    @Scheduled(cron = "0 5 15 * * 1-5 ")
     public void computer() {
         try {
             computerAndLoadHistoryStock.computerAndLoad();
