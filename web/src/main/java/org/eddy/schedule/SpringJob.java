@@ -43,6 +43,15 @@ public class SpringJob {
         }
     }
 
+    @Scheduled(cron = "0 1 15 * * 1-5 ")
+    public void crawlAllUrlOneTime() {
+        try {
+            crawlStockManager.crawlStock();
+        } catch (Exception e) {
+            logger.error("execute Schedule crawlAllUrl error", e);
+        }
+    }
+
     @Scheduled(cron = "0 2 15 * * 1-5 ")
     public void computer() {
         try {
