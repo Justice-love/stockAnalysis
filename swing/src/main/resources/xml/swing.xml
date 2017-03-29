@@ -9,10 +9,10 @@
             </swing>
         </swing>
     </swing>
-    <swing id="buy_bak" validateType="buyPrice" expression="10">
-        <swing id="buyCount" validateType="buyCountPercent" expression="5#0.1" orElse="defaultTrue">
-            <swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInImSolver"/>
-        </swing>
-    </swing>
+    <!--<swing id="buy_bak" validateType="buyPrice" expression="10">-->
+        <!--<swing id="buyCount" validateType="buyCountPercent" expression="5#0.1" orElse="defaultTrue">-->
+            <!--<swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInImSolver"/>-->
+        <!--</swing>-->
+    <!--</swing>-->
     <swing id="defaultTrue" validateType="defaultValidater" executor="elseSolver"/>
 </swings>

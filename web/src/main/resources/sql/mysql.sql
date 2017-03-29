@@ -119,6 +119,9 @@ CREATE TABLE `stock_swing_script` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='swing在线脚本';
 
+ALTER TABLE `stock`.`stock_want_buy`
+ADD COLUMN `push_time` TIMESTAMP NULL AFTER `update_time`;
+
 
 
 
