@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
+ * 卖出高于买入一定比例
+ * expression： 5#0.1 (当天倒序持续多少次#double 非百分比)
  * Created by eddy on 2016/12/28.
  */
 @Component

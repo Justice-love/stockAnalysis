@@ -11,6 +11,7 @@ import java.util.SortedMap;
 
 /**
  *  价格上涨百分比大于一定比例
+ *  expression： 5#3 (当天倒序持续多少次#百分比)
  * Created by Justice-love on 2017/3/13.
  */
 @Component

@@ -11,7 +11,7 @@ import java.util.SortedMap;
 
 /**
  * 买入持续比卖出高于一定比例
- * 传入expression， 格式如：5#3 (当天按时间倒序次数#百分比)
+ * 传入expression， 格式如：5#0.1 (当天按时间倒序次数#double 非百分比)
  * Created by eddy on 2016/12/28.
  */
 @Component
