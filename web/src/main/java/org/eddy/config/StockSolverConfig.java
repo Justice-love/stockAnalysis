@@ -13,18 +13,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class StockSolverConfig {
 
-    private String token;
+    private String mainToken;
 
     private String url;
 
     private String arg;
 
-    public String getToken() {
-        return token;
+    public String getMainToken() {
+        return mainToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setMainToken(String mainToken) {
+        this.mainToken = mainToken;
     }
 
     public String getUrl() {

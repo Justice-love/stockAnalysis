@@ -36,7 +36,7 @@ public class HttpUtilTest {
     public void test() throws IOException {
         HttpMessage message = new HttpMessage();
         message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
+        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.text);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("content", "我就是我, 是不一样的烟火");
@@ -59,7 +59,7 @@ public class HttpUtilTest {
         SwingValidateContext context = new SwingValidateContext(validateSwing, stock, null);
         HttpMessage message = new HttpMessage();
         message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
+        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
         message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
         boolean result = HttpUtil.sendMsg(message);
@@ -83,7 +83,7 @@ public class HttpUtilTest {
         SwingValidateContext context = new SwingValidateContext(validateSwing, stock, null);
         HttpMessage message = new HttpMessage();
         message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
+        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
         message.setContent(HttpMessage.MessageTypeEnum.markdown.createSaleContent(context));
         boolean result = HttpUtil.sendMsg(message);

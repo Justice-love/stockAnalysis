@@ -44,7 +44,7 @@ public class BuyInImSolver implements SwingFlowSolver {
         if (flag) {
             HttpMessage message = new HttpMessage();
             message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-            message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getToken()).toString());
+            message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
             message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
             message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
             try {
