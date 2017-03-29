@@ -11,6 +11,8 @@ import java.util.SortedMap;
 
 /**
  * 价格持续过于预期
+ * expression 格式如 5 (当天倒序的持续次数)
+ * expect 格式如 3.8 (期望的价格)
  * Created by eddy on 2016/12/28.
  */
 @Component
