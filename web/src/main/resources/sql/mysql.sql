@@ -120,10 +120,7 @@ CREATE TABLE `stock_swing_script` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='swing在线脚本';
 
 ALTER TABLE `stock`.`stock_want_buy`
-ADD COLUMN `push_time` TIMESTAMP NULL AFTER `update_time`;
-
-ALTER TABLE `stock`.`stock_want_buy`
-CHANGE COLUMN `push_time` `push_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
+ADD COLUMN `push_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `update_time`;
 
 
 
