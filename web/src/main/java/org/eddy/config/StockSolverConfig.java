@@ -15,9 +15,19 @@ public class StockSolverConfig {
 
     private String mainToken;
 
+    private String subToken;
+
     private String url;
 
     private String arg;
+
+    public String getSubToken() {
+        return subToken;
+    }
+
+    public void setSubToken(String subToken) {
+        this.subToken = subToken;
+    }
 
     public String getMainToken() {
         return mainToken;
