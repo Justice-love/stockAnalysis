@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
+ * 低于付款价格
+ * expect: {boughtPrice} (Stock 字段) 或者 3.8 期望的价格
  * Created by eddy on 2016/12/28.
  */
 @Component
