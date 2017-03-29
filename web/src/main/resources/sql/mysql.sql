@@ -122,6 +122,9 @@ CREATE TABLE `stock_swing_script` (
 ALTER TABLE `stock`.`stock_want_buy`
 ADD COLUMN `push_time` TIMESTAMP NULL AFTER `update_time`;
 
+ALTER TABLE `stock`.`stock_want_buy`
+CHANGE COLUMN `push_time` `push_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
+
 
 
 

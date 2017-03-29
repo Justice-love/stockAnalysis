@@ -27,6 +27,8 @@ public class StockWantBuy {
 
     private Date updateTime;
 
+    private Date pushTime;
+
     public int getId() {
         return id;
     }
@@ -105,5 +107,13 @@ public class StockWantBuy {
 
     public void setCurrentDate(String currentDate) {
         this.currentDate = currentDate;
+    }
+
+    public Date getPushTime() {
+        return pushTime;
+    }
+
+    public void setPushTime(Date pushTime) {
+        this.pushTime = pushTime;
     }
 }

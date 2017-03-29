@@ -19,6 +19,8 @@ public interface StockWantBuyMapper {
 
     int updateById(@Param("id") int id, @Param("now") Date now, @Param("item") StockWantBuy stockWantBuy);
 
+    int updateByIdWithPush(@Param("id") int id, @Param("now") Date now, @Param("push") Date push, @Param("item") StockWantBuy stockWantBuy);
+
     List<StockWantBuy> selectAll();
 
     int deleteById(int id);
