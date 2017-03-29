@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
+ * 非涨停
  * Created by eddy on 2017/3/21.
  */
 @Component

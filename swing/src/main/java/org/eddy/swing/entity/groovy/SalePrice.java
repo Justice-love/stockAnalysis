@@ -11,6 +11,7 @@ import java.util.SortedMap;
 
 /**
  * 卖出价格持续高于当前价格
+ * expression：5 (当天倒序持续多少次)
  * Created by eddy on 2016/12/28.
  */
 @Component
