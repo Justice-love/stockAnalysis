@@ -2,13 +2,28 @@
 <!DOCTYPE swings SYSTEM "../dtd/swing.dtd">
 
 <swings>
-    <swing id="buy" validateType="risePercent" expression="5#2">
-        <swing id="up" validateType="risePercent" expression="3#3" orElse="defaultTrue">
-            <swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1" >
-                <swing id="withoutLimit" validateType="withoutLimit" executor="buyInImSolver"/>
+    <!--<swing id="buy_bak" validateType="risePercent" expression="5#2">-->
+        <!--<swing id="up" validateType="risePercent" expression="3#3" orElse="defaultTrue">-->
+            <!--<swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1" >-->
+                <!--<swing id="withoutLimit" validateType="withoutLimit" executor="buyInImSolver"/>-->
+            <!--</swing>-->
+        <!--</swing>-->
+    <!--</swing>-->
+
+    <swing id="buy" validateType="continueDown" expression="5#1">
+        <swing id="continueUp" validateType="continuedUp" expression="5#0">
+            <swing id="risePercent" validateType="risePercent" expression="10#2">
+                <swing id="risePercent2" validateType="risePercent" expression="5#3" orElse="buyCountUp">
+                    <swing id="withoutLimit" validateType="withoutLimit" executor="buyInImSolver"/>
+                </swing>
             </swing>
         </swing>
     </swing>
+
+    <swing id="buyCountUp" validateType="buyCountPercent" expression="5#0.1">
+        <swing id="withoutLimit2" validateType="withoutLimit" executor="subBuyInImSolver"/>
+    </swing>
+
     <!--<swing id="buy_bak" validateType="buyPrice" expression="10">-->
         <!--<swing id="buyCount" validateType="buyCountPercent" expression="5#0.1" orElse="defaultTrue">-->
             <!--<swing id="continueUp" validateType="continuedUp" expression="2#3" executor="buyInImSolver"/>-->
