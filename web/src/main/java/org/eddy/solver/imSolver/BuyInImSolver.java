@@ -1,4 +1,4 @@
-package org.eddy.solver;
+package org.eddy.solver.imSolver;
 
 import org.eddy.config.StockSolverConfig;
 import org.eddy.entity.StockWantBuy;
@@ -19,8 +19,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Justice-love on 2017/3/4.
  */
-@Component("buyInImSolver")
-public class BuyInImSolver implements SwingFlowSolver {
+public abstract class BuyInImSolver implements SwingFlowSolver {
 
     private static Logger logger = LoggerFactory.getLogger(BuyInImSolver.class);
 
@@ -29,6 +28,12 @@ public class BuyInImSolver implements SwingFlowSolver {
 
     @Autowired
     private StockSolverConfig config;
+
+    protected abstract String chooseToken(StockSolverConfig config);
+
+    protected String getToken() {
+        return chooseToken(config);
+    }
 
     @Override
     public void solve(SwingValidateContext context) throws SwingException {
@@ -44,7 +49,7 @@ public class BuyInImSolver implements SwingFlowSolver {
         if (flag) {
             HttpMessage message = new HttpMessage();
             message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-            message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
+            message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(getToken()).toString());
             message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
             message.setContent(HttpMessage.MessageTypeEnum.markdown.createBuyContent(context));
             try {
