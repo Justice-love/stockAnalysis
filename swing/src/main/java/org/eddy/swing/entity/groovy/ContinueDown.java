@@ -12,6 +12,7 @@ import java.util.SortedMap;
 
 /**
  * 数据按照时间，日期倒序排列
+ * 传入expression， 格式如：5#3 (日期排除当天倒序，取每天最后一条#百分比)
  * Created by eddy on 2016/12/28.
  */
 @Component

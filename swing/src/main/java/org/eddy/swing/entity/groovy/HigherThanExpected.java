@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
+ * 价格持续过于预期
  * Created by eddy on 2016/12/28.
  */
 @Component

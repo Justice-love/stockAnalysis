@@ -11,6 +11,7 @@ import java.util.SortedMap;
 
 /**
  * 买入价格持续高于当前价格
+ * 传入expression， 格式如：5 (当天按时间倒序次数)
  * Created by eddy on 2016/12/28.
  */
 @Component
