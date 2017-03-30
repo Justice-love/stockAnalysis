@@ -49,4 +49,11 @@ public class BuyStock {
         model.addAttribute("code", code);
         return "stock/detail";
     }
+
+    @RequestMapping("/delete")
+    @LoginCheck
+    public String delete(Model model, Stock stock) {
+        stockBuyManager.sale(stock);
+        return "redirect:/stock/show.html";
+    }
 }

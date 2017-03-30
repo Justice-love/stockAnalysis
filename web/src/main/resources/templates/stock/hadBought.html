@@ -25,7 +25,7 @@
         <td style="text-align:center" th:text="${item.stockCode}"/>
         <td style="text-align:center" th:text="${item.buyPrice}"/>
         <td style="text-align:center" th:text="${#dates.format(item.buyTime, 'yyyy-MM-dd HH:mm:ss')}"/>
-        <td style="text-align:center"><a  th:href="'showDetail/' + ${item.stockCode} + '.html'">详情</a></td>
+        <td style="text-align:center"><a  th:href="'showDetail/' + ${item.stockCode} + '.html'">详情</a>&nbsp;&nbsp;<a  th:href="'delete.html?id=' + ${item.id}">卖出</a></td>
     </tr>
     </tbody>
 </table>
