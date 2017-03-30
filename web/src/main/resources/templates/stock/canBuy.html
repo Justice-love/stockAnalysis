@@ -36,7 +36,7 @@
         <td style="text-align:center" th:text="${#dates.format(item.createTime, 'yyyy-MM-dd HH:mm:ss')}"/>
         <td style="text-align:center" th:text="${#dates.format(item.updateTime, 'yyyy-MM-dd HH:mm:ss')}"/>
         <td style="text-align:center" th:text="${#dates.format(item.pushTime, 'yyyy-MM-dd HH:mm:ss')}"/>
-        <td style="text-align:center"><a th:href="'buy.html?id=' + ${item.id}">买入</a>&nbsp;&nbsp;<a  th:href="'ignore.html?id=' + ${item.id}">忽略</a></td>
+        <td style="text-align:center"><a th:href="'buy.html?id=' + ${item.id}">买入</a>&nbsp;&nbsp;<a  th:href="'showDetail/' + ${item.stockCode} + '.html'">详情</a>&nbsp;&nbsp;<a  th:href="'ignore.html?id=' + ${item.id}">忽略</a></td>
     </tr>
     </tbody>
 </table>

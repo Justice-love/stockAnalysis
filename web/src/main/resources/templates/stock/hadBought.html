@@ -14,6 +14,7 @@
         <th style="text-align:center">股票代码</th>
         <th style="text-align:center">购买价格</th>
         <th style="text-align:center">购买时间</th>
+        <th style="text-align:center">操作</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         <td style="text-align:center" th:text="${item.stockCode}"/>
         <td style="text-align:center" th:text="${item.buyPrice}"/>
         <td style="text-align:center" th:text="${#dates.format(item.buyTime, 'yyyy-MM-dd HH:mm:ss')}"/>
+        <td style="text-align:center"><a  th:href="'showDetail/' + ${item.stockCode} + '.html'">详情</a></td>
     </tr>
     </tbody>
 </table>

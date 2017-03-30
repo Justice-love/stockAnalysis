@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>查看详情</title>
+</head>
+<body>
+<h3 id="-">趋势图</h3>
+<p><img th:src="'http://image.sinajs.cn/newchart/daily/n/' + ${code} + '.gif'" alt="&#x8D8B;&#x52BF;&#x56FE;"/></p>
+<h3 id="-2">分时线</h3>
+<p><img th:src="'http://image.sinajs.cn/newchart/min/n/' + ${code} + '.gif'" alt="&#x5206;&#x65F6;&#x7EBF;"/></p>
+</body>
+</html>
