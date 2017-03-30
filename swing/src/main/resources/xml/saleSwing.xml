@@ -5,7 +5,7 @@
     <swing id="sale" validateType="higherThanExpected" expression="3" expect="{boughtPrice} * 1.1" orElse="down">
         <swing id="defaultTrue" validateType="defaultValidater" executor="logFlowSolver"/>
     </swing>
-    <swing id="down" validateType="lowerThanPaid" expect="{boughtPrice}"  executor="saleOutEmailSolver" orElse="bothSale">
+    <swing id="down" validateType="lowerThanPaid" expect="{boughtPrice}"  executor="saleOutImSolver" orElse="bothSale">
     </swing>
     <swing id="bothSale" validateType="saleContentPercent" expression="3#0.01" executor="saleOutImSolver"/>
 </swings>

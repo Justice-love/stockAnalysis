@@ -17,6 +17,8 @@ public class StockSolverConfig {
 
     private String subToken;
 
+    private String saleToken;
+
     private String url;
 
     private String arg;
@@ -51,5 +53,13 @@ public class StockSolverConfig {
 
     public void setArg(String arg) {
         this.arg = arg;
+    }
+
+    public String getSaleToken() {
+        return saleToken;
+    }
+
+    public void setSaleToken(String saleToken) {
+        this.saleToken = saleToken;
     }
 }

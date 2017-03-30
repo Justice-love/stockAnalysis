@@ -1,4 +1,4 @@
-package org.eddy.solver;
+package org.eddy.solver.imSolver;
 
 import org.eddy.config.StockSolverConfig;
 import org.eddy.swing.entity.SwingValidateContext;
@@ -9,15 +9,13 @@ import org.eddy.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 /**
- * Created by Justice-love on 2017/3/4.
+ * Created by eddy on 2017/3/30.
  */
-@Component("saleOutImSolver")
-public class SaleOutImSolver implements SwingFlowSolver {
+public abstract class SaleOutImSolver implements SwingFlowSolver {
 
     private static Logger logger = LoggerFactory.getLogger(SaleOutImSolver.class);
 
@@ -28,7 +26,7 @@ public class SaleOutImSolver implements SwingFlowSolver {
     public void solve(SwingValidateContext context) throws SwingException {
         HttpMessage message = new HttpMessage();
         message.setProtocol(HttpMessage.ProtocolEnum.HTTPS);
-        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(config.getMainToken()).toString());
+        message.setUrl(new StringBuilder(config.getUrl()).append("?").append(config.getArg()).append("=").append(chooseToken(config)).toString());
         message.setMessageTypeEnum(HttpMessage.MessageTypeEnum.markdown);
         message.setContent(HttpMessage.MessageTypeEnum.markdown.createSaleContent(context));
         try {
@@ -40,4 +38,6 @@ public class SaleOutImSolver implements SwingFlowSolver {
             logger.error("notify sale out error", e);
         }
     }
+
+    protected abstract String chooseToken(StockSolverConfig config);
 }
