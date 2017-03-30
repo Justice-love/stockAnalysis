@@ -41,7 +41,7 @@ public class ContinueDown extends Validater{
             if (Double.parseDouble(stock.getYesterdayEnd()) == 0) {
                 continue;
             }
-            double p = 100 * (Double.parseDouble(stock.getPrice()) - Double.parseDouble(stock.getYesterdayEnd())) / Double.parseDouble(stock.getYesterdayEnd());
+            double p = Double.parseDouble(new StringBuilder(stock.getUp()).deleteCharAt(stock.getUp().length() - 1).toString());
             //有一次涨了或者希望的幅度大于实际的幅度，则不符合规则
             if (p > precent) {
                 return false;

@@ -24,20 +24,18 @@
         <logger name="org.eddy.dao.mapper" level="INFO">
             <appender-ref ref="stock"/>
         </logger>
-        <root level="INFO">
+        <logger name="org.springframework.web" level="info">
             <appender-ref ref="stock"/>
-        </root>
+        </logger>
     </springProfile>
 
     <springProfile name="dev">
         <logger name="org.eddy" level="DEBUG">
-            <appender-ref ref="stock"/>
+            <!--<appender-ref ref="stock"/>-->
             <appender-ref ref="STDOUT"/>
         </logger>
-        <root level="INFO">
-            <appender-ref ref="stock"/>
+        <logger name="org.springframework.web" level="info">
             <appender-ref ref="STDOUT"/>
-        </root>
+        </logger>
     </springProfile>
-
 </configuration>

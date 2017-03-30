@@ -42,7 +42,7 @@ public class ContinuedUp extends Validater{
                 continue;
             }
             //有一次希望的幅度大于实际的幅度，则不符合规则
-            if (precent > 100 * (Double.parseDouble(stock.getPrice()) - Double.parseDouble(stock.getYesterdayEnd())) / Double.parseDouble(stock.getYesterdayEnd())) {
+            if (precent > Double.parseDouble(new StringBuilder(stock.getUp()).deleteCharAt(stock.getUp().length() - 1).toString())) {
                 return false;
             }
         }
