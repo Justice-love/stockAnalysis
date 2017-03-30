@@ -18,24 +18,30 @@
     </appender>
 
     <springProfile name="pro">
-        <logger name="org.eddy" level="DEBUG">
+        <logger name="org.eddy" level="DEBUG" additivity="false">
             <appender-ref ref="stock"/>
         </logger>
-        <logger name="org.eddy.dao.mapper" level="INFO">
+        <logger name="org.eddy.dao.mapper" level="INFO" additivity="false">
             <appender-ref ref="stock"/>
         </logger>
-        <logger name="org.springframework.web" level="info">
+        <logger name="org.springframework.web" level="INFO" additivity="false">
             <appender-ref ref="stock"/>
         </logger>
+        <root level="INFO">
+            <appender-ref ref="stock"/>
+        </root>
     </springProfile>
 
     <springProfile name="dev">
-        <logger name="org.eddy" level="DEBUG">
+        <logger name="org.eddy" level="DEBUG" additivity="false">
             <!--<appender-ref ref="stock"/>-->
             <appender-ref ref="STDOUT"/>
         </logger>
-        <logger name="org.springframework.web" level="info">
+        <logger name="org.springframework.web" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
     </springProfile>
 </configuration>
