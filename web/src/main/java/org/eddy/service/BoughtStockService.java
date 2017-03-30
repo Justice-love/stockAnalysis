@@ -1,6 +1,7 @@
 package org.eddy.service;
 
 import org.eddy.entity.BoughtStock;
+import org.eddy.entity.Stock;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface BoughtStockService {
     List<BoughtStock> selectAll();
 
     List<BoughtStock> selectByCode(String code);
+
+    void sale(Stock stock);
 }

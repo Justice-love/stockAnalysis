@@ -2,6 +2,7 @@ package org.eddy.service.impl;
 
 import org.eddy.dao.mapper.stock.BoughtStockMapper;
 import org.eddy.entity.BoughtStock;
+import org.eddy.entity.Stock;
 import org.eddy.service.BoughtStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,11 @@ public class BoughtStockServiceImpl implements BoughtStockService {
     public List<BoughtStock> selectByCode(String code) {
         Assert.notNull(code);
         return boughtStockMapper.selectByCode(code);
+    }
+
+    @Override
+    public void sale(Stock stock) {
+        Assert.notNull(stock);
+        boughtStockMapper.deleteOne(stock.getId());
     }
 }
