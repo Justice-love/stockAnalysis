@@ -29,12 +29,12 @@ public class ContinuedUp extends Validater{
         String[] arr = expression.trim().split(CHAR);
         Assert.isTrue(arr.length == 2, "error expression: " + expression);
         int time = Integer.parseInt(arr[0]);
-        double precent = Double.parseDouble(arr[1]) * 0.01;
+        double precent = Double.parseDouble(arr[1]);
         SortedMap<String, List<Stock>> headMap = groupStocks.headMap(groupStocks.lastKey());
         Assert.isTrue(headMap.size() >= time, "history data not enough");
         Map.Entry<String, List<Stock>>[] entries = (Map.Entry<String, List<Stock>>[]) headMap.entrySet().toArray(new Map.Entry[0]);
         for (int i= 1; i <= time; i++) {
-            List<Stock> history = history = entries[entries.length - 1 - (i - 1)].getValue();
+            List<Stock> history = history = entries[entries.length - i].getValue();
             Assert.notEmpty(history, "history size is empty");
             Stock stock = history.get(0);
             //昨天数据为0
@@ -42,7 +42,7 @@ public class ContinuedUp extends Validater{
                 continue;
             }
             //有一次希望的幅度大于实际的幅度，则不符合规则
-            if (precent > (Double.parseDouble(stock.getPrice()) - Double.parseDouble(stock.getYesterdayEnd())) / Double.parseDouble(stock.getYesterdayEnd())) {
+            if (precent > 100 * (Double.parseDouble(stock.getPrice()) - Double.parseDouble(stock.getYesterdayEnd())) / Double.parseDouble(stock.getYesterdayEnd())) {
                 return false;
             }
         }

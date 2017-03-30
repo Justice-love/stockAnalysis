@@ -10,10 +10,10 @@
         <!--</swing>-->
     <!--</swing>-->
 
-    <swing id="buy" validateType="continueDown" expression="5#1">
-        <swing id="continueUp" validateType="continuedUp" expression="5#0">
-            <swing id="risePercent" validateType="risePercent" expression="10#2">
-                <swing id="risePercent2" validateType="risePercent" expression="5#3" orElse="buyCountUp">
+    <swing id="buy" validateType="continueDown" expression="5#2">
+        <swing id="continueUp" validateType="continuedUp" expression="5#-1">
+            <swing id="risePercent" validateType="risePercent" expression="10#1" orElse="defaultTrue">
+                <swing id="risePercent2" validateType="risePercent" expression="5#2" orElse="buyCountUp">
                     <swing id="withoutLimit" validateType="withoutLimit" executor="buyInImSolver"/>
                 </swing>
             </swing>
