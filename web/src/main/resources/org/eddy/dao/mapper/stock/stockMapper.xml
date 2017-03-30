@@ -101,5 +101,8 @@
     <select id="selectGroupByStock" resultMap="stock">
         select name, stock_code FROM <include refid="table"/>  WHERE  date = #{date} and stock_code = #{stock.stockCode} GROUP BY stock_code, name;
     </select>
+    <select id="findStockDetail" resultMap="stock">
+        SELECT <include refid="allColumns"/> FROM <include refid="table"/> WHERE stock_code = #{code} order by date desc, time desc limit 1;
+    </select>
 
 </mapper>

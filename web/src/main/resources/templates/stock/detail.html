@@ -5,6 +5,15 @@
     <title>查看详情</title>
 </head>
 <body>
+<h3 id="-0">股票信息</h3>
+<ul>
+    <li>股票名称：<span th:text="${stock.name}"/></li>
+    <li>股票代码：<span th:text="${stock.stockCode}"/></li>
+    <li>当前价格：<span th:text="${stock.price}"/></li>
+    <li>当前涨幅：<span th:text="${stock.up}"/></li>
+    <li>当前日期：<span th:text="${stock.date}"/></li>
+    <li>当前时间：<span th:text="${stock.time}"/></li>
+</ul>
 <h3 id="-">趋势图</h3>
 <p><img th:src="'http://image.sinajs.cn/newchart/daily/n/' + ${code} + '.gif'" alt="&#x8D8B;&#x52BF;&#x56FE;"/></p>
 <h3 id="-2">分时线</h3>

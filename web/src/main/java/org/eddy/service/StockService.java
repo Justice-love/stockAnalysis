@@ -25,4 +25,6 @@ public interface StockService {
     List<Stock> selectSortedStocks(String code);
 
     List<Stock> selectSortedStocksOneDate(String code, String date);
+
+    Stock findStockDetail(String code);
 }

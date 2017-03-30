@@ -102,4 +102,9 @@ public class StockBuyManagerImpl implements StockBuyManager {
     public List<BoughtStock> showBought() {
         return boughtStockService.selectAll();
     }
+
+    @Override
+    public Stock findStockDetail(String code) {
+        return stockService.findStockDetail(code);
+    }
 }

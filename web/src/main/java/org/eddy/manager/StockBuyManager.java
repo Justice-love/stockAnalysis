@@ -22,4 +22,6 @@ public interface StockBuyManager {
     void buyStock(int id);
 
     List<BoughtStock> showBought();
+
+    Stock findStockDetail(String code);
 }

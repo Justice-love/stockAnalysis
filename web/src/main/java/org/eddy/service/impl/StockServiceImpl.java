@@ -96,6 +96,11 @@ public class StockServiceImpl implements StockService {
         return stockMapper.selectSortedStockOneDate(code, date);
     }
 
+    @Override
+    public Stock findStockDetail(String code) {
+        return stockMapper.findStockDetail(code);
+    }
+
     private void merge(List<Stock> ori, List<Stock> statistic) {
         ori.forEach(s -> {
             Optional<Stock> optional = statistic.stream().filter(t -> StringUtils.equals(s.getStockCode(), t.getStockCode())).findFirst();

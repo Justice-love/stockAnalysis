@@ -1,6 +1,7 @@
 package org.eddy.web.stock;
 
 import org.eddy.annotation.LoginCheck;
+import org.eddy.entity.Stock;
 import org.eddy.manager.StockBuyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,8 @@ public class BuyStock {
     @RequestMapping("/showDetail/{code}")
     @LoginCheck
     public String showDetail(Model model, @PathVariable("code") String code) {
+        Stock stock = stockBuyManager.findStockDetail(code);
+        model.addAttribute("stock", stock);
         model.addAttribute("code", code);
         return "stock/detail";
     }
