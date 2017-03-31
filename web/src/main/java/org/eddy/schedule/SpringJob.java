@@ -34,8 +34,17 @@ public class SpringJob {
     @Autowired
     private StockSaleManager stockSaleManager;
 
-    @Scheduled(cron = "10 0-59 9-14 * * 1-5 ")
+    @Scheduled(cron = "10 0-59 10-14 * * 1-5 ")
     public void crawlAllUrl() {
+        try {
+            crawlStockManager.crawlStock();
+        } catch (Exception e) {
+            logger.error("execute Schedule crawlAllUrl error", e);
+        }
+    }
+
+    @Scheduled(cron = "10 15-59 9 * * 1-5 ")
+    public void crawlAllUrlHalfOneHour() {
         try {
             crawlStockManager.crawlStock();
         } catch (Exception e) {
@@ -61,7 +70,7 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "10 0-59 9-14 * * 1-5 ")
+    @Scheduled(cron = "10 0-59 10-14 * * 1-5 ")
     public void analysisToBuyStock() {
         try {
             stockBuyManager.needBuy();
@@ -70,8 +79,26 @@ public class SpringJob {
         }
     }
 
-    @Scheduled(cron = "50 0-59 9-14 * * 1-5 ")
+    @Scheduled(cron = "10 15-59 9 * * 1-5 ")
+    public void analysisToBuyStockHalfOneHour() {
+        try {
+            stockBuyManager.needBuy();
+        } catch (Exception e) {
+            logger.error("execute Schedule analysisToBuyStock error", e);
+        }
+    }
+
+    @Scheduled(cron = "50 0-59 10-14 * * 1-5 ")
     public void analysisToSaleStock() {
+        try {
+            stockSaleManager.shouldSale();
+        } catch (Exception e) {
+            logger.error("execute Schedule analysisToSaleStock error", e);
+        }
+    }
+
+    @Scheduled(cron = "50 15-59 9 * * 1-5 ")
+    public void analysisToSaleStockHalfOneHour() {
         try {
             stockSaleManager.shouldSale();
         } catch (Exception e) {
