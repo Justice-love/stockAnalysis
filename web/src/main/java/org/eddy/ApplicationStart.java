@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.system.ApplicationPidFileWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -26,6 +28,11 @@ public class ApplicationStart {
     @Bean
     public DataSource definitionDataSource() throws Exception {
         return DruidDataSourceFactory.createDataSource(config.genProperties());
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer customizer() throws Exception {
+        return (ConfigurableEmbeddedServletContainer container) -> container.setSessionTimeout(1 * 60 * 60);
     }
 
     public static void main(String[] args) {
