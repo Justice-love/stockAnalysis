@@ -67,10 +67,10 @@ public class MarkdownUtil {
         builder.append(">* 购买价格：").append(context.getStock().getBoughtPrice()).append("\n");
         builder.append(">* 购买时间：").append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(context.getStock().getBoughtTime())).append("\n");
         
-        builder.append("\n### 趋势图\n");
-        builder.append("![趋势图](http://image.sinajs.cn/newchart/daily/n/").append(context.getStock().getStockCode()).append(".gif)\n");
-        builder.append("\n### 分时线\n");
-        builder.append("![分时线](http://image.sinajs.cn/newchart/min/n/").append(context.getStock().getStockCode()).append(".gif)\n");
+//        builder.append("\n### 趋势图\n");
+//        builder.append("![趋势图](http://image.sinajs.cn/newchart/daily/n/").append(context.getStock().getStockCode()).append(".gif)\n");
+//        builder.append("\n### 分时线\n");
+//        builder.append("![分时线](http://image.sinajs.cn/newchart/min/n/").append(context.getStock().getStockCode()).append(".gif)\n");
         return  builder.toString();
     }
 }
