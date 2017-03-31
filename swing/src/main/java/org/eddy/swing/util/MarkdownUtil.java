@@ -35,9 +35,9 @@ public class MarkdownUtil {
         });
         
         builder.append("\n### 趋势图\n");
-        builder.append("![趋势图](http://image.sinajs.cn/newchart/daily/n/").append(context.getStock().getStockCode()).append(".gif)\n");
+        builder.append("![趋势图](http://image.sinajs.cn/newchart/daily/n/").append(context.getStock().getStockCode()).append(".gif?").append("t=").append(System.currentTimeMillis()).append(")\n");
         builder.append("\n### 分时线\n");
-        builder.append("![分时线](http://image.sinajs.cn/newchart/min/n/").append(context.getStock().getStockCode()).append(".gif)\n");
+        builder.append("![分时线](http://image.sinajs.cn/newchart/min/n/").append(context.getStock().getStockCode()).append(".gif?").append("t=").append(System.currentTimeMillis()).append(")\n");
         return  builder.toString();
     }
 
