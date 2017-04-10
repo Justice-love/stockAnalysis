@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.eddy</groupId>
     <artifactId>web</artifactId>
     <packaging>jar</packaging>
     <name>stockAnalysis.web</name>
