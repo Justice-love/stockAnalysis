@@ -39,7 +39,7 @@ public class Stock {
 
     private String buy1Price;
 
-    private String  buy2;
+    private String buy2;
 
     private String buy2Price;
 
