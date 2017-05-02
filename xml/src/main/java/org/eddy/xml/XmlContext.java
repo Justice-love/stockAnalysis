@@ -68,7 +68,7 @@ public class XmlContext {
         List<String> paths = new ArrayList<String>();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (Url.URL_TAG_NAME.equals(node.getNodeName()) && Node.ELEMENT_NODE == node.getNodeType()) {
+            if (Node.ELEMENT_NODE == node.getNodeType() && Url.URL_TAG_NAME.equals(node.getNodeName())) {
                 Element element = (Element) node;
                 paths.add(element.getAttribute("path"));
             }
